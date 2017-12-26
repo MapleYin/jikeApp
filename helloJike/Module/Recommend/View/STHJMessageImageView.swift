@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class STHJMessageImageView: UIImageView {
 
@@ -35,5 +36,10 @@ class STHJMessageImageView: UIImageView {
     }
     
     var sizeArea:CGSize?
+    
+    func setup(_ urlString:String) {
+        let url = URL(string: urlString)
+        self.kf.setImage(with: url)
+    }
 
 }

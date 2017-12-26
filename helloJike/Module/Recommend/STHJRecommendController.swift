@@ -47,7 +47,6 @@ extension STHJRecommendController {
         if let dataArray = dataArray {
             if let message = dataArray[indexPath.row].item as? Message {
                 cell.setup(message)
-                cell.layoutIfNeeded()
                 return cell
             }
         }

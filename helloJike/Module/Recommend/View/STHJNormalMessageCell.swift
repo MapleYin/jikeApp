@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-import Kingfisher
+
 
 class STHJNormalMessageCell: STHJTableViewCell {
     
@@ -51,9 +51,8 @@ class STHJNormalMessageCell: STHJTableViewCell {
     func setup (_ message:Message) {
         contentLabel.text = message.content
         if let image = message.pictureUrls?.first {
-            let url = URL(string:image.smallPicUrl)
             singleImageView.isHidden = false
-            singleImageView.kf.setImage(with: url)
+            singleImageView.setup(image.smallPicUrl)
             singleImageView.invalidateIntrinsicContentSize()
         } else {
             singleImageView.image = nil;
