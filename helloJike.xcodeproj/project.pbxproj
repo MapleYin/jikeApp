@@ -1,0 +1,618 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6400BFCB6BF8988B09C6D08C /* Pods_helloJike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62CF1080A92B9BE9D94B5ED /* Pods_helloJike.framework */; };
+		F51807DB1FEE8C290021D9D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807DA1FEE8C290021D9D3 /* AppDelegate.swift */; };
+		F51807E21FEE8C290021D9D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F51807E11FEE8C290021D9D3 /* Assets.xcassets */; };
+		F51807E51FEE8C290021D9D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F51807E31FEE8C290021D9D3 /* LaunchScreen.storyboard */; };
+		F51807F11FEE8E4A0021D9D3 /* STHJViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F01FEE8E4A0021D9D3 /* STHJViewController.swift */; };
+		F51807F31FEE8F190021D9D3 /* STHJSubscribeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F21FEE8F190021D9D3 /* STHJSubscribeController.swift */; };
+		F51807F61FEE8F670021D9D3 /* STHJTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F51FEE8F670021D9D3 /* STHJTabBarController.swift */; };
+		F51807F81FEE8FCF0021D9D3 /* STHJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F71FEE8FCF0021D9D3 /* STHJNavigationController.swift */; };
+		F51807FA1FEE99C10021D9D3 /* STHJTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F91FEE99C10021D9D3 /* STHJTableViewController.swift */; };
+		F51807FE1FEE9D5E0021D9D3 /* STHJService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807FD1FEE9D5E0021D9D3 /* STHJService.swift */; };
+		F51808011FEEA6990021D9D3 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51808001FEEA6990021D9D3 /* AccountService.swift */; };
+		F51808031FEEA7C80021D9D3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51808021FEEA7C80021D9D3 /* User.swift */; };
+		F51808051FEEA88D0021D9D3 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51808041FEEA88D0021D9D3 /* UserPreferences.swift */; };
+		F53DFDFE1FEEC172009B649D /* STHJRecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFDFD1FEEC172009B649D /* STHJRecommendController.swift */; };
+		F53DFE031FEF3091009B649D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE021FEF3091009B649D /* Message.swift */; };
+		F53DFE071FEFFDAF009B649D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE061FEFFDAF009B649D /* Image.swift */; };
+		F53DFE091FEFFE46009B649D /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE081FEFFE46009B649D /* Video.swift */; };
+		F53DFE0B1FF11EC8009B649D /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE0A1FF11EC8009B649D /* Topic.swift */; };
+		F53DFE0F1FF13E35009B649D /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE0E1FF13E35009B649D /* MessageService.swift */; };
+		F53DFE111FF13FF7009B649D /* MessageListReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE101FF13FF7009B649D /* MessageListReponse.swift */; };
+		F53DFE151FF140C3009B649D /* MessageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE141FF140C3009B649D /* MessageItem.swift */; };
+		F53DFE171FF14603009B649D /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE161FF14603009B649D /* Recommendation.swift */; };
+		F53DFE1D1FF14773009B649D /* MessageItemTransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE1C1FF14773009B649D /* MessageItemTransformType.swift */; };
+		F53DFE221FF15581009B649D /* STHJTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE211FF15581009B649D /* STHJTableViewCell.swift */; };
+		F53DFE241FF1562C009B649D /* STHJNormalMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE231FF1562C009B649D /* STHJNormalMessageCell.swift */; };
+		F53DFE261FF1CE4C009B649D /* STHJMessageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE251FF1CE4B009B649D /* STHJMessageImageView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3BE3137F4598A7BEC5FB784C /* Pods-helloJike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-helloJike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-helloJike/Pods-helloJike.debug.xcconfig"; sourceTree = "<group>"; };
+		C28CFF8848E03B72FB35143A /* Pods-helloJike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-helloJike.release.xcconfig"; path = "Pods/Target Support Files/Pods-helloJike/Pods-helloJike.release.xcconfig"; sourceTree = "<group>"; };
+		E62CF1080A92B9BE9D94B5ED /* Pods_helloJike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_helloJike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F51807D71FEE8C290021D9D3 /* helloJike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = helloJike.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F51807DA1FEE8C290021D9D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F51807E11FEE8C290021D9D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F51807E41FEE8C290021D9D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F51807E61FEE8C290021D9D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F51807F01FEE8E4A0021D9D3 /* STHJViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJViewController.swift; sourceTree = "<group>"; };
+		F51807F21FEE8F190021D9D3 /* STHJSubscribeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJSubscribeController.swift; sourceTree = "<group>"; };
+		F51807F51FEE8F670021D9D3 /* STHJTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJTabBarController.swift; sourceTree = "<group>"; };
+		F51807F71FEE8FCF0021D9D3 /* STHJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJNavigationController.swift; sourceTree = "<group>"; };
+		F51807F91FEE99C10021D9D3 /* STHJTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJTableViewController.swift; sourceTree = "<group>"; };
+		F51807FD1FEE9D5E0021D9D3 /* STHJService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJService.swift; sourceTree = "<group>"; };
+		F51808001FEEA6990021D9D3 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		F51808021FEEA7C80021D9D3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F51808041FEEA88D0021D9D3 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		F53DFDFD1FEEC172009B649D /* STHJRecommendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJRecommendController.swift; sourceTree = "<group>"; };
+		F53DFE021FEF3091009B649D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		F53DFE061FEFFDAF009B649D /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		F53DFE081FEFFE46009B649D /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		F53DFE0A1FF11EC8009B649D /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		F53DFE0E1FF13E35009B649D /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		F53DFE101FF13FF7009B649D /* MessageListReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListReponse.swift; sourceTree = "<group>"; };
+		F53DFE141FF140C3009B649D /* MessageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageItem.swift; sourceTree = "<group>"; };
+		F53DFE161FF14603009B649D /* Recommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
+		F53DFE1C1FF14773009B649D /* MessageItemTransformType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageItemTransformType.swift; sourceTree = "<group>"; };
+		F53DFE211FF15581009B649D /* STHJTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJTableViewCell.swift; sourceTree = "<group>"; };
+		F53DFE231FF1562C009B649D /* STHJNormalMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJNormalMessageCell.swift; sourceTree = "<group>"; };
+		F53DFE251FF1CE4B009B649D /* STHJMessageImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJMessageImageView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F51807D41FEE8C290021D9D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6400BFCB6BF8988B09C6D08C /* Pods_helloJike.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8689E1310141C53849084A32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E62CF1080A92B9BE9D94B5ED /* Pods_helloJike.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA31C099CB88BC64D22ED2C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3BE3137F4598A7BEC5FB784C /* Pods-helloJike.debug.xcconfig */,
+				C28CFF8848E03B72FB35143A /* Pods-helloJike.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F51807CE1FEE8C290021D9D3 = {
+			isa = PBXGroup;
+			children = (
+				F51807D91FEE8C290021D9D3 /* helloJike */,
+				F51807D81FEE8C290021D9D3 /* Products */,
+				AA31C099CB88BC64D22ED2C3 /* Pods */,
+				8689E1310141C53849084A32 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F51807D81FEE8C290021D9D3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F51807D71FEE8C290021D9D3 /* helloJike.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F51807D91FEE8C290021D9D3 /* helloJike */ = {
+			isa = PBXGroup;
+			children = (
+				F51807DA1FEE8C290021D9D3 /* AppDelegate.swift */,
+				F51807F41FEE8F230021D9D3 /* Main */,
+				F51807EE1FEE8E0B0021D9D3 /* Base */,
+				F51807EC1FEE8DB90021D9D3 /* Module */,
+				F51807E11FEE8C290021D9D3 /* Assets.xcassets */,
+				F51807E31FEE8C290021D9D3 /* LaunchScreen.storyboard */,
+				F51807E61FEE8C290021D9D3 /* Info.plist */,
+			);
+			path = helloJike;
+			sourceTree = "<group>";
+		};
+		F51807EC1FEE8DB90021D9D3 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				F53DFE0D1FF13D87009B649D /* Service */,
+				F53DFE0C1FF139A4009B649D /* Model */,
+				F51807FF1FEEA65B0021D9D3 /* Account */,
+				F53DFDFC1FEEC12D009B649D /* Recommend */,
+				F51807ED1FEE8DE50021D9D3 /* Subscribe */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		F51807ED1FEE8DE50021D9D3 /* Subscribe */ = {
+			isa = PBXGroup;
+			children = (
+				F51807F21FEE8F190021D9D3 /* STHJSubscribeController.swift */,
+			);
+			path = Subscribe;
+			sourceTree = "<group>";
+		};
+		F51807EE1FEE8E0B0021D9D3 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F53DFE1F1FF15561009B649D /* View */,
+				F51807FC1FEE9D2D0021D9D3 /* Model */,
+				F51807FB1FEE9CBC0021D9D3 /* Service */,
+				F51807EF1FEE8E160021D9D3 /* Controller */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		F51807EF1FEE8E160021D9D3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F51807F01FEE8E4A0021D9D3 /* STHJViewController.swift */,
+				F51807F71FEE8FCF0021D9D3 /* STHJNavigationController.swift */,
+				F51807F91FEE99C10021D9D3 /* STHJTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F51807F41FEE8F230021D9D3 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F51807F51FEE8F670021D9D3 /* STHJTabBarController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F51807FB1FEE9CBC0021D9D3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F51807FD1FEE9D5E0021D9D3 /* STHJService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F51807FC1FEE9D2D0021D9D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F51807FF1FEEA65B0021D9D3 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		F53DFDFC1FEEC12D009B649D /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+				F53DFE1E1FF15552009B649D /* View */,
+				F53DFDFD1FEEC172009B649D /* STHJRecommendController.swift */,
+			);
+			path = Recommend;
+			sourceTree = "<group>";
+		};
+		F53DFE0C1FF139A4009B649D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F53DFE191FF146EB009B649D /* User */,
+				F53DFE181FF146E0009B649D /* Message */,
+				F53DFE061FEFFDAF009B649D /* Image.swift */,
+				F53DFE081FEFFE46009B649D /* Video.swift */,
+				F53DFE0A1FF11EC8009B649D /* Topic.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F53DFE0D1FF13D87009B649D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F51808001FEEA6990021D9D3 /* AccountService.swift */,
+				F53DFE0E1FF13E35009B649D /* MessageService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F53DFE181FF146E0009B649D /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				F53DFE021FEF3091009B649D /* Message.swift */,
+				F53DFE161FF14603009B649D /* Recommendation.swift */,
+				F53DFE141FF140C3009B649D /* MessageItem.swift */,
+				F53DFE101FF13FF7009B649D /* MessageListReponse.swift */,
+				F53DFE1C1FF14773009B649D /* MessageItemTransformType.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		F53DFE191FF146EB009B649D /* User */ = {
+			isa = PBXGroup;
+			children = (
+				F51808021FEEA7C80021D9D3 /* User.swift */,
+				F51808041FEEA88D0021D9D3 /* UserPreferences.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		F53DFE1E1FF15552009B649D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F53DFE231FF1562C009B649D /* STHJNormalMessageCell.swift */,
+				F53DFE251FF1CE4B009B649D /* STHJMessageImageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F53DFE1F1FF15561009B649D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F53DFE201FF15568009B649D /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F53DFE201FF15568009B649D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F53DFE211FF15581009B649D /* STHJTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F51807D61FEE8C290021D9D3 /* helloJike */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F51807E91FEE8C290021D9D3 /* Build configuration list for PBXNativeTarget "helloJike" */;
+			buildPhases = (
+				C9F961FA8F62CA8A1D805A8E /* [CP] Check Pods Manifest.lock */,
+				F51807D31FEE8C290021D9D3 /* Sources */,
+				F51807D41FEE8C290021D9D3 /* Frameworks */,
+				F51807D51FEE8C290021D9D3 /* Resources */,
+				B7ACC9B609CFA34787BCEA00 /* [CP] Embed Pods Frameworks */,
+				2C6B64A3F502E7132A9D47FF /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = helloJike;
+			productName = helloJike;
+			productReference = F51807D71FEE8C290021D9D3 /* helloJike.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F51807CF1FEE8C290021D9D3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Maple Yin";
+				TargetAttributes = {
+					F51807D61FEE8C290021D9D3 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F51807D21FEE8C290021D9D3 /* Build configuration list for PBXProject "helloJike" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F51807CE1FEE8C290021D9D3;
+			productRefGroup = F51807D81FEE8C290021D9D3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F51807D61FEE8C290021D9D3 /* helloJike */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F51807D51FEE8C290021D9D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F51807E51FEE8C290021D9D3 /* LaunchScreen.storyboard in Resources */,
+				F51807E21FEE8C290021D9D3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C6B64A3F502E7132A9D47FF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-helloJike/Pods-helloJike-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7ACC9B609CFA34787BCEA00 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-helloJike/Pods-helloJike-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-helloJike/Pods-helloJike-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9F961FA8F62CA8A1D805A8E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-helloJike-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F51807D31FEE8C290021D9D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F53DFE171FF14603009B649D /* Recommendation.swift in Sources */,
+				F51807F11FEE8E4A0021D9D3 /* STHJViewController.swift in Sources */,
+				F51807F81FEE8FCF0021D9D3 /* STHJNavigationController.swift in Sources */,
+				F53DFDFE1FEEC172009B649D /* STHJRecommendController.swift in Sources */,
+				F51808011FEEA6990021D9D3 /* AccountService.swift in Sources */,
+				F53DFE261FF1CE4C009B649D /* STHJMessageImageView.swift in Sources */,
+				F53DFE111FF13FF7009B649D /* MessageListReponse.swift in Sources */,
+				F51807F31FEE8F190021D9D3 /* STHJSubscribeController.swift in Sources */,
+				F53DFE221FF15581009B649D /* STHJTableViewCell.swift in Sources */,
+				F53DFE0F1FF13E35009B649D /* MessageService.swift in Sources */,
+				F53DFE031FEF3091009B649D /* Message.swift in Sources */,
+				F51807FE1FEE9D5E0021D9D3 /* STHJService.swift in Sources */,
+				F51808051FEEA88D0021D9D3 /* UserPreferences.swift in Sources */,
+				F51807DB1FEE8C290021D9D3 /* AppDelegate.swift in Sources */,
+				F51807FA1FEE99C10021D9D3 /* STHJTableViewController.swift in Sources */,
+				F53DFE151FF140C3009B649D /* MessageItem.swift in Sources */,
+				F51808031FEEA7C80021D9D3 /* User.swift in Sources */,
+				F53DFE241FF1562C009B649D /* STHJNormalMessageCell.swift in Sources */,
+				F53DFE091FEFFE46009B649D /* Video.swift in Sources */,
+				F51807F61FEE8F670021D9D3 /* STHJTabBarController.swift in Sources */,
+				F53DFE071FEFFDAF009B649D /* Image.swift in Sources */,
+				F53DFE1D1FF14773009B649D /* MessageItemTransformType.swift in Sources */,
+				F53DFE0B1FF11EC8009B649D /* Topic.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F51807E31FEE8C290021D9D3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F51807E41FEE8C290021D9D3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F51807E71FEE8C290021D9D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F51807E81FEE8C290021D9D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F51807EA1FEE8C290021D9D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BE3137F4598A7BEC5FB784C /* Pods-helloJike.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZEKMY4ZK97;
+				INFOPLIST_FILE = helloJike/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = im.maple.helloJike;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F51807EB1FEE8C290021D9D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C28CFF8848E03B72FB35143A /* Pods-helloJike.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZEKMY4ZK97;
+				INFOPLIST_FILE = helloJike/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = im.maple.helloJike;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F51807D21FEE8C290021D9D3 /* Build configuration list for PBXProject "helloJike" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F51807E71FEE8C290021D9D3 /* Debug */,
+				F51807E81FEE8C290021D9D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F51807E91FEE8C290021D9D3 /* Build configuration list for PBXNativeTarget "helloJike" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F51807EA1FEE8C290021D9D3 /* Debug */,
+				F51807EB1FEE8C290021D9D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F51807CF1FEE8C290021D9D3 /* Project object */;
+}
