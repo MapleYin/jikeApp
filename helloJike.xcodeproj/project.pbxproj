@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6400BFCB6BF8988B09C6D08C /* Pods_helloJike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62CF1080A92B9BE9D94B5ED /* Pods_helloJike.framework */; };
+		669DB74B1FF1E3F5006D76C4 /* AppDelegate+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DB74A1FF1E3F5006D76C4 /* AppDelegate+UI.swift */; };
+		669DB7511FF1E536006D76C4 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DB7501FF1E536006D76C4 /* StringUtils.swift */; };
+		669DB7541FF1F3CC006D76C4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DB7531FF1F3CC006D76C4 /* Cache.swift */; };
+		669DB7561FF1F40C006D76C4 /* STUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DB7551FF1F40C006D76C4 /* STUserDefault.swift */; };
+		669DB7581FF1FDA8006D76C4 /* AppDelegate+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DB7571FF1FDA8006D76C4 /* AppDelegate+Data.swift */; };
 		F51807DB1FEE8C290021D9D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807DA1FEE8C290021D9D3 /* AppDelegate.swift */; };
 		F51807E21FEE8C290021D9D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F51807E11FEE8C290021D9D3 /* Assets.xcassets */; };
 		F51807E51FEE8C290021D9D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F51807E31FEE8C290021D9D3 /* LaunchScreen.storyboard */; };
@@ -37,6 +42,11 @@
 
 /* Begin PBXFileReference section */
 		3BE3137F4598A7BEC5FB784C /* Pods-helloJike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-helloJike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-helloJike/Pods-helloJike.debug.xcconfig"; sourceTree = "<group>"; };
+		669DB74A1FF1E3F5006D76C4 /* AppDelegate+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+UI.swift"; sourceTree = "<group>"; };
+		669DB7501FF1E536006D76C4 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		669DB7531FF1F3CC006D76C4 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		669DB7551FF1F40C006D76C4 /* STUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STUserDefault.swift; sourceTree = "<group>"; };
+		669DB7571FF1FDA8006D76C4 /* AppDelegate+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Data.swift"; sourceTree = "<group>"; };
 		C28CFF8848E03B72FB35143A /* Pods-helloJike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-helloJike.release.xcconfig"; path = "Pods/Target Support Files/Pods-helloJike/Pods-helloJike.release.xcconfig"; sourceTree = "<group>"; };
 		E62CF1080A92B9BE9D94B5ED /* Pods_helloJike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_helloJike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51807D71FEE8C290021D9D3 /* helloJike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = helloJike.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +90,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		669DB74C1FF1E47A006D76C4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				669DB7501FF1E536006D76C4 /* StringUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		669DB7521FF1F396006D76C4 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				669DB7531FF1F3CC006D76C4 /* Cache.swift */,
+				669DB7551FF1F40C006D76C4 /* STUserDefault.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		8689E1310141C53849084A32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,10 +145,10 @@
 		F51807D91FEE8C290021D9D3 /* helloJike */ = {
 			isa = PBXGroup;
 			children = (
-				F51807DA1FEE8C290021D9D3 /* AppDelegate.swift */,
 				F51807F41FEE8F230021D9D3 /* Main */,
 				F51807EE1FEE8E0B0021D9D3 /* Base */,
 				F51807EC1FEE8DB90021D9D3 /* Module */,
+				669DB74C1FF1E47A006D76C4 /* Utils */,
 				F51807E11FEE8C290021D9D3 /* Assets.xcassets */,
 				F51807E31FEE8C290021D9D3 /* LaunchScreen.storyboard */,
 				F51807E61FEE8C290021D9D3 /* Info.plist */,
@@ -132,9 +159,9 @@
 		F51807EC1FEE8DB90021D9D3 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				669DB7521FF1F396006D76C4 /* Cache */,
 				F53DFE0D1FF13D87009B649D /* Service */,
 				F53DFE0C1FF139A4009B649D /* Model */,
-				F51807FF1FEEA65B0021D9D3 /* Account */,
 				F53DFDFC1FEEC12D009B649D /* Recommend */,
 				F51807ED1FEE8DE50021D9D3 /* Subscribe */,
 			);
@@ -173,6 +200,9 @@
 		F51807F41FEE8F230021D9D3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				F51807DA1FEE8C290021D9D3 /* AppDelegate.swift */,
+				669DB74A1FF1E3F5006D76C4 /* AppDelegate+UI.swift */,
+				669DB7571FF1FDA8006D76C4 /* AppDelegate+Data.swift */,
 				F51807F51FEE8F670021D9D3 /* STHJTabBarController.swift */,
 			);
 			path = Main;
@@ -191,13 +221,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		F51807FF1FEEA65B0021D9D3 /* Account */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Account;
 			sourceTree = "<group>";
 		};
 		F53DFDFC1FEEC12D009B649D /* Recommend */ = {
@@ -418,6 +441,7 @@
 				F53DFDFE1FEEC172009B649D /* STHJRecommendController.swift in Sources */,
 				F51808011FEEA6990021D9D3 /* AccountService.swift in Sources */,
 				F53DFE261FF1CE4C009B649D /* STHJMessageImageView.swift in Sources */,
+				669DB7541FF1F3CC006D76C4 /* Cache.swift in Sources */,
 				F53DFE111FF13FF7009B649D /* MessageListReponse.swift in Sources */,
 				F51807F31FEE8F190021D9D3 /* STHJSubscribeController.swift in Sources */,
 				F53DFE221FF15581009B649D /* STHJTableViewCell.swift in Sources */,
@@ -426,12 +450,16 @@
 				F51807FE1FEE9D5E0021D9D3 /* STHJService.swift in Sources */,
 				F51808051FEEA88D0021D9D3 /* UserPreferences.swift in Sources */,
 				F51807DB1FEE8C290021D9D3 /* AppDelegate.swift in Sources */,
+				669DB7561FF1F40C006D76C4 /* STUserDefault.swift in Sources */,
 				F51807FA1FEE99C10021D9D3 /* STHJTableViewController.swift in Sources */,
 				F53DFE151FF140C3009B649D /* MessageItem.swift in Sources */,
 				F51808031FEEA7C80021D9D3 /* User.swift in Sources */,
+				669DB7511FF1E536006D76C4 /* StringUtils.swift in Sources */,
 				F53DFE241FF1562C009B649D /* STHJNormalMessageCell.swift in Sources */,
 				F53DFE091FEFFE46009B649D /* Video.swift in Sources */,
+				669DB7581FF1FDA8006D76C4 /* AppDelegate+Data.swift in Sources */,
 				F51807F61FEE8F670021D9D3 /* STHJTabBarController.swift in Sources */,
+				669DB74B1FF1E3F5006D76C4 /* AppDelegate+UI.swift in Sources */,
 				F53DFE071FEFFDAF009B649D /* Image.swift in Sources */,
 				F53DFE1D1FF14773009B649D /* MessageItemTransformType.swift in Sources */,
 				F53DFE0B1FF11EC8009B649D /* Topic.swift in Sources */,

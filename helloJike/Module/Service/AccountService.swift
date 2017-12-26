@@ -17,6 +17,13 @@ class AccountService: STHJService {
     
     let registerPath = "/1.0/users/register"
     let profilePath = "/1.0/users/profile"
+    
+    
+    
+    override init() {
+        super.init()
+        user = Cache.userDefault.getUser()
+    }
 }
 
 // register
@@ -24,14 +31,16 @@ class AccountService: STHJService {
 
 extension AccountService {
     
-    func register() {
+    func register(_ then: @escaping (User?,Error?) -> Void) {
         let url = host+registerPath
         let username = UIDevice.current.identifierForVendor?.uuidString
-        request(url, method: .post, parameters: ["username":username!,"password":"3pi5rCs9f5zaSl3O"], encoding: JSONEncoding.default, headers: STHJService.COMMON_HEADER).responseJSON { (dataResponse) in
+        request(url, method: .post, parameters: ["username":username!,"password":RandomString(16)], encoding: JSONEncoding.default, headers: STHJService.COMMON_HEADER).responseJSON { (dataResponse) in
             if let result = dataResponse.result.value as? [String:Any] {
-                if result["success"] as? Bool == true {
-                    let userInfo = User(JSONString: result["user"] as! String);
-                    self.user = userInfo
+                if result["success"] as? Bool == true ,
+                let userInfo = result["user"] as? [String:Any]{
+                    let user = User(JSON: userInfo)
+                    self.user = user
+                    Cache.userDefault.saveUser(user)
                 } else {
                     print("\(String(describing: result["error"]))")
                 }
@@ -43,8 +52,14 @@ extension AccountService {
         let url = host+profilePath
         request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: STHJService.COMMON_HEADER).responseJSON { (dataResponse) in
             if let result = dataResponse.result.value as? [String:Any] {
-                let userInfo = User(JSON: result["user"] as! [String:Any] )
-                self.user = userInfo;
+                if let userInfo = result["user"] as? [String:Any] {
+                    
+                    let user = User(JSON: userInfo)
+                    self.user = user
+                    Cache.userDefault.saveUser(user)
+                } else {
+                    print("\(String(describing: result["error"]))")
+                }
             }
         }
     }

@@ -18,7 +18,7 @@ class STHJNormalMessageCell: STHJTableViewCell {
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+                
         contentLabel.numberOfLines = 0
         
         contentView.addSubview(containerView)
@@ -26,6 +26,7 @@ class STHJNormalMessageCell: STHJTableViewCell {
         containerView.addArrangedSubview(singleImageView)
         
         containerView.axis = .vertical
+        containerView.alignment = .leading
         containerView.spacing = 25
         
         singleImageView.contentMode = .scaleAspectFill
@@ -33,7 +34,7 @@ class STHJNormalMessageCell: STHJTableViewCell {
         singleImageView.sizeArea = CGSize(width: 200, height: 200)
         
         containerView.snp.makeConstraints { (make) in
-            make.edges.equalTo(UIEdgeInsetsMake(12, 12, 12, 12))
+            make.edges.equalTo(contentView).inset(UIEdgeInsetsMake(12, 12, 12, 12))
         }
         contentLabel.snp.makeConstraints { (make) in
             
@@ -52,12 +53,12 @@ class STHJNormalMessageCell: STHJTableViewCell {
         contentLabel.text = message.content
         if let image = message.pictureUrls?.first {
             singleImageView.isHidden = false
-            singleImageView.setup(image.smallPicUrl)
-            singleImageView.invalidateIntrinsicContentSize()
+            singleImageView.setup(image)
         } else {
             singleImageView.image = nil;
             singleImageView.isHidden = true
         }
+        singleImageView.invalidateIntrinsicContentSize()
     }
     
 }

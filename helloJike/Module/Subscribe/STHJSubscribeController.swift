@@ -15,6 +15,6 @@ class STHJSubscribeController: STHJTableViewController {
         self.title = "订阅"
         
         
-        AccountService.shared.profile()
+//        AccountService.shared.profile()
     }
 }

@@ -10,12 +10,25 @@ import UIKit
 import Kingfisher
 
 class STHJMessageImageView: UIImageView {
-
-    override var intrinsicContentSize: CGSize {
-        if let image = self.image,
-            let size = self.sizeArea {
-            let width = image.size.width;
-            let height = image.size.width;
+    
+    var sizeArea:CGSize?
+    
+    func setup(_ image:Image) {
+        let url = URL(string: image.smallPicUrl)
+        self.kf.setImage(with: url)
+        if let size = sizeWithImageSize(CGSize(width: CGFloat(image.width), height: CGFloat(image.height))) {
+            self.snp.updateConstraints { (make) in
+                make.size.equalTo(size)
+            }
+        }
+        
+    }
+    
+    private func sizeWithImageSize(_ imageSize:CGSize) -> CGSize? {
+        var returnSize:CGSize?;
+        if let size = self.sizeArea {
+            let width = imageSize.width;
+            let height = imageSize.height;
             
             if width < size.width && height < size.height {
                 return CGSize(width: width, height: height)
@@ -25,21 +38,13 @@ class STHJMessageImageView: UIImageView {
             let sizeRatio = size.width / size.height
             
             if imageRatio < sizeRatio {
-                
-                return CGSize(width: imageRatio * size.height, height: size.height)
+                returnSize = CGSize(width: ceil(imageRatio * size.height), height: ceil(size.height))
             } else {
-                
-                return CGSize(width: size.width, height: size.width / imageRatio)
+                returnSize = CGSize(width: ceil(size.width), height: ceil(size.width / imageRatio))
             }
         }
-        return super.intrinsicContentSize
-    }
-    
-    var sizeArea:CGSize?
-    
-    func setup(_ urlString:String) {
-        let url = URL(string: urlString)
-        self.kf.setImage(with: url)
+        
+        return returnSize;
     }
 
 }
