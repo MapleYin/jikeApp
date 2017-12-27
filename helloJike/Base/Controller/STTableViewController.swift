@@ -1,5 +1,5 @@
 //
-//  BaseTableViewController.swift
+//  STTableViewController.swift
 //  helloJike
 //
 //  Created by Maple Yin on 2017/12/23.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseTableViewController: STHJViewController {
+class STTableViewController: STHJViewController {
     
     var tableView:UITableView = UITableView.init(frame: CGRect.zero, style: .plain);
     var refreshControl = UIRefreshControl()
@@ -16,7 +16,7 @@ class BaseTableViewController: STHJViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refreshControl.addTarget(self, action: #selector(reloadData), for:.valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshData), for:.valueChanged)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -32,7 +32,7 @@ class BaseTableViewController: STHJViewController {
         registCellClasses(cellToRegist())
     }
     
-    @objc open func reloadData() {
+    @objc open func refreshData() {
         
     }
     
@@ -41,7 +41,7 @@ class BaseTableViewController: STHJViewController {
     }
 }
 
-extension BaseTableViewController {
+extension STTableViewController {
     
     private func registCellClasses(_ cellClasses:[BaseCell.Type]) {
         for clazz in cellClasses {
@@ -51,7 +51,7 @@ extension BaseTableViewController {
 }
 
 
-extension BaseTableViewController:UITableViewDataSource,UITableViewDelegate {
+extension STTableViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }

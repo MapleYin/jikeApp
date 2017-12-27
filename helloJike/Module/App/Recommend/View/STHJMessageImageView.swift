@@ -21,7 +21,6 @@ class STHJMessageImageView: UIImageView {
                 make.size.equalTo(size)
             }
         }
-        
     }
     
     private func sizeWithImageSize(_ imageSize:CGSize) -> CGSize? {

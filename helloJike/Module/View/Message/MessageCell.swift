@@ -15,30 +15,37 @@ class MessageCell: BaseCell {
         return "MessageCell"
     }
     
+    let warpperView = UIView()
     let containerView = UIStackView()
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Initialization code
         
-        containerView.layer.borderWidth = 0.5
-        containerView.layer.cornerRadius = 8
-        containerView.layer.borderColor = UIColor.gray.cgColor
+        warpperView.layer.borderWidth = 0.5
+        warpperView.layer.borderColor = UIColor.gray.cgColor
+        warpperView.layer.cornerRadius = 8
+        
         containerView.axis = .vertical
         containerView.alignment = .leading
-        containerView.spacing = 10
+        containerView.distribution = .equalSpacing
         
-        contentView.addSubview(containerView)
+        warpperView.addSubview(containerView)
+        contentView.addSubview(warpperView)
         
-        containerView.snp.makeConstraints { (make) in
+        warpperView.snp.makeConstraints { (make) in
             make.edges.equalTo(contentView).inset(UIEdgeInsetsMake(5, 11, 5, 11))
         }
+        
+        containerView.snp.makeConstraints { (make) in
+            make.edges.equalTo(warpperView).inset(UIEdgeInsetsMake(5, 11, 5, 11))
+        }
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-
+    
+    
 }

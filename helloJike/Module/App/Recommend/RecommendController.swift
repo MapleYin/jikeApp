@@ -8,23 +8,31 @@
 
 import UIKit
 
-class RecommendController: BaseTableViewController {
+class RecommendController: STTableViewController {
     
     var dataArray:[MessageItem] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "推荐"
-
         
         tableView.estimatedRowHeight = 100
+        tableView.separatorStyle = .none
     }
     
-    override func reloadData() {
+    override func refreshData() {
         MessageService.shared.recommendFeedList(false) { (messageList, error) in
             if let messageLit = messageList?.data {
+                
+                var indexPathArray:[IndexPath] = []
+                
+                for (index,_) in messageLit.enumerated() {
+                    indexPathArray.append(IndexPath(row: index, section: 0))
+                }
+                
                 self.dataArray = messageLit + self.dataArray
-                self.tableView.reloadData()
+                
+                self.tableView.insertRows(at: indexPathArray, with: UITableViewRowAnimation.automatic)
                 self.refreshControl.endRefreshing()
             }
         }
@@ -47,8 +55,23 @@ extension RecommendController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let messageItem = dataArray[indexPath.row]
+        var cell = UITableViewCell()
+        if let message = messageItem.item as? Message {
+            
+            if let picUrls = message.pictureUrls,
+                picUrls.count > 0 {
+                let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageImageCell.identifier, for: indexPath) as! MessageImageCell
+                messageCell.setup(message: message)
+                cell = messageCell
+            } else {
+                let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageTextCell.identifier, for: indexPath) as! MessageTextCell
+                messageCell.setup(message: message)
+                cell = messageCell
+            }
+        }
         
-        return UITableViewCell()
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class MessageImageCell: MessageTextCell {
     
@@ -14,14 +15,26 @@ class MessageImageCell: MessageTextCell {
         return "MessageImageCell"
     }
     
-    let singleImageView = UIImageView()
+    let singleImageView = MessageImageView()
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        let index = containerView.index(ofAccessibilityElement: titleLabel)
-        containerView.insertArrangedSubview(singleImageView, at: index)
-
-        
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        singleImageView.sizeArea = CGSize(width: 300, height: 400)
+        if let index = containerView.arrangedSubviews.index(of: titleLabel) {
+            
+            containerView.insertArrangedSubview(singleImageView, at: index + 1)
+        } else {
+            containerView.addArrangedSubview(singleImageView)
+        }
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func setup(message:Message) {
+        super.setup(message: message)
+        singleImageView.setup((message.pictureUrls?.first)!)
+    }
+
 }
