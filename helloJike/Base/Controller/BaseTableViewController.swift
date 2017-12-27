@@ -1,5 +1,5 @@
 //
-//  STHJTableViewController.swift
+//  BaseTableViewController.swift
 //  helloJike
 //
 //  Created by Maple Yin on 2017/12/23.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class STHJTableViewController: STHJViewController {
+class BaseTableViewController: STHJViewController {
     
     var tableView:UITableView = UITableView.init(frame: CGRect.zero, style: .plain);
     var refreshControl = UIRefreshControl()
@@ -27,15 +27,31 @@ class STHJTableViewController: STHJViewController {
         tableView.snp.makeConstraints { (maker) in
             maker.edges.equalTo(view)
         }
+        
+        
+        registCellClasses(cellToRegist())
     }
     
     @objc open func reloadData() {
         
     }
+    
+    open func cellToRegist() -> [BaseCell.Type] {
+        return []
+    }
+}
+
+extension BaseTableViewController {
+    
+    private func registCellClasses(_ cellClasses:[BaseCell.Type]) {
+        for clazz in cellClasses {
+            tableView.register(clazz, forCellReuseIdentifier: clazz.identifier)
+        }
+    }
 }
 
 
-extension STHJTableViewController:UITableViewDataSource,UITableViewDelegate {
+extension BaseTableViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }

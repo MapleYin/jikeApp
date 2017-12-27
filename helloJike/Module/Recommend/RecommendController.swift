@@ -1,5 +1,5 @@
 //
-//  STHJRecommendController.swift
+//  RecommendController.swift
 //  helloJike
 //
 //  Created by Maple Yin on 2017/12/24.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class STHJRecommendController: STHJTableViewController {
+class RecommendController: BaseTableViewController {
     
     var dataArray:[MessageItem] = []
 
@@ -16,7 +16,7 @@ class STHJRecommendController: STHJTableViewController {
         super.viewDidLoad()
         self.title = "推荐"
 
-        tableView.register(STHJNormalMessageCell.self, forCellReuseIdentifier: String(describing: STHJNormalMessageCell.self))
+        
         tableView.estimatedRowHeight = 100
     }
     
@@ -29,27 +29,29 @@ class STHJRecommendController: STHJTableViewController {
             }
         }
     }
+    
+    override func cellToRegist() -> [BaseCell.Type] {
+        return [MessageCell.self,MessageTextCell.self,MessageImageCell.self]
+    }
 }
 
-extension STHJRecommendController {
+extension RecommendController {
     
 }
 
 // tableDelegate
-extension STHJRecommendController {
+extension RecommendController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: STHJNormalMessageCell.self)) as! STHJNormalMessageCell
-        if let message = dataArray[indexPath.row].item as? Message {
-            cell.setup(message)
-            cell.updateConstraintsIfNeeded()
-            return cell
-        }
         
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

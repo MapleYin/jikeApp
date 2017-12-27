@@ -20,12 +20,12 @@
 		F51807F31FEE8F190021D9D3 /* STHJSubscribeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F21FEE8F190021D9D3 /* STHJSubscribeController.swift */; };
 		F51807F61FEE8F670021D9D3 /* STHJTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F51FEE8F670021D9D3 /* STHJTabBarController.swift */; };
 		F51807F81FEE8FCF0021D9D3 /* STHJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F71FEE8FCF0021D9D3 /* STHJNavigationController.swift */; };
-		F51807FA1FEE99C10021D9D3 /* STHJTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F91FEE99C10021D9D3 /* STHJTableViewController.swift */; };
+		F51807FA1FEE99C10021D9D3 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F91FEE99C10021D9D3 /* BaseTableViewController.swift */; };
 		F51807FE1FEE9D5E0021D9D3 /* STHJService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807FD1FEE9D5E0021D9D3 /* STHJService.swift */; };
 		F51808011FEEA6990021D9D3 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51808001FEEA6990021D9D3 /* AccountService.swift */; };
 		F51808031FEEA7C80021D9D3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51808021FEEA7C80021D9D3 /* User.swift */; };
 		F51808051FEEA88D0021D9D3 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51808041FEEA88D0021D9D3 /* UserPreferences.swift */; };
-		F53DFDFE1FEEC172009B649D /* STHJRecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFDFD1FEEC172009B649D /* STHJRecommendController.swift */; };
+		F53DFDFE1FEEC172009B649D /* RecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFDFD1FEEC172009B649D /* RecommendController.swift */; };
 		F53DFE031FEF3091009B649D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE021FEF3091009B649D /* Message.swift */; };
 		F53DFE071FEFFDAF009B649D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE061FEFFDAF009B649D /* Image.swift */; };
 		F53DFE091FEFFE46009B649D /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE081FEFFE46009B649D /* Video.swift */; };
@@ -35,9 +35,18 @@
 		F53DFE151FF140C3009B649D /* MessageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE141FF140C3009B649D /* MessageItem.swift */; };
 		F53DFE171FF14603009B649D /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE161FF14603009B649D /* Recommendation.swift */; };
 		F53DFE1D1FF14773009B649D /* MessageItemTransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE1C1FF14773009B649D /* MessageItemTransformType.swift */; };
-		F53DFE221FF15581009B649D /* STHJTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE211FF15581009B649D /* STHJTableViewCell.swift */; };
+		F53DFE221FF15581009B649D /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE211FF15581009B649D /* BaseCell.swift */; };
 		F53DFE241FF1562C009B649D /* STHJNormalMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE231FF1562C009B649D /* STHJNormalMessageCell.swift */; };
 		F53DFE261FF1CE4C009B649D /* STHJMessageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE251FF1CE4B009B649D /* STHJMessageImageView.swift */; };
+		F53DFE2B1FF29820009B649D /* MessageTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE2A1FF29820009B649D /* MessageTextCell.swift */; };
+		F53DFE2D1FF29834009B649D /* MessageImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE2C1FF29834009B649D /* MessageImageCell.swift */; };
+		F53DFE2F1FF29846009B649D /* MessageVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE2E1FF29846009B649D /* MessageVideoCell.swift */; };
+		F53DFE311FF29870009B649D /* MessageMultipleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE301FF29870009B649D /* MessageMultipleImageCell.swift */; };
+		F53DFE341FF298B4009B649D /* MessageAudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE331FF298B4009B649D /* MessageAudioCell.swift */; };
+		F53DFE361FF298E2009B649D /* MessageTextImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE351FF298E2009B649D /* MessageTextImageCell.swift */; };
+		F53DFE381FF29B61009B649D /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE371FF29B61009B649D /* MessageCell.swift */; };
+		F53DFE3A1FF29E8E009B649D /* MessageBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE391FF29E8E009B649D /* MessageBottomView.swift */; };
+		F53DFE3D1FF29EB2009B649D /* MessageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE3C1FF29EB2009B649D /* MessageImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,12 +67,12 @@
 		F51807F21FEE8F190021D9D3 /* STHJSubscribeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJSubscribeController.swift; sourceTree = "<group>"; };
 		F51807F51FEE8F670021D9D3 /* STHJTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJTabBarController.swift; sourceTree = "<group>"; };
 		F51807F71FEE8FCF0021D9D3 /* STHJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJNavigationController.swift; sourceTree = "<group>"; };
-		F51807F91FEE99C10021D9D3 /* STHJTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJTableViewController.swift; sourceTree = "<group>"; };
+		F51807F91FEE99C10021D9D3 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		F51807FD1FEE9D5E0021D9D3 /* STHJService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJService.swift; sourceTree = "<group>"; };
 		F51808001FEEA6990021D9D3 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		F51808021FEEA7C80021D9D3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F51808041FEEA88D0021D9D3 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
-		F53DFDFD1FEEC172009B649D /* STHJRecommendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJRecommendController.swift; sourceTree = "<group>"; };
+		F53DFDFD1FEEC172009B649D /* RecommendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendController.swift; sourceTree = "<group>"; };
 		F53DFE021FEF3091009B649D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F53DFE061FEFFDAF009B649D /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		F53DFE081FEFFE46009B649D /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
@@ -73,9 +82,18 @@
 		F53DFE141FF140C3009B649D /* MessageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageItem.swift; sourceTree = "<group>"; };
 		F53DFE161FF14603009B649D /* Recommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
 		F53DFE1C1FF14773009B649D /* MessageItemTransformType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageItemTransformType.swift; sourceTree = "<group>"; };
-		F53DFE211FF15581009B649D /* STHJTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJTableViewCell.swift; sourceTree = "<group>"; };
+		F53DFE211FF15581009B649D /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		F53DFE231FF1562C009B649D /* STHJNormalMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJNormalMessageCell.swift; sourceTree = "<group>"; };
 		F53DFE251FF1CE4B009B649D /* STHJMessageImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJMessageImageView.swift; sourceTree = "<group>"; };
+		F53DFE2A1FF29820009B649D /* MessageTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTextCell.swift; sourceTree = "<group>"; };
+		F53DFE2C1FF29834009B649D /* MessageImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImageCell.swift; sourceTree = "<group>"; };
+		F53DFE2E1FF29846009B649D /* MessageVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageVideoCell.swift; sourceTree = "<group>"; };
+		F53DFE301FF29870009B649D /* MessageMultipleImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMultipleImageCell.swift; sourceTree = "<group>"; };
+		F53DFE331FF298B4009B649D /* MessageAudioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAudioCell.swift; sourceTree = "<group>"; };
+		F53DFE351FF298E2009B649D /* MessageTextImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTextImageCell.swift; sourceTree = "<group>"; };
+		F53DFE371FF29B61009B649D /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		F53DFE391FF29E8E009B649D /* MessageBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBottomView.swift; sourceTree = "<group>"; };
+		F53DFE3C1FF29EB2009B649D /* MessageImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +177,7 @@
 		F51807EC1FEE8DB90021D9D3 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				F53DFE281FF297D1009B649D /* View */,
 				669DB7521FF1F396006D76C4 /* Cache */,
 				F53DFE0D1FF13D87009B649D /* Service */,
 				F53DFE0C1FF139A4009B649D /* Model */,
@@ -192,7 +211,7 @@
 			children = (
 				F51807F01FEE8E4A0021D9D3 /* STHJViewController.swift */,
 				F51807F71FEE8FCF0021D9D3 /* STHJNavigationController.swift */,
-				F51807F91FEE99C10021D9D3 /* STHJTableViewController.swift */,
+				F51807F91FEE99C10021D9D3 /* BaseTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -227,7 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				F53DFE1E1FF15552009B649D /* View */,
-				F53DFDFD1FEEC172009B649D /* STHJRecommendController.swift */,
+				F53DFDFD1FEEC172009B649D /* RecommendController.swift */,
 			);
 			path = Recommend;
 			sourceTree = "<group>";
@@ -294,9 +313,41 @@
 		F53DFE201FF15568009B649D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				F53DFE211FF15581009B649D /* STHJTableViewCell.swift */,
+				F53DFE211FF15581009B649D /* BaseCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		F53DFE281FF297D1009B649D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F53DFE291FF297DC009B649D /* Message */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F53DFE291FF297DC009B649D /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				F53DFE3B1FF29E95009B649D /* Unit */,
+				F53DFE371FF29B61009B649D /* MessageCell.swift */,
+				F53DFE2A1FF29820009B649D /* MessageTextCell.swift */,
+				F53DFE2C1FF29834009B649D /* MessageImageCell.swift */,
+				F53DFE301FF29870009B649D /* MessageMultipleImageCell.swift */,
+				F53DFE2E1FF29846009B649D /* MessageVideoCell.swift */,
+				F53DFE331FF298B4009B649D /* MessageAudioCell.swift */,
+				F53DFE351FF298E2009B649D /* MessageTextImageCell.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		F53DFE3B1FF29E95009B649D /* Unit */ = {
+			isa = PBXGroup;
+			children = (
+				F53DFE391FF29E8E009B649D /* MessageBottomView.swift */,
+				F53DFE3C1FF29EB2009B649D /* MessageImageView.swift */,
+			);
+			path = Unit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,29 +487,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				F53DFE171FF14603009B649D /* Recommendation.swift in Sources */,
+				F53DFE2B1FF29820009B649D /* MessageTextCell.swift in Sources */,
 				F51807F11FEE8E4A0021D9D3 /* STHJViewController.swift in Sources */,
+				F53DFE3A1FF29E8E009B649D /* MessageBottomView.swift in Sources */,
 				F51807F81FEE8FCF0021D9D3 /* STHJNavigationController.swift in Sources */,
-				F53DFDFE1FEEC172009B649D /* STHJRecommendController.swift in Sources */,
+				F53DFDFE1FEEC172009B649D /* RecommendController.swift in Sources */,
 				F51808011FEEA6990021D9D3 /* AccountService.swift in Sources */,
+				F53DFE381FF29B61009B649D /* MessageCell.swift in Sources */,
 				F53DFE261FF1CE4C009B649D /* STHJMessageImageView.swift in Sources */,
 				669DB7541FF1F3CC006D76C4 /* Cache.swift in Sources */,
 				F53DFE111FF13FF7009B649D /* MessageListReponse.swift in Sources */,
 				F51807F31FEE8F190021D9D3 /* STHJSubscribeController.swift in Sources */,
-				F53DFE221FF15581009B649D /* STHJTableViewCell.swift in Sources */,
+				F53DFE221FF15581009B649D /* BaseCell.swift in Sources */,
 				F53DFE0F1FF13E35009B649D /* MessageService.swift in Sources */,
 				F53DFE031FEF3091009B649D /* Message.swift in Sources */,
+				F53DFE311FF29870009B649D /* MessageMultipleImageCell.swift in Sources */,
+				F53DFE3D1FF29EB2009B649D /* MessageImageView.swift in Sources */,
 				F51807FE1FEE9D5E0021D9D3 /* STHJService.swift in Sources */,
 				F51808051FEEA88D0021D9D3 /* UserPreferences.swift in Sources */,
 				F51807DB1FEE8C290021D9D3 /* AppDelegate.swift in Sources */,
 				669DB7561FF1F40C006D76C4 /* STUserDefault.swift in Sources */,
-				F51807FA1FEE99C10021D9D3 /* STHJTableViewController.swift in Sources */,
+				F53DFE2F1FF29846009B649D /* MessageVideoCell.swift in Sources */,
+				F51807FA1FEE99C10021D9D3 /* BaseTableViewController.swift in Sources */,
 				F53DFE151FF140C3009B649D /* MessageItem.swift in Sources */,
 				F51808031FEEA7C80021D9D3 /* User.swift in Sources */,
 				669DB7511FF1E536006D76C4 /* StringUtils.swift in Sources */,
 				F53DFE241FF1562C009B649D /* STHJNormalMessageCell.swift in Sources */,
+				F53DFE361FF298E2009B649D /* MessageTextImageCell.swift in Sources */,
+				F53DFE341FF298B4009B649D /* MessageAudioCell.swift in Sources */,
 				F53DFE091FEFFE46009B649D /* Video.swift in Sources */,
 				669DB7581FF1FDA8006D76C4 /* AppDelegate+Data.swift in Sources */,
 				F51807F61FEE8F670021D9D3 /* STHJTabBarController.swift in Sources */,
+				F53DFE2D1FF29834009B649D /* MessageImageCell.swift in Sources */,
 				669DB74B1FF1E3F5006D76C4 /* AppDelegate+UI.swift in Sources */,
 				F53DFE071FEFFDAF009B649D /* Image.swift in Sources */,
 				F53DFE1D1FF14773009B649D /* MessageItemTransformType.swift in Sources */,

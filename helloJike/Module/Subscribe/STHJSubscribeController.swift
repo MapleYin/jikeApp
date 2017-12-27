@@ -8,7 +8,7 @@
 
 import UIKit
 
-class STHJSubscribeController: STHJTableViewController {
+class STHJSubscribeController: BaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

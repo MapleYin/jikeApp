@@ -16,7 +16,7 @@ class STHJTabBarController: UITabBarController {
         var tabBarViewControllers:[UIViewController] = [];
         
         // Recommend
-        tabBarViewControllers.append(addViewController(STHJRecommendController(), title: "推荐", image: #imageLiteral(resourceName: "icon_recommend"), selectedImage: #imageLiteral(resourceName: "icon_recommend")));
+        tabBarViewControllers.append(addViewController(RecommendController(), title: "推荐", image: #imageLiteral(resourceName: "icon_recommend"), selectedImage: #imageLiteral(resourceName: "icon_recommend")));
         
         // Subscribe
         tabBarViewControllers.append(addViewController(STHJSubscribeController(), title: "订阅", image: #imageLiteral(resourceName: "icon_subscribe"), selectedImage: #imageLiteral(resourceName: "icon_subscribe")));
