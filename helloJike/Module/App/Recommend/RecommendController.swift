@@ -39,7 +39,7 @@ class RecommendController: STTableViewController {
     }
     
     override func cellToRegist() -> [BaseCell.Type] {
-        return [MessageCell.self,MessageTextCell.self,MessageImageCell.self]
+        return [MessageCell.self,MessageTextCell.self,MessageImageCell.self,MessageMultipleImageCell.self]
     }
 }
 
@@ -61,9 +61,15 @@ extension RecommendController {
             
             if let picUrls = message.pictureUrls,
                 picUrls.count > 0 {
-                let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageImageCell.identifier, for: indexPath) as! MessageImageCell
-                messageCell.setup(message: message)
-                cell = messageCell
+                if picUrls.count == 1 {
+                    let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageImageCell.identifier, for: indexPath) as! MessageImageCell
+                    messageCell.setup(message: message)
+                    cell = messageCell
+                } else {
+                    let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageMultipleImageCell.identifier, for: indexPath) as! MessageMultipleImageCell
+                    messageCell.setup(message: message)
+                    cell = messageCell
+                }
             } else {
                 let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageTextCell.identifier, for: indexPath) as! MessageTextCell
                 messageCell.setup(message: message)

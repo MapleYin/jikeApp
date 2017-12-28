@@ -46,7 +46,6 @@ class MessageImageView: UIView {
                 make.size.equalTo(size)
             }
         }
-        
     }
     
     private func sizeWithImageSize(_ imageSize:CGSize) -> CGSize? {

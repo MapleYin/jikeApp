@@ -9,6 +9,8 @@
 import UIKit
 
 class MessageMultipleImageCell: MessageTextCell {
+    
+    let multipleImageView = MessageMultipleImageView()
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
