@@ -8,7 +8,7 @@
 
 import UIKit
 
-class STTableViewController: STHJViewController {
+class STTableViewController: STViewController {
     
     var tableView:UITableView = UITableView.init(frame: CGRect.zero, style: .plain);
     var refreshControl = UIRefreshControl()

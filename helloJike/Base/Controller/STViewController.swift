@@ -1,5 +1,5 @@
 //
-//  STHJViewController.swift
+//  STViewController.swift
 //  helloJike
 //
 //  Created by Maple Yin on 2017/12/23.
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class STHJViewController: UIViewController {
+class STViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

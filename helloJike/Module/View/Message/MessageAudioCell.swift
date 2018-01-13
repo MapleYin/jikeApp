@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageAudioCell: UITableViewCell {
+class MessageAudioCell: MessageTextCell {
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

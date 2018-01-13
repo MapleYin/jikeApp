@@ -19,6 +19,7 @@ class RecommendController: STTableViewController {
         tableView.estimatedRowHeight = 100
         tableView.separatorStyle = .none
     }
+
     
     override func refreshData() {
         MessageService.shared.recommendFeedList(false) { (messageList, error) in
@@ -44,11 +45,15 @@ class RecommendController: STTableViewController {
 }
 
 extension RecommendController {
-    
+
 }
 
 // tableDelegate
 extension RecommendController {
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print(cell)
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArray.count

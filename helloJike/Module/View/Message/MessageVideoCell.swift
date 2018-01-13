@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageVideoCell: UITableViewCell {
+class MessageVideoCell: MessageTextCell {
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

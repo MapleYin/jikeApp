@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6400BFCB6BF8988B09C6D08C /* Pods_helloJike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62CF1080A92B9BE9D94B5ED /* Pods_helloJike.framework */; };
+		665DB0B62009F84700042C72 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665DB0B52009F84700042C72 /* LoginController.swift */; };
 		668E70F31FF3977000D6AF0B /* STImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E70F21FF3977000D6AF0B /* STImageView.swift */; };
 		668E70F51FF39E8600D6AF0B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E70F41FF39E8600D6AF0B /* Color.swift */; };
 		668E70F71FF3AC5A00D6AF0B /* MessageMultipleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E70F61FF3AC5A00D6AF0B /* MessageMultipleImageView.swift */; };
@@ -20,10 +21,10 @@
 		F51807DB1FEE8C290021D9D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807DA1FEE8C290021D9D3 /* AppDelegate.swift */; };
 		F51807E21FEE8C290021D9D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F51807E11FEE8C290021D9D3 /* Assets.xcassets */; };
 		F51807E51FEE8C290021D9D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F51807E31FEE8C290021D9D3 /* LaunchScreen.storyboard */; };
-		F51807F11FEE8E4A0021D9D3 /* STHJViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F01FEE8E4A0021D9D3 /* STHJViewController.swift */; };
+		F51807F11FEE8E4A0021D9D3 /* STViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F01FEE8E4A0021D9D3 /* STViewController.swift */; };
 		F51807F31FEE8F190021D9D3 /* STHJSubscribeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F21FEE8F190021D9D3 /* STHJSubscribeController.swift */; };
 		F51807F61FEE8F670021D9D3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F51FEE8F670021D9D3 /* MainTabBarController.swift */; };
-		F51807F81FEE8FCF0021D9D3 /* STHJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F71FEE8FCF0021D9D3 /* STHJNavigationController.swift */; };
+		F51807F81FEE8FCF0021D9D3 /* STNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F71FEE8FCF0021D9D3 /* STNavigationController.swift */; };
 		F51807FA1FEE99C10021D9D3 /* STTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F91FEE99C10021D9D3 /* STTableViewController.swift */; };
 		F51807FE1FEE9D5E0021D9D3 /* STHJService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807FD1FEE9D5E0021D9D3 /* STHJService.swift */; };
 		F51808011FEEA6990021D9D3 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51808001FEEA6990021D9D3 /* AccountService.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		3BE3137F4598A7BEC5FB784C /* Pods-helloJike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-helloJike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-helloJike/Pods-helloJike.debug.xcconfig"; sourceTree = "<group>"; };
+		665DB0B52009F84700042C72 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		668E70F21FF3977000D6AF0B /* STImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STImageView.swift; sourceTree = "<group>"; };
 		668E70F41FF39E8600D6AF0B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		668E70F61FF3AC5A00D6AF0B /* MessageMultipleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMultipleImageView.swift; sourceTree = "<group>"; };
@@ -71,10 +73,10 @@
 		F51807E11FEE8C290021D9D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F51807E41FEE8C290021D9D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F51807E61FEE8C290021D9D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F51807F01FEE8E4A0021D9D3 /* STHJViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJViewController.swift; sourceTree = "<group>"; };
+		F51807F01FEE8E4A0021D9D3 /* STViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STViewController.swift; sourceTree = "<group>"; };
 		F51807F21FEE8F190021D9D3 /* STHJSubscribeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJSubscribeController.swift; sourceTree = "<group>"; };
 		F51807F51FEE8F670021D9D3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		F51807F71FEE8FCF0021D9D3 /* STHJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJNavigationController.swift; sourceTree = "<group>"; };
+		F51807F71FEE8FCF0021D9D3 /* STNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STNavigationController.swift; sourceTree = "<group>"; };
 		F51807F91FEE99C10021D9D3 /* STTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTableViewController.swift; sourceTree = "<group>"; };
 		F51807FD1FEE9D5E0021D9D3 /* STHJService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJService.swift; sourceTree = "<group>"; };
 		F51808001FEEA6990021D9D3 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
@@ -116,9 +118,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		665DB0B42009F7FB00042C72 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				665DB0B52009F84700042C72 /* LoginController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		668E70F81FF3AD7700D6AF0B /* App */ = {
 			isa = PBXGroup;
 			children = (
+				665DB0B42009F7FB00042C72 /* Login */,
 				668E70F91FF3AD8100D6AF0B /* Me */,
 				F53DFDFC1FEEC12D009B649D /* Recommend */,
 				F51807ED1FEE8DE50021D9D3 /* Subscribe */,
@@ -235,8 +246,8 @@
 		F51807EF1FEE8E160021D9D3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F51807F01FEE8E4A0021D9D3 /* STHJViewController.swift */,
-				F51807F71FEE8FCF0021D9D3 /* STHJNavigationController.swift */,
+				F51807F01FEE8E4A0021D9D3 /* STViewController.swift */,
+				F51807F71FEE8FCF0021D9D3 /* STNavigationController.swift */,
 				F51807F91FEE99C10021D9D3 /* STTableViewController.swift */,
 			);
 			path = Controller;
@@ -351,11 +362,11 @@
 				F53DFE3B1FF29E95009B649D /* Unit */,
 				F53DFE371FF29B61009B649D /* MessageCell.swift */,
 				F53DFE2A1FF29820009B649D /* MessageTextCell.swift */,
+				F53DFE351FF298E2009B649D /* MessageTextImageCell.swift */,
 				F53DFE2C1FF29834009B649D /* MessageImageCell.swift */,
 				F53DFE301FF29870009B649D /* MessageMultipleImageCell.swift */,
 				F53DFE2E1FF29846009B649D /* MessageVideoCell.swift */,
 				F53DFE331FF298B4009B649D /* MessageAudioCell.swift */,
-				F53DFE351FF298E2009B649D /* MessageTextImageCell.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -508,9 +519,9 @@
 			files = (
 				F53DFE171FF14603009B649D /* Recommendation.swift in Sources */,
 				F53DFE2B1FF29820009B649D /* MessageTextCell.swift in Sources */,
-				F51807F11FEE8E4A0021D9D3 /* STHJViewController.swift in Sources */,
+				F51807F11FEE8E4A0021D9D3 /* STViewController.swift in Sources */,
 				F53DFE3A1FF29E8E009B649D /* MessageBottomView.swift in Sources */,
-				F51807F81FEE8FCF0021D9D3 /* STHJNavigationController.swift in Sources */,
+				F51807F81FEE8FCF0021D9D3 /* STNavigationController.swift in Sources */,
 				F53DFDFE1FEEC172009B649D /* RecommendController.swift in Sources */,
 				F51808011FEEA6990021D9D3 /* AccountService.swift in Sources */,
 				F53DFE381FF29B61009B649D /* MessageCell.swift in Sources */,
@@ -519,6 +530,7 @@
 				668E70F31FF3977000D6AF0B /* STImageView.swift in Sources */,
 				669DB7541FF1F3CC006D76C4 /* Cache.swift in Sources */,
 				F53DFE111FF13FF7009B649D /* MessageListReponse.swift in Sources */,
+				665DB0B62009F84700042C72 /* LoginController.swift in Sources */,
 				F51807F31FEE8F190021D9D3 /* STHJSubscribeController.swift in Sources */,
 				F53DFE221FF15581009B649D /* BaseCell.swift in Sources */,
 				F53DFE0F1FF13E35009B649D /* MessageService.swift in Sources */,
