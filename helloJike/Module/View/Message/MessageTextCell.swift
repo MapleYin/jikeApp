@@ -16,6 +16,7 @@ class MessageTextCell: MessageCell {
     }
     
     let titleLabel = UILabel()
+    let mediaView = UIView()
     let bottomView = MessageBottomView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -24,9 +25,28 @@ class MessageTextCell: MessageCell {
         
         titleLabel.font = UIFont.systemFont(ofSize: 14)
         titleLabel.numberOfLines = 7
-        containerView.addArrangedSubview(titleLabel)
+        containerView.addSubview(titleLabel)
         
-        containerView.addArrangedSubview(bottomView)
+        containerView.addSubview(mediaView)
+        
+        containerView.addSubview(bottomView)
+        
+        titleLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(containerView).offset(10)
+            make.leading.equalTo(containerView).offset(11)
+            make.trailing.equalTo(containerView).offset(-11)
+        }
+        
+        mediaView.snp.makeConstraints { (make) in
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.leading.trailing.equalTo(containerView)
+        }
+        
+        bottomView.snp.makeConstraints { (make) in
+            make.top.equalTo(mediaView.snp.bottom).offset(10)
+            make.leading.trailing.equalTo(containerView)
+            make.bottom.equalTo(containerView).offset(-10)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

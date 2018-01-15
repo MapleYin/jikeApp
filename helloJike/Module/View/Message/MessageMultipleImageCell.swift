@@ -19,10 +19,12 @@ class MessageMultipleImageCell: MessageTextCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        if let index = containerView.arrangedSubviews.index(of: titleLabel) {
-            containerView.insertArrangedSubview(multipleImageView, at: index + 1)
-        } else {
-            containerView.addArrangedSubview(multipleImageView)
+        mediaView.addSubview(multipleImageView)
+        
+        multipleImageView.snp.makeConstraints { (make) in
+            make.top.bottom.equalTo(mediaView)
+            make.leading.equalTo(mediaView).offset(11)
+            make.trailing.equalTo(mediaView).offset(-11)
         }
     }
     

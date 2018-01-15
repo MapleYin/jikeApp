@@ -53,6 +53,7 @@
 		F53DFE3A1FF29E8E009B649D /* MessageBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE391FF29E8E009B649D /* MessageBottomView.swift */; };
 		F53DFE3D1FF29EB2009B649D /* MessageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE3C1FF29EB2009B649D /* MessageImageView.swift */; };
 		F5ABB174200B459300D0CFBD /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABB173200B459300D0CFBD /* Screen.swift */; };
+		F5ABB176200D0DA400D0CFBD /* MessageSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABB175200D0DA400D0CFBD /* MessageSourceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		F53DFE391FF29E8E009B649D /* MessageBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBottomView.swift; sourceTree = "<group>"; };
 		F53DFE3C1FF29EB2009B649D /* MessageImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImageView.swift; sourceTree = "<group>"; };
 		F5ABB173200B459300D0CFBD /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		F5ABB175200D0DA400D0CFBD /* MessageSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSourceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,6 +379,7 @@
 		F53DFE3B1FF29E95009B649D /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				F5ABB175200D0DA400D0CFBD /* MessageSourceView.swift */,
 				F53DFE391FF29E8E009B649D /* MessageBottomView.swift */,
 				F53DFE3C1FF29EB2009B649D /* MessageImageView.swift */,
 				668E70F61FF3AC5A00D6AF0B /* MessageMultipleImageView.swift */,
@@ -563,6 +566,7 @@
 				F53DFE071FEFFDAF009B649D /* Image.swift in Sources */,
 				F53DFE1D1FF14773009B649D /* MessageItemTransformType.swift in Sources */,
 				F53DFE0B1FF11EC8009B649D /* Topic.swift in Sources */,
+				F5ABB176200D0DA400D0CFBD /* MessageSourceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

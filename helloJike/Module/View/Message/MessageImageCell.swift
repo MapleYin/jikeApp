@@ -19,12 +19,14 @@ class MessageImageCell: MessageTextCell {
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        singleImageView.sizeArea = CGSize(width: 200, height: 200)
-        if let index = containerView.arrangedSubviews.index(of: titleLabel) {
-            containerView.insertArrangedSubview(singleImageView, at: index + 1)
-        } else {
-            containerView.addArrangedSubview(singleImageView)
+        singleImageView.sizeArea = CGSize(width: 250, height: 188)
+        mediaView.addSubview(singleImageView)
+        
+        singleImageView.snp.makeConstraints { (make) in
+            make.top.bottom.equalTo(mediaView)
+            make.leading.equalTo(mediaView).offset(11)
         }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
