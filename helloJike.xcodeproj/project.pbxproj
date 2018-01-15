@@ -52,6 +52,7 @@
 		F53DFE381FF29B61009B649D /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE371FF29B61009B649D /* MessageCell.swift */; };
 		F53DFE3A1FF29E8E009B649D /* MessageBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE391FF29E8E009B649D /* MessageBottomView.swift */; };
 		F53DFE3D1FF29EB2009B649D /* MessageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE3C1FF29EB2009B649D /* MessageImageView.swift */; };
+		F5ABB174200B459300D0CFBD /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABB173200B459300D0CFBD /* Screen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		F53DFE371FF29B61009B649D /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		F53DFE391FF29E8E009B649D /* MessageBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBottomView.swift; sourceTree = "<group>"; };
 		F53DFE3C1FF29EB2009B649D /* MessageImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImageView.swift; sourceTree = "<group>"; };
+		F5ABB173200B459300D0CFBD /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			children = (
 				669DB7501FF1E536006D76C4 /* StringUtils.swift */,
 				668E70F41FF39E8600D6AF0B /* Color.swift */,
+				F5ABB173200B459300D0CFBD /* Screen.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				F53DFE171FF14603009B649D /* Recommendation.swift in Sources */,
 				F53DFE2B1FF29820009B649D /* MessageTextCell.swift in Sources */,
 				F51807F11FEE8E4A0021D9D3 /* STViewController.swift in Sources */,
+				F5ABB174200B459300D0CFBD /* Screen.swift in Sources */,
 				F53DFE3A1FF29E8E009B649D /* MessageBottomView.swift in Sources */,
 				F51807F81FEE8FCF0021D9D3 /* STNavigationController.swift in Sources */,
 				F53DFDFE1FEEC172009B649D /* RecommendController.swift in Sources */,

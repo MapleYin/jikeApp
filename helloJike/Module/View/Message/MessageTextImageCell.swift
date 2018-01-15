@@ -8,7 +8,11 @@
 
 import UIKit
 
-class MessageTextImageCell: UITableViewCell {
+class MessageTextImageCell: BaseCell {
+    
+    override class var identifier:String {
+        return "MessageTextImageCell"
+    }
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
