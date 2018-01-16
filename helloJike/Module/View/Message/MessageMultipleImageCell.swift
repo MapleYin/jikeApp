@@ -23,8 +23,8 @@ class MessageMultipleImageCell: MessageTextCell {
         
         multipleImageView.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(mediaView)
-            make.leading.equalTo(mediaView).offset(11)
-            make.trailing.equalTo(mediaView).offset(-11)
+            make.leading.equalTo(mediaView)
+            make.trailing.equalTo(mediaView)
         }
     }
     

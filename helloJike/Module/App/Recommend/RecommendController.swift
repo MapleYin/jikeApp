@@ -16,8 +16,10 @@ class RecommendController: STTableViewController {
         super.viewDidLoad()
         self.title = "推荐"
         
-        tableView.estimatedRowHeight = 100
-        tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = 300
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = UIColor.line
+        tableView.separatorInset = UIEdgeInsets.zero
     }
 
     
@@ -40,7 +42,7 @@ class RecommendController: STTableViewController {
     }
     
     override func cellToRegist() -> [BaseCell.Type] {
-        return [MessageCell.self,MessageTextCell.self,MessageImageCell.self,MessageMultipleImageCell.self]
+        return [MessageCell.self,MessageTextCell.self,MessageImageCell.self,MessageMultipleImageCell.self,MessageVideoCell.self]
     }
 }
 
@@ -50,10 +52,6 @@ extension RecommendController {
 
 // tableDelegate
 extension RecommendController {
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print(cell)
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArray.count
@@ -75,11 +73,17 @@ extension RecommendController {
                     messageCell.setup(message: message)
                     cell = messageCell
                 }
+            } else if message.video != nil {
+                let videoCell = tableView.dequeueReusableCell(withIdentifier: MessageVideoCell.identifier, for: indexPath) as! MessageVideoCell
+                videoCell.setup(message: message)
+                cell = videoCell
             } else {
                 let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageTextCell.identifier, for: indexPath) as! MessageTextCell
                 messageCell.setup(message: message)
                 cell = messageCell
             }
+        } else {
+            print(messageItem)
         }
         
         return cell
@@ -87,5 +91,15 @@ extension RecommendController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let messageItem = dataArray[indexPath.row]
+        if let message = messageItem.item as? Message {
+            if let urlString = message.originalLinkUrl,
+                let url = URL(string: urlString) {
+                let safariVC = OriginDetailController(url: url)
+                present(safariVC, animated: true, completion: nil)
+            } else {
+                
+            }
+        }
     }
 }

@@ -23,12 +23,12 @@ class MessageTextCell: MessageCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Initialization code
         
-        titleLabel.font = UIFont.systemFont(ofSize: 14)
+        titleLabel.font = UIFont.systemFont(ofSize: 15)
         titleLabel.numberOfLines = 7
+        titleLabel.textColor = UIColor.title
+        
         containerView.addSubview(titleLabel)
-        
         containerView.addSubview(mediaView)
-        
         containerView.addSubview(bottomView)
         
         titleLabel.snp.makeConstraints { (make) in
@@ -45,7 +45,7 @@ class MessageTextCell: MessageCell {
         bottomView.snp.makeConstraints { (make) in
             make.top.equalTo(mediaView.snp.bottom).offset(10)
             make.leading.trailing.equalTo(containerView)
-            make.bottom.equalTo(containerView).offset(-10)
+            make.bottom.equalTo(containerView.snp.bottom).offset(-10).priority(.low)
         }
     }
     

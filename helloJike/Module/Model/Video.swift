@@ -16,7 +16,13 @@ import ObjectMapper
 
 class Video : Mappable {
     var thumbnailUrl:String!
-    var duration:Double!
+    var duration:Int!
+    
+    var durationText:String {
+        let minite = duration / 60000
+        let secend:Int = Int(Float(duration).truncatingRemainder(dividingBy: 60000) / 1000)
+        return String(format: "%.2d:%.2d", minite,secend)
+    }
     
     required init?(map: Map){
         

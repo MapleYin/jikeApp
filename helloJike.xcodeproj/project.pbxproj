@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6400BFCB6BF8988B09C6D08C /* Pods_helloJike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62CF1080A92B9BE9D94B5ED /* Pods_helloJike.framework */; };
+		6639FA9A200DA54E007220DF /* MessageVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6639FA99200DA54E007220DF /* MessageVideoView.swift */; };
+		6639FA9E200E0793007220DF /* OriginDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6639FA9D200E0793007220DF /* OriginDetailController.swift */; };
+		6639FAA1200E0D61007220DF /* ImageDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6639FAA0200E0D61007220DF /* ImageDetailController.swift */; };
+		6639FAA3200E0D96007220DF /* MessageDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6639FAA2200E0D96007220DF /* MessageDetailController.swift */; };
 		665DB0B62009F84700042C72 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665DB0B52009F84700042C72 /* LoginController.swift */; };
 		668E70F31FF3977000D6AF0B /* STImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E70F21FF3977000D6AF0B /* STImageView.swift */; };
 		668E70F51FF39E8600D6AF0B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E70F41FF39E8600D6AF0B /* Color.swift */; };
@@ -58,6 +62,10 @@
 
 /* Begin PBXFileReference section */
 		3BE3137F4598A7BEC5FB784C /* Pods-helloJike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-helloJike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-helloJike/Pods-helloJike.debug.xcconfig"; sourceTree = "<group>"; };
+		6639FA99200DA54E007220DF /* MessageVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageVideoView.swift; sourceTree = "<group>"; };
+		6639FA9D200E0793007220DF /* OriginDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginDetailController.swift; sourceTree = "<group>"; };
+		6639FAA0200E0D61007220DF /* ImageDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailController.swift; sourceTree = "<group>"; };
+		6639FAA2200E0D96007220DF /* MessageDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailController.swift; sourceTree = "<group>"; };
 		665DB0B52009F84700042C72 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		668E70F21FF3977000D6AF0B /* STImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STImageView.swift; sourceTree = "<group>"; };
 		668E70F41FF39E8600D6AF0B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -122,6 +130,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6639FA9B200E0608007220DF /* MessageDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6639FAA2200E0D96007220DF /* MessageDetailController.swift */,
+			);
+			path = MessageDetail;
+			sourceTree = "<group>";
+		};
+		6639FA9C200E074C007220DF /* OriginDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6639FA9D200E0793007220DF /* OriginDetailController.swift */,
+			);
+			path = OriginDetail;
+			sourceTree = "<group>";
+		};
+		6639FA9F200E0D40007220DF /* ImageDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6639FAA0200E0D61007220DF /* ImageDetailController.swift */,
+			);
+			path = ImageDetail;
+			sourceTree = "<group>";
+		};
 		665DB0B42009F7FB00042C72 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +165,9 @@
 		668E70F81FF3AD7700D6AF0B /* App */ = {
 			isa = PBXGroup;
 			children = (
+				6639FA9F200E0D40007220DF /* ImageDetail */,
+				6639FA9C200E074C007220DF /* OriginDetail */,
+				6639FA9B200E0608007220DF /* MessageDetail */,
 				665DB0B42009F7FB00042C72 /* Login */,
 				668E70F91FF3AD8100D6AF0B /* Me */,
 				F53DFDFC1FEEC12D009B649D /* Recommend */,
@@ -383,6 +418,7 @@
 				F53DFE391FF29E8E009B649D /* MessageBottomView.swift */,
 				F53DFE3C1FF29EB2009B649D /* MessageImageView.swift */,
 				668E70F61FF3AC5A00D6AF0B /* MessageMultipleImageView.swift */,
+				6639FA99200DA54E007220DF /* MessageVideoView.swift */,
 			);
 			path = Unit;
 			sourceTree = "<group>";
@@ -527,6 +563,7 @@
 				F53DFE2B1FF29820009B649D /* MessageTextCell.swift in Sources */,
 				F51807F11FEE8E4A0021D9D3 /* STViewController.swift in Sources */,
 				F5ABB174200B459300D0CFBD /* Screen.swift in Sources */,
+				6639FAA3200E0D96007220DF /* MessageDetailController.swift in Sources */,
 				F53DFE3A1FF29E8E009B649D /* MessageBottomView.swift in Sources */,
 				F51807F81FEE8FCF0021D9D3 /* STNavigationController.swift in Sources */,
 				F53DFDFE1FEEC172009B649D /* RecommendController.swift in Sources */,
@@ -537,6 +574,7 @@
 				668E70F31FF3977000D6AF0B /* STImageView.swift in Sources */,
 				669DB7541FF1F3CC006D76C4 /* Cache.swift in Sources */,
 				F53DFE111FF13FF7009B649D /* MessageListReponse.swift in Sources */,
+				6639FA9A200DA54E007220DF /* MessageVideoView.swift in Sources */,
 				665DB0B62009F84700042C72 /* LoginController.swift in Sources */,
 				F51807F31FEE8F190021D9D3 /* STHJSubscribeController.swift in Sources */,
 				F53DFE221FF15581009B649D /* BaseCell.swift in Sources */,
@@ -561,9 +599,11 @@
 				668E70F71FF3AC5A00D6AF0B /* MessageMultipleImageView.swift in Sources */,
 				669DB7581FF1FDA8006D76C4 /* AppDelegate+Data.swift in Sources */,
 				F51807F61FEE8F670021D9D3 /* MainTabBarController.swift in Sources */,
+				6639FAA1200E0D61007220DF /* ImageDetailController.swift in Sources */,
 				F53DFE2D1FF29834009B649D /* MessageImageCell.swift in Sources */,
 				669DB74B1FF1E3F5006D76C4 /* AppDelegate+UI.swift in Sources */,
 				F53DFE071FEFFDAF009B649D /* Image.swift in Sources */,
+				6639FA9E200E0793007220DF /* OriginDetailController.swift in Sources */,
 				F53DFE1D1FF14773009B649D /* MessageItemTransformType.swift in Sources */,
 				F53DFE0B1FF11EC8009B649D /* Topic.swift in Sources */,
 				F5ABB176200D0DA400D0CFBD /* MessageSourceView.swift in Sources */,

@@ -16,10 +16,11 @@ class MessageMultipleImageView : UIView {
     private var imageViews:[UIImageView] = []
     private var currentImageCount = 0
     
-    private let containerWidth:CGFloat = UIScreen.chooseByWidth(300.0, 320.0, 400.0)
+    private let containerWidth:CGFloat = UIScreen.chooseByWidth(320.0, 375.0, 414.0)
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: containerWidth, height:heightForImageCount(currentImageCount))
+        let size = super.intrinsicContentSize
+        return CGSize(width: size.width, height:heightForImageCount(currentImageCount))
     }
     
     func setup(_ images:[Image]) {
@@ -106,14 +107,14 @@ extension MessageMultipleImageView {
             default:
                 width = (containerWidth - 2 * separatorWidth) / 3.0
                 height = width
-                x = CGFloat(index - 1) * width
+                x = CGFloat(index - 1) * (width + separatorWidth)
                 y = CGFloat((index + 2) / 3) * (containerWidth / 3.0 + separatorWidth)
                 break
             }
             break
         case 5,8:
             switch index {
-            case 0:
+            case 0,1:
                 width = (containerWidth - separatorWidth) / 2.0
                 height = width
                 x = CGFloat(index) * (width + separatorWidth)
@@ -122,8 +123,8 @@ extension MessageMultipleImageView {
             default:
                 width = (containerWidth - 2 * separatorWidth) / 3.0
                 height = width
-                x = CGFloat(index - 2) * width
-                y = CGFloat((index + 1) / 3) * (containerWidth / 2.0 + separatorWidth)
+                x = CGFloat(index - 2).truncatingRemainder(dividingBy: 3) * (width + separatorWidth)
+                y = ((containerWidth - separatorWidth) / 2.0 + separatorWidth) + CGFloat(index / 5) * (height + separatorWidth)
                 break
             }
             break

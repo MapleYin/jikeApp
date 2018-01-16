@@ -14,6 +14,7 @@ target 'helloJike' do
   pod 'AlamofireObjectMapper', '~> 5.0'
   pod 'SnapKit', '~> 4.0'
   pod 'Kingfisher', '~> 4.0'
+  pod 'KingfisherWebP' , '~> 0.3'
 
 
   
