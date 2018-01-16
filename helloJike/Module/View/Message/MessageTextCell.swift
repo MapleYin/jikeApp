@@ -24,7 +24,7 @@ class MessageTextCell: MessageCell {
         // Initialization code
         
         titleLabel.font = UIFont.systemFont(ofSize: 15)
-        titleLabel.numberOfLines = 7
+        titleLabel.numberOfLines = 10
         titleLabel.textColor = UIColor.title
         
         containerView.addSubview(titleLabel)

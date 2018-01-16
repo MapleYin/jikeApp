@@ -20,8 +20,25 @@ class RecommendController: STTableViewController {
         tableView.separatorStyle = .singleLine
         tableView.separatorColor = UIColor.line
         tableView.separatorInset = UIEdgeInsets.zero
+        
+        
+        navigationController?.hidesBarsOnSwipe = true
+        navigationController?.barHideOnTapGestureRecognizer.addTarget(self, action: #selector(swipe))
     }
-
+    
+    @objc func swipe(_ recognizer:UISwipeGestureRecognizer) {
+        UIView.animate(withDuration: 0.2) {
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return (navigationController?.isNavigationBarHidden)!
+    }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .slide
+    }
     
     override func refreshData() {
         MessageService.shared.recommendFeedList(false) { (messageList, error) in
@@ -29,11 +46,14 @@ class RecommendController: STTableViewController {
                 
                 var indexPathArray:[IndexPath] = []
                 
-                for (index,_) in messageLit.enumerated() {
-                    indexPathArray.append(IndexPath(row: index, section: 0))
+                var index = 0
+                for (_ ,message) in messageLit.enumerated() {
+                    if message.type == "MESSAGE_RECOMMENDATION" {
+                        indexPathArray.append(IndexPath(row: index, section: 0))
+                        self.dataArray.append(message)
+                        index = index + 1
+                    }
                 }
-                
-                self.dataArray = messageLit + self.dataArray
                 
                 self.tableView.insertRows(at: indexPathArray, with: UITableViewRowAnimation.automatic)
                 self.refreshControl.endRefreshing()
@@ -42,7 +62,7 @@ class RecommendController: STTableViewController {
     }
     
     override func cellToRegist() -> [BaseCell.Type] {
-        return [MessageCell.self,MessageTextCell.self,MessageImageCell.self,MessageMultipleImageCell.self,MessageVideoCell.self]
+        return [MessageCell.self,MessageTextCell.self,MessageMultipleImageCell.self,MessageVideoCell.self]
     }
 }
 
@@ -64,15 +84,9 @@ extension RecommendController {
             
             if let picUrls = message.pictureUrls,
                 picUrls.count > 0 {
-                if picUrls.count == 1 {
-                    let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageImageCell.identifier, for: indexPath) as! MessageImageCell
-                    messageCell.setup(message: message)
-                    cell = messageCell
-                } else {
-                    let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageMultipleImageCell.identifier, for: indexPath) as! MessageMultipleImageCell
-                    messageCell.setup(message: message)
-                    cell = messageCell
-                }
+                let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageMultipleImageCell.identifier, for: indexPath) as! MessageMultipleImageCell
+                messageCell.setup(message: message)
+                cell = messageCell
             } else if message.video != nil {
                 let videoCell = tableView.dequeueReusableCell(withIdentifier: MessageVideoCell.identifier, for: indexPath) as! MessageVideoCell
                 videoCell.setup(message: message)

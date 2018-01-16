@@ -14,6 +14,7 @@ class MessageVideoView: UIView {
     
     let imageView = UIImageView()
     let timeLabel = UILabel()
+    let palyIconView = UIImageView()
     
     init() {
         super.init(frame: CGRect.zero)
@@ -22,6 +23,10 @@ class MessageVideoView: UIView {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         addSubview(imageView)
+        
+        
+        palyIconView.image = #imageLiteral(resourceName: "icon_play")
+        addSubview(palyIconView)
         
         timeLabel.textColor = UIColor.white
         timeLabel.font = UIFont.systemFont(ofSize: 12)
@@ -32,6 +37,10 @@ class MessageVideoView: UIView {
         imageView.snp.makeConstraints { (make) in
             make.edges.equalTo(self)
             make.height.equalTo(snp.width).multipliedBy(9.0/16.0)
+        }
+        
+        palyIconView.snp.makeConstraints { (make) in
+            make.center.equalTo(self)
         }
         
         timeLabel.snp.makeConstraints { (make) in

@@ -14,19 +14,19 @@ class MessageMultipleImageView : UIView {
     private let separatorWidth:CGFloat = 3.0
     
     private var imageViews:[UIImageView] = []
-    private var currentImageCount = 0
+    private var images:[Image] = []
     
     private let containerWidth:CGFloat = UIScreen.chooseByWidth(320.0, 375.0, 414.0)
     
     override var intrinsicContentSize: CGSize {
         let size = super.intrinsicContentSize
-        return CGSize(width: size.width, height:heightForImageCount(currentImageCount))
+        return CGSize(width: size.width, height:heightForImageCount(images))
     }
     
     func setup(_ images:[Image]) {
-        currentImageCount = images.count
+        self.images = images
         setupImageData(images)
-        setupLayout(currentImageCount)
+        setupLayout(images)
         invalidateIntrinsicContentSize()
     }
     
@@ -79,17 +79,24 @@ extension MessageMultipleImageView {
 // layout
 extension MessageMultipleImageView {
     
-    private func setupLayout(_ imageCount:Int) {
-        layoutIfNeeded()
+    private func setupLayout(_ images:[Image]) {
+        let imageCount = images.count
         for index in 0..<imageCount {
             let imageView = imageViewAtIndex(index)
-            imageView.frame = rectForIndex(index, imageCount: imageCount)
+            imageView.frame = rectForIndex(index, imageCount: imageCount, image: images[index])
         }
     }
     
-    private func rectForIndex(_ index:Int, imageCount:Int) -> CGRect {
+    private func rectForIndex(_ index:Int, imageCount:Int, image:Image) -> CGRect {
         var x:CGFloat,y:CGFloat,width:CGFloat,height:CGFloat
         switch imageCount {
+        case 1:
+            x = 0
+            y = 0
+            width = containerWidth
+            let rato = CGFloat(min(image.height/image.width, 0.8))
+            height = width * rato
+            break;
         case 2:
             width = containerWidth / 5 * 2
             height = width
@@ -145,12 +152,18 @@ extension MessageMultipleImageView {
         return CGRect(x: x, y: y, width: width, height: height)
     }
     
-    private func heightForImageCount(_ imageCount:Int) -> CGFloat {
+    private func heightForImageCount(_ images:[Image]) -> CGFloat {
+        let imageCount = images.count
         var height:CGFloat
         switch imageCount {
+        case 1:
+            let image = images.first!
+            let rato = CGFloat(min(image.height/image.width, 0.8))
+            height = containerWidth * rato
+            break
         case 2:
             height = containerWidth / 5 * 2
-            break;
+            break
         case 3,6,9:
             height = CGFloat(imageCount / 3) * ((containerWidth - 2 * separatorWidth) / 3.0) + CGFloat(imageCount / 3 - 1) * separatorWidth
             break
