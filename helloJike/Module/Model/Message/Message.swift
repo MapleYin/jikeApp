@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import AVKit
 
 
 class Message : Mappable {
@@ -33,6 +34,8 @@ class Message : Mappable {
     var video:Video?
     var iconUrl:String?
     
+    var media:Media?
+    
     required init?(map: Map){
         
     }
@@ -57,6 +60,36 @@ class Message : Mappable {
         targetId <- map["targetId"]
         pictureUrls <- map["pictureUrls"]
         video <- map["video"]
+    }
+    
+    func videoUrl(_ then: ((_ item:AVPlayerItem?)->Void)?) {
+        if let media = media,
+            let url = URL(string: media.url) {
+            print("contain cache:\(String(describing: url))")
+            var option:[String:Any]?
+            if let headers = media.headers {
+                option = ["AVURLAssetHTTPHeaderFieldsKey":headers as Any]
+            }
+            let asset = AVURLAsset(url: url, options: option)
+            let item = AVPlayerItem(asset: asset)
+            then?(item)
+        } else {
+            MediaService.shared.media(self, then: { (media, error) in
+                if let media = media,
+                    let urlString = media.url,
+                    let url = URL(string: urlString) {
+                    var option:[String:Any]?
+                    if let headers = media.headers {
+                        option = ["AVURLAssetHTTPHeaderFieldsKey":headers as Any]
+                    }
+                    let asset = AVURLAsset(url: url, options: option)
+                    let item = AVPlayerItem(asset: asset)
+                    then?(item)
+                } else {
+                    then?(nil)
+                }
+            })
+        }
     }
 }
 

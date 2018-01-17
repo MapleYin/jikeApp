@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 class RecommendController: STTableViewController {
     
@@ -50,7 +51,7 @@ class RecommendController: STTableViewController {
                 for (_ ,message) in messageLit.enumerated() {
                     if message.type == "MESSAGE_RECOMMENDATION" {
                         indexPathArray.append(IndexPath(row: index, section: 0))
-                        self.dataArray.append(message)
+                        self.dataArray.insert(message, at: index)
                         index = index + 1
                     }
                 }
@@ -112,6 +113,17 @@ extension RecommendController {
                 images.count > 0{
                 let vc = ImageDetailController(images)
                 present(vc, animated: true, completion: nil)
+            } else if message.video != nil {
+                let videoPlayerVC = AVPlayerViewController()
+                present(videoPlayerVC, animated: true, completion: {
+                    message.videoUrl({ (item) in
+                        if item != nil{
+                            let player = AVPlayer(playerItem: item)
+                            videoPlayerVC.player = player
+                            videoPlayerVC.player?.play()
+                        }
+                    })
+                })
             } else if let urlString = message.originalLinkUrl,
                 let url = URL(string: urlString) {
                 let safariVC = OriginDetailController(url: url)

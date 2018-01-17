@@ -70,7 +70,7 @@ class STHJService {
         }
         headers += STHJService.COMMON_HEADER
         
-        Alamofire.request(url+oprion.queryString(), method: .post, parameters: oprion.body, encoding: URLEncoding.httpBody, headers: headers).responseObject { (dataResponse:DataResponse<T>) in
+        Alamofire.request(url+oprion.queryString(), method: .post, parameters: oprion.body, encoding: JSONEncoding.default, headers: headers).responseObject { (dataResponse:DataResponse<T>) in
             then(dataResponse)
         };
     }

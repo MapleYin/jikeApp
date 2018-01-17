@@ -45,6 +45,17 @@ extension MessageService {
     func commendCallBack(_ dataResponse:DataResponse<MessageListReponse>, _ then: @escaping (MessageListReponse?,Error?) -> Void ) {
         dataResponse.result.ifSuccess {
             self.loadMoreKey = dataResponse.result.value?.loadMoreKey
+            
+            if let messageLit = dataResponse.result.value?.data {
+                let messages = messageLit.flatMap({ (messageItem) -> Message? in
+                    guard let message = messageItem.item as? Message else {
+                        return nil
+                    }
+                    return message
+                })
+                MediaService.shared.addprefetch(messages:messages)
+            }
+            
             then(dataResponse.result.value,nil)
         }
         
@@ -53,3 +64,4 @@ extension MessageService {
         }
     }
 }
+
