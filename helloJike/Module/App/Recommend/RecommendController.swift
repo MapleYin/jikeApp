@@ -106,8 +106,13 @@ extension RecommendController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let messageItem = dataArray[indexPath.row]
+        
         if let message = messageItem.item as? Message {
-            if let urlString = message.originalLinkUrl,
+            if let images = message.pictureUrls,
+                images.count > 0{
+                let vc = ImageDetailController(images)
+                present(vc, animated: true, completion: nil)
+            } else if let urlString = message.originalLinkUrl,
                 let url = URL(string: urlString) {
                 let safariVC = OriginDetailController(url: url)
                 present(safariVC, animated: true, completion: nil)

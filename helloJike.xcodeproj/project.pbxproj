@@ -45,8 +45,6 @@
 		F53DFE171FF14603009B649D /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE161FF14603009B649D /* Recommendation.swift */; };
 		F53DFE1D1FF14773009B649D /* MessageItemTransformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE1C1FF14773009B649D /* MessageItemTransformType.swift */; };
 		F53DFE221FF15581009B649D /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE211FF15581009B649D /* BaseCell.swift */; };
-		F53DFE241FF1562C009B649D /* STHJNormalMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE231FF1562C009B649D /* STHJNormalMessageCell.swift */; };
-		F53DFE261FF1CE4C009B649D /* STHJMessageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE251FF1CE4B009B649D /* STHJMessageImageView.swift */; };
 		F53DFE2B1FF29820009B649D /* MessageTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE2A1FF29820009B649D /* MessageTextCell.swift */; };
 		F53DFE2F1FF29846009B649D /* MessageVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE2E1FF29846009B649D /* MessageVideoCell.swift */; };
 		F53DFE311FF29870009B649D /* MessageMultipleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE301FF29870009B649D /* MessageMultipleImageCell.swift */; };
@@ -57,6 +55,8 @@
 		F53DFE3D1FF29EB2009B649D /* MessageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE3C1FF29EB2009B649D /* MessageImageView.swift */; };
 		F5ABB174200B459300D0CFBD /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABB173200B459300D0CFBD /* Screen.swift */; };
 		F5ABB176200D0DA400D0CFBD /* MessageSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABB175200D0DA400D0CFBD /* MessageSourceView.swift */; };
+		F5ABB179200E4D9000D0CFBD /* ImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABB178200E4D9000D0CFBD /* ImageCollectionCell.swift */; };
+		F5ABB17B200ECF5800D0CFBD /* STScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABB17A200ECF5800D0CFBD /* STScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,8 +102,6 @@
 		F53DFE161FF14603009B649D /* Recommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
 		F53DFE1C1FF14773009B649D /* MessageItemTransformType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageItemTransformType.swift; sourceTree = "<group>"; };
 		F53DFE211FF15581009B649D /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
-		F53DFE231FF1562C009B649D /* STHJNormalMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJNormalMessageCell.swift; sourceTree = "<group>"; };
-		F53DFE251FF1CE4B009B649D /* STHJMessageImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJMessageImageView.swift; sourceTree = "<group>"; };
 		F53DFE2A1FF29820009B649D /* MessageTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTextCell.swift; sourceTree = "<group>"; };
 		F53DFE2E1FF29846009B649D /* MessageVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageVideoCell.swift; sourceTree = "<group>"; };
 		F53DFE301FF29870009B649D /* MessageMultipleImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMultipleImageCell.swift; sourceTree = "<group>"; };
@@ -114,6 +112,8 @@
 		F53DFE3C1FF29EB2009B649D /* MessageImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImageView.swift; sourceTree = "<group>"; };
 		F5ABB173200B459300D0CFBD /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		F5ABB175200D0DA400D0CFBD /* MessageSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSourceView.swift; sourceTree = "<group>"; };
+		F5ABB178200E4D9000D0CFBD /* ImageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionCell.swift; sourceTree = "<group>"; };
+		F5ABB17A200ECF5800D0CFBD /* STScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +147,7 @@
 		6639FA9F200E0D40007220DF /* ImageDetail */ = {
 			isa = PBXGroup;
 			children = (
+				F5ABB177200E4CBE00D0CFBD /* View */,
 				6639FAA0200E0D61007220DF /* ImageDetailController.swift */,
 			);
 			path = ImageDetail;
@@ -320,7 +321,6 @@
 		F53DFDFC1FEEC12D009B649D /* Recommend */ = {
 			isa = PBXGroup;
 			children = (
-				F53DFE1E1FF15552009B649D /* View */,
 				F53DFDFD1FEEC172009B649D /* RecommendController.swift */,
 			);
 			path = Recommend;
@@ -368,20 +368,12 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		F53DFE1E1FF15552009B649D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F53DFE231FF1562C009B649D /* STHJNormalMessageCell.swift */,
-				F53DFE251FF1CE4B009B649D /* STHJMessageImageView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		F53DFE1F1FF15561009B649D /* View */ = {
 			isa = PBXGroup;
 			children = (
 				F53DFE211FF15581009B649D /* BaseCell.swift */,
 				668E70F21FF3977000D6AF0B /* STImageView.swift */,
+				F5ABB17A200ECF5800D0CFBD /* STScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -418,6 +410,14 @@
 				6639FA99200DA54E007220DF /* MessageVideoView.swift */,
 			);
 			path = Unit;
+			sourceTree = "<group>";
+		};
+		F5ABB177200E4CBE00D0CFBD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F5ABB178200E4D9000D0CFBD /* ImageCollectionCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -559,14 +559,15 @@
 				F53DFE171FF14603009B649D /* Recommendation.swift in Sources */,
 				F53DFE2B1FF29820009B649D /* MessageTextCell.swift in Sources */,
 				F51807F11FEE8E4A0021D9D3 /* STViewController.swift in Sources */,
+				F5ABB179200E4D9000D0CFBD /* ImageCollectionCell.swift in Sources */,
 				F5ABB174200B459300D0CFBD /* Screen.swift in Sources */,
 				6639FAA3200E0D96007220DF /* MessageDetailController.swift in Sources */,
 				F53DFE3A1FF29E8E009B649D /* MessageBottomView.swift in Sources */,
 				F51807F81FEE8FCF0021D9D3 /* STNavigationController.swift in Sources */,
 				F53DFDFE1FEEC172009B649D /* RecommendController.swift in Sources */,
+				F5ABB17B200ECF5800D0CFBD /* STScrollView.swift in Sources */,
 				F51808011FEEA6990021D9D3 /* AccountService.swift in Sources */,
 				F53DFE381FF29B61009B649D /* MessageCell.swift in Sources */,
-				F53DFE261FF1CE4C009B649D /* STHJMessageImageView.swift in Sources */,
 				668E70FB1FF3ADAA00D6AF0B /* MeController.swift in Sources */,
 				668E70F31FF3977000D6AF0B /* STImageView.swift in Sources */,
 				669DB7541FF1F3CC006D76C4 /* Cache.swift in Sources */,
@@ -589,7 +590,6 @@
 				F53DFE151FF140C3009B649D /* MessageItem.swift in Sources */,
 				F51808031FEEA7C80021D9D3 /* User.swift in Sources */,
 				669DB7511FF1E536006D76C4 /* StringUtils.swift in Sources */,
-				F53DFE241FF1562C009B649D /* STHJNormalMessageCell.swift in Sources */,
 				F53DFE361FF298E2009B649D /* MessageTextImageCell.swift in Sources */,
 				F53DFE341FF298B4009B649D /* MessageAudioCell.swift in Sources */,
 				F53DFE091FEFFE46009B649D /* Video.swift in Sources */,
