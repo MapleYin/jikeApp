@@ -8,7 +8,7 @@
 
 import UIKit
 
-class STImageView: UIView {
+class STImageView: UIImageView {
     
     
 }

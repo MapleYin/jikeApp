@@ -16,19 +16,18 @@ class ImageDetailController: STViewController,UICollectionViewDelegate,UICollect
     
     convenience init(_ images:[Image]) {
         self.init()
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = UIScreen.main.bounds.size
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-        imageCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        imageCollectionView.isPagingEnabled = true
         self.images = images
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = view.safeAreaLayoutGuide.layoutFrame.size
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        imageCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        imageCollectionView.isPagingEnabled = true
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
         imageCollectionView.register(ImageCollectionCell.self, forCellWithReuseIdentifier: ImageCollectionCell.identifier)

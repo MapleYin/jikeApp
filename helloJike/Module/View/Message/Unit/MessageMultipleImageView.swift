@@ -7,13 +7,12 @@
 //
 
 import UIKit
-import Kingfisher
 
 class MessageMultipleImageView : UIView {
     
     private let separatorWidth:CGFloat = 3.0
     
-    private var imageViews:[UIImageView] = []
+    private var imageViews:[ImageView] = []
     private var images:[Image] = []
     
     private let containerWidth:CGFloat = UIScreen.chooseByWidth(320.0, 375.0, 414.0)
@@ -36,8 +35,7 @@ class MessageMultipleImageView : UIView {
             if index < 9 {
                 let imageView = imageViewAtIndex(index)
                 imageView.isHidden = false
-                let url = URL(string: image.smallPicUrl)
-                imageView.kf.setImage(with: url)
+                imageView.setup(image)
             }
         }
     }
@@ -54,7 +52,7 @@ class MessageMultipleImageView : UIView {
 // Source
 extension MessageMultipleImageView {
     
-    private func imageViewAtIndex(_ index:Int) -> UIImageView {
+    private func imageViewAtIndex(_ index:Int) -> ImageView {
         if index >= imageViews.count {
             var length = index - imageViews.count
             while length >= 0 {
@@ -67,8 +65,8 @@ extension MessageMultipleImageView {
         return imageViews[index]
     }
     
-    private func createImageView() -> UIImageView {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    private func createImageView() -> ImageView {
+        let imageView = ImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
