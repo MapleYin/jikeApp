@@ -19,7 +19,7 @@ class MainTabBarController: UITabBarController {
         tabBarViewControllers.append(addViewController(RecommendController(), title: "推荐", image: #imageLiteral(resourceName: "icon_recommend"), selectedImage: #imageLiteral(resourceName: "icon_recommend")));
         
         // Subscribe
-        tabBarViewControllers.append(addViewController(STHJSubscribeController(), title: "订阅", image: #imageLiteral(resourceName: "icon_subscribe"), selectedImage: #imageLiteral(resourceName: "icon_subscribe")));
+        tabBarViewControllers.append(addViewController(SubscribeController(), title: "订阅", image: #imageLiteral(resourceName: "icon_subscribe"), selectedImage: #imageLiteral(resourceName: "icon_subscribe")));
         
         // Me
         tabBarViewControllers.append(addViewController(MeController(), tabBarItem: UITabBarItem(tabBarSystemItem: .contacts, tag: 0)))

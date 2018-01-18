@@ -36,6 +36,9 @@ class STTableViewController: STViewController {
         
     }
     
+    func loadMore() {
+    }
+    
     open func cellToRegist() -> [BaseCell.Type] {
         return []
     }

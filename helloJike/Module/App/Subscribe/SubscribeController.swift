@@ -1,21 +1,21 @@
 //
-//  RecommendController.swift
+//  SubscribeController.swift
 //  helloJike
 //
-//  Created by Maple Yin on 2017/12/24.
+//  Created by Maple Yin on 2017/12/23.
 //  Copyright © 2017年 Maple Yin. All rights reserved.
 //
 
 import UIKit
 import AVKit
 
-class RecommendController: STTableViewController {
-    
-    var dataArray:[MessageItem] = []
+class SubscribeController: STTableViewController {
 
+    var dataArray:[MessageItem] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "推荐"
+        self.title = "订阅"
         
         tableView.estimatedRowHeight = 300
         tableView.separatorStyle = .singleLine
@@ -23,29 +23,16 @@ class RecommendController: STTableViewController {
         tableView.separatorInset = UIEdgeInsets.zero
     }
     
-    @objc func swipe(_ recognizer:UISwipeGestureRecognizer) {
-        UIView.animate(withDuration: 0.2) {
-            self.setNeedsStatusBarAppearanceUpdate()
-        }
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return (navigationController?.isNavigationBarHidden)!
-    }
-    
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return .slide
-    }
     
     override func refreshData() {
-        MessageService.shared.recommendFeedList(false) { (messageList, error) in
+        MessageService.shared.newsFeed { (messageList, error) in
             if let messageLit = messageList?.data {
                 
                 var indexPathArray:[IndexPath] = []
                 
                 var index = 0
                 for (_ ,message) in messageLit.enumerated() {
-                    if message.type == "MESSAGE_RECOMMENDATION" {
+                    if message.type == "MESSAGE" {
                         indexPathArray.append(IndexPath(row: index, section: 0))
                         self.dataArray.insert(message, at: index)
                         index = index + 1
@@ -58,18 +45,35 @@ class RecommendController: STTableViewController {
         }
     }
     
+    override func loadMore() {
+        MessageService.shared.newsFeedLoadMore { (messageList, error) in
+            if let messageLit = messageList?.data {
+                
+                var indexPathArray:[IndexPath] = []
+                
+                var index = self.dataArray.count - 1
+                for (_ ,message) in messageLit.enumerated() {
+                    if message.type == "MESSAGE" {
+                        indexPathArray.append(IndexPath(row: index, section: 0))
+                        self.dataArray.append(message)
+                        index = index + 1
+                    }
+                }
+                
+                self.tableView.insertRows(at: indexPathArray, with: UITableViewRowAnimation.automatic)
+            }
+        }
+    }
+    
+    
     override func cellToRegist() -> [BaseCell.Type] {
         return [MessageCell.self,MessageTextCell.self,MessageMultipleImageCell.self,MessageVideoCell.self]
     }
 }
 
-extension RecommendController {
-
-}
-
 // tableDelegate
-extension RecommendController {
-    
+extension SubscribeController {
+        
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArray.count
     }
@@ -95,6 +99,10 @@ extension RecommendController {
             }
         } else {
             print(messageItem)
+        }
+        
+        if indexPath.row == self.dataArray.count - 1 {
+            loadMore()
         }
         
         return cell
@@ -130,3 +138,4 @@ extension RecommendController {
         }
     }
 }
+

@@ -72,7 +72,9 @@ class MediaService: STHJService {
             media(message, then: { (media, error) in
                 print("Prefetch success:\(message.content)")
                 message.media = media
-                self.prefetchMediaList.removeFirst()
+                if self.prefetchMediaList.count > 0 {
+                    self.prefetchMediaList.removeFirst()
+                }
                 self.startPrefetchIfNeeded()
             })
         }

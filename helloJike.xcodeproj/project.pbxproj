@@ -30,7 +30,7 @@
 		F51807E21FEE8C290021D9D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F51807E11FEE8C290021D9D3 /* Assets.xcassets */; };
 		F51807E51FEE8C290021D9D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F51807E31FEE8C290021D9D3 /* LaunchScreen.storyboard */; };
 		F51807F11FEE8E4A0021D9D3 /* STViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F01FEE8E4A0021D9D3 /* STViewController.swift */; };
-		F51807F31FEE8F190021D9D3 /* STHJSubscribeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F21FEE8F190021D9D3 /* STHJSubscribeController.swift */; };
+		F51807F31FEE8F190021D9D3 /* SubscribeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F21FEE8F190021D9D3 /* SubscribeController.swift */; };
 		F51807F61FEE8F670021D9D3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F51FEE8F670021D9D3 /* MainTabBarController.swift */; };
 		F51807F81FEE8FCF0021D9D3 /* STNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F71FEE8FCF0021D9D3 /* STNavigationController.swift */; };
 		F51807FA1FEE99C10021D9D3 /* STTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807F91FEE99C10021D9D3 /* STTableViewController.swift */; };
@@ -91,7 +91,7 @@
 		F51807E41FEE8C290021D9D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F51807E61FEE8C290021D9D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F51807F01FEE8E4A0021D9D3 /* STViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STViewController.swift; sourceTree = "<group>"; };
-		F51807F21FEE8F190021D9D3 /* STHJSubscribeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STHJSubscribeController.swift; sourceTree = "<group>"; };
+		F51807F21FEE8F190021D9D3 /* SubscribeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeController.swift; sourceTree = "<group>"; };
 		F51807F51FEE8F670021D9D3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		F51807F71FEE8FCF0021D9D3 /* STNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STNavigationController.swift; sourceTree = "<group>"; };
 		F51807F91FEE99C10021D9D3 /* STTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTableViewController.swift; sourceTree = "<group>"; };
@@ -291,7 +291,7 @@
 		F51807ED1FEE8DE50021D9D3 /* Subscribe */ = {
 			isa = PBXGroup;
 			children = (
-				F51807F21FEE8F190021D9D3 /* STHJSubscribeController.swift */,
+				F51807F21FEE8F190021D9D3 /* SubscribeController.swift */,
 			);
 			path = Subscribe;
 			sourceTree = "<group>";
@@ -612,7 +612,7 @@
 				F53DFE111FF13FF7009B649D /* MessageListReponse.swift in Sources */,
 				6639FA9A200DA54E007220DF /* MessageVideoView.swift in Sources */,
 				665DB0B62009F84700042C72 /* LoginController.swift in Sources */,
-				F51807F31FEE8F190021D9D3 /* STHJSubscribeController.swift in Sources */,
+				F51807F31FEE8F190021D9D3 /* SubscribeController.swift in Sources */,
 				F53DFE221FF15581009B649D /* BaseCell.swift in Sources */,
 				F53DFE0F1FF13E35009B649D /* MessageService.swift in Sources */,
 				F53DFE031FEF3091009B649D /* Message.swift in Sources */,
