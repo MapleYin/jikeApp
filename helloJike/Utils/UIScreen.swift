@@ -1,5 +1,5 @@
 //
-//  Screen.swift
+//  UIScreen.swift
 //  helloJike
 //
 //  Created by Maple Yin on 2018/1/14.

@@ -1,5 +1,5 @@
 //
-//  Color.swift
+//  UIColor.swift
 //  helloJike
 //
 //  Created by Mapleiny on 2017/12/27.
@@ -12,6 +12,14 @@ import UIKit
 extension UIColor {
     open class var mainBlue : UIColor {
         return UIColor(red:0.004, green:0.635, blue:1.000, alpha:1.000)
+    }
+    
+    open class var black33 : UIColor {
+        return UIColor(red:0.200, green:0.200, blue:0.200, alpha:1.000)
+    }
+    
+    open class var black66 : UIColor {
+        return UIColor(red:0.400, green:0.400, blue:0.400, alpha:1.000)
     }
     
     open class var title : UIColor {

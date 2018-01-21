@@ -40,6 +40,7 @@ class User : Mappable {
         verifyMessage <- map["verifyMessage"]
         userId <- map["userId"]
         preferences <- map["preferences"]
+        isLoginUser <- map["isLoginUser"]
     }
 }
 
