@@ -65,6 +65,27 @@ class RecommendController: MessageController {
             return nil
         }
     }
+    
+    override func loadMore() {
+        dataService.loadMore { (messageList, error) in
+            if let messageLit = messageList?.data {
+                
+                var indexPathArray:[IndexPath] = []
+                
+                var index = self.dataArray.count
+                for (_ ,message) in messageLit.enumerated() {
+                    if message.type == "MESSAGE_RECOMMENDATION" {
+                        indexPathArray.append(IndexPath(row: index, section: 0))
+                        self.dataArray.append(message)
+                        index = index + 1
+                    }
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
 }
 
 // tableDelegate

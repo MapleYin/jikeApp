@@ -57,10 +57,6 @@ extension MessageController {
             print(messageItem)
         }
         
-        if indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) {
-            loadMore()
-        }
-        
         return cell
     }
     
@@ -72,28 +68,21 @@ extension MessageController {
         }
         
         if let message = messageItem.item as? Message {
-            if let images = message.pictureUrls,
-                images.count > 0{
-                let vc = ImageDetailController(images)
-                present(vc, animated: true, completion: nil)
-            } else if message.video != nil {
-                let videoPlayerVC = AVPlayerViewController()
-                present(videoPlayerVC, animated: true, completion: {
-                    message.videoUrl({ (item) in
-                        if item != nil{
-                            let player = AVPlayer(playerItem: item)
-                            videoPlayerVC.player = player
-                            videoPlayerVC.player?.play()
-                        }
-                    })
-                })
-            } else if let urlString = message.originalLinkUrl,
-                let url = URL(string: urlString) {
-                let safariVC = OriginDetailController(url: url)
+            if let urlString = message.originalLinkUrl,
+                urlString.hasPrefix("http") == true {
+                let url = URL(string: urlString)
+                let safariVC = OriginDetailController(url: url!)
                 present(safariVC, animated: true, completion: nil)
             } else {
-                
+                print(message.originalLinkUrl ?? "")
             }
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 2 {
+            loadMore()
         }
     }
 }

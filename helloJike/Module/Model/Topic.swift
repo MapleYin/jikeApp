@@ -61,7 +61,7 @@ class Topic : Mappable {
         isValid <- map["isValid"]
         operateStatus <- map["operateStatus"]
         subscribedStatusRawValue <- map["subscribedStatusRawValue"]
-        updatedAt <- (map["updatedAt"],DateTransform())
+        updatedAt <- (map["updatedAt"],DefaultDateTransform())
         ref <- map["ref"]
         refRemarkTitle <- map["refRemark.subtype"]
     }

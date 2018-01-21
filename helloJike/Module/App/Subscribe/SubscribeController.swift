@@ -47,12 +47,12 @@ class SubscribeController: MessageController {
     }
     
     override func loadMore() {
-        dataService.fetch { (messageList, error) in
+        dataService.loadMore { (messageList, error) in
             if let messageLit = messageList?.data {
                 
                 var indexPathArray:[IndexPath] = []
                 
-                var index = self.dataArray.count - 1
+                var index = self.dataArray.count
                 for (_ ,message) in messageLit.enumerated() {
                     if message.type == "MESSAGE" {
                         indexPathArray.append(IndexPath(row: index, section: 0))
@@ -60,7 +60,10 @@ class SubscribeController: MessageController {
                         index = index + 1
                     }
                 }
-                self.tableView.insertRows(at: indexPathArray, with: UITableViewRowAnimation.automatic)
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
@@ -81,7 +84,7 @@ class SubscribeController: MessageController {
 
 // tableDelegate
 extension SubscribeController {
-        
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArray.count
     }

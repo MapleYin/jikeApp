@@ -11,30 +11,14 @@ import UIKit
 class MessageBottomView: UIView {
     let containerView = UIStackView()
     
-    let likeButton = UIButton(type: .custom)
-    let commentButton = UIButton(type: .custom)
-    let timeButton = UIButton(type: .custom)
+    let likeButton = MessageIconTextView(icon: #imageLiteral(resourceName: "icon_like_normal"))
+    let commentButton = MessageIconTextView(icon: #imageLiteral(resourceName: "icon_comment"))
+    let timeButton = MessageIconTextView(icon: #imageLiteral(resourceName: "icon_time"))
     
     let shareButton = UIButton(type: .custom)
     
     init() {
         super.init(frame: CGRect.zero)
-        
-        
-        likeButton.setImage(#imageLiteral(resourceName: "icon_like_normal"), for: .normal)
-        likeButton.setTitle("11", for: .normal)
-        likeButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        likeButton.setTitleColor(UIColor.title, for: .normal)
-        
-        commentButton.setImage(#imageLiteral(resourceName: "icon_comment"), for: .normal)
-        commentButton.setTitle("11", for: .normal)
-        commentButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        commentButton.setTitleColor(UIColor.title, for: .normal)
-        
-        timeButton.setImage(#imageLiteral(resourceName: "icon_time"), for: .normal)
-        timeButton.setTitle("12:11", for: .normal)
-        timeButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        timeButton.setTitleColor(UIColor.title, for: .normal)
         
         containerView.axis = .horizontal
         containerView.spacing = 10
@@ -44,7 +28,8 @@ class MessageBottomView: UIView {
         
         addSubview(containerView)
         
-        shareButton.setImage(#imageLiteral(resourceName: "icon_share"), for: .normal)
+        shareButton.setImage(#imageLiteral(resourceName: "icon_more").withRenderingMode(.alwaysTemplate), for: .normal)
+        shareButton.tintColor = UIColor.subtitle
         addSubview(shareButton)
         
         shareButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -65,5 +50,12 @@ class MessageBottomView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func setup(likeCount:Int,commentCount:Int,time:Date) {
+        likeButton.text = String(likeCount)
+        commentButton.text = String(commentCount)
+        timeButton.text = time.messageDateString
     }
 }

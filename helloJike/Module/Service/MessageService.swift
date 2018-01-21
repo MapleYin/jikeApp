@@ -37,26 +37,38 @@ class MessageService: STHJService {
 }
 
 extension MessageService {
+    
     func fetch(isAuto:Bool = false , then: @escaping (MessageListReponse?,Error?) -> Void) {
         let url = host+self.type.path()
         let option = RequestOption(nil, query: nil, body:[
             "limit": 10,
-            "loadMoreKey" : self.loadMoreKey ?? [String:Any](),
             "trigger": isAuto ? "auto" : "user"
             ])
         post(url, oprion: option) { (dataResponse:DataResponse<MessageListReponse>) in
             dataResponse.result.ifSuccess {
+                if self.loadMoreKey == nil {
+                    self.loadMoreKey = dataResponse.result.value?.loadMoreKey
+                }                
+                then(dataResponse.result.value,nil)
+            }
+            
+            dataResponse.result.ifFailure {
+                then(nil,dataResponse.result.error)
+            }
+        }
+    }
+    
+    
+    func loadMore(then: @escaping (MessageListReponse?,Error?) -> Void) {
+        let url = host+self.type.path()
+        let option = RequestOption(nil, query: nil, body:[
+            "limit": 10,
+            "loadMoreKey" : self.loadMoreKey ?? [String:Any](),
+            "trigger": "user"
+            ])
+        post(url, oprion: option) { (dataResponse:DataResponse<MessageListReponse>) in
+            dataResponse.result.ifSuccess {
                 self.loadMoreKey = dataResponse.result.value?.loadMoreKey
-                if let messageLit = dataResponse.result.value?.data {
-                    let messages = messageLit.flatMap({ (messageItem) -> Message? in
-                        guard let message = messageItem.item as? Message else {
-                            return nil
-                        }
-                        return message
-                    })
-                    MediaService.shared.addprefetch(messages:messages)
-                }
-                
                 then(dataResponse.result.value,nil)
             }
             

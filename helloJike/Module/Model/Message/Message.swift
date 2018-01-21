@@ -18,6 +18,7 @@ class Message : Mappable {
     var content:String!
     var messageId:Double!
     var topicId:Double!
+    var topic:Topic!
     var linkUrl:String?
     var originalLinkUrl:String?
     var sourceRawValue:String!
@@ -33,6 +34,8 @@ class Message : Mappable {
     var pictureUrls:[Image]?
     var video:Video?
     var iconUrl:String?
+    var updatedAt:Date!
+    var createdAt:Date!
     
     var media:Media?
     
@@ -46,6 +49,7 @@ class Message : Mappable {
         content <- map["content"]
         messageId <- map["messageId"]
         topicId <- map["topicId"]
+        topic <- map["topic"]
         linkUrl <- map["linkUrl"]
         originalLinkUrl <- map["originalLinkUrl"]
         sourceRawValue <- map["sourceRawValue"]
@@ -60,6 +64,9 @@ class Message : Mappable {
         targetId <- map["targetId"]
         pictureUrls <- map["pictureUrls"]
         video <- map["video"]
+        iconUrl <- map["iconUrl"]
+        updatedAt <- (map["updatedAt"],DefaultDateTransform())
+        createdAt <- (map["createdAt"],DefaultDateTransform())
     }
     
     func videoUrl(_ then: ((_ item:AVPlayerItem?)->Void)?) {
