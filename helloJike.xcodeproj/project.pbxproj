@@ -26,6 +26,7 @@
 		66CFA64B200F26BB00D66546 /* VideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CFA64A200F26BB00D66546 /* VideoPlayerController.swift */; };
 		66CFA64D200F291300D66546 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CFA64C200F291300D66546 /* Media.swift */; };
 		66CFA64F200F4F7600D66546 /* MediaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CFA64E200F4F7600D66546 /* MediaService.swift */; };
+		66CFA6522010387700D66546 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CFA6512010387700D66546 /* MessageController.swift */; };
 		F51807DB1FEE8C290021D9D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51807DA1FEE8C290021D9D3 /* AppDelegate.swift */; };
 		F51807E21FEE8C290021D9D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F51807E11FEE8C290021D9D3 /* Assets.xcassets */; };
 		F51807E51FEE8C290021D9D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F51807E31FEE8C290021D9D3 /* LaunchScreen.storyboard */; };
@@ -84,6 +85,7 @@
 		66CFA64A200F26BB00D66546 /* VideoPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerController.swift; sourceTree = "<group>"; };
 		66CFA64C200F291300D66546 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		66CFA64E200F4F7600D66546 /* MediaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaService.swift; sourceTree = "<group>"; };
+		66CFA6512010387700D66546 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		C28CFF8848E03B72FB35143A /* Pods-helloJike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-helloJike.release.xcconfig"; path = "Pods/Target Support Files/Pods-helloJike/Pods-helloJike.release.xcconfig"; sourceTree = "<group>"; };
 		E62CF1080A92B9BE9D94B5ED /* Pods_helloJike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_helloJike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51807D71FEE8C290021D9D3 /* helloJike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = helloJike.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +184,7 @@
 		668E70F81FF3AD7700D6AF0B /* App */ = {
 			isa = PBXGroup;
 			children = (
+				66CFA6502010384600D66546 /* Base */,
 				66CFA649200F254E00D66546 /* VideoPlayer */,
 				6639FA9F200E0D40007220DF /* ImageDetail */,
 				6639FA9C200E074C007220DF /* OriginDetail */,
@@ -228,6 +231,14 @@
 				66CFA64A200F26BB00D66546 /* VideoPlayerController.swift */,
 			);
 			path = VideoPlayer;
+			sourceTree = "<group>";
+		};
+		66CFA6502010384600D66546 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				66CFA6512010387700D66546 /* MessageController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		8689E1310141C53849084A32 /* Frameworks */ = {
@@ -609,6 +620,7 @@
 				F51807F81FEE8FCF0021D9D3 /* STNavigationController.swift in Sources */,
 				F53DFDFE1FEEC172009B649D /* RecommendController.swift in Sources */,
 				F5ABB17B200ECF5800D0CFBD /* STScrollView.swift in Sources */,
+				66CFA6522010387700D66546 /* MessageController.swift in Sources */,
 				F51808011FEEA6990021D9D3 /* AccountService.swift in Sources */,
 				F53DFE381FF29B61009B649D /* MessageCell.swift in Sources */,
 				668E70FB1FF3ADAA00D6AF0B /* MeController.swift in Sources */,

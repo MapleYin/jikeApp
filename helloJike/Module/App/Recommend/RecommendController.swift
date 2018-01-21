@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import AVKit
 
-class RecommendController: STTableViewController {
+class RecommendController: MessageController {
     
     var dataArray:[MessageItem] = []
+    var dataService:MessageService = MessageService(type: .recommend)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "推荐"
-        
+        navigationController?.setNavigationBarHidden(true, animated: false)
         tableView.estimatedRowHeight = 300
         tableView.separatorStyle = .singleLine
         tableView.separatorColor = UIColor.line
@@ -30,15 +30,11 @@ class RecommendController: STTableViewController {
     }
     
     override var prefersStatusBarHidden: Bool {
-        return (navigationController?.isNavigationBarHidden)!
-    }
-    
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return .slide
+        return true
     }
     
     override func refreshData() {
-        MessageService.shared.recommendFeedList(false) { (messageList, error) in
+        dataService.fetch { (messageList, error) in
             if let messageLit = messageList?.data {
                 
                 var indexPathArray:[IndexPath] = []
@@ -61,10 +57,14 @@ class RecommendController: STTableViewController {
     override func cellToRegist() -> [BaseCell.Type] {
         return [MessageCell.self,MessageTextCell.self,MessageMultipleImageCell.self,MessageVideoCell.self]
     }
-}
-
-extension RecommendController {
-
+    
+    override func messageItem(at indexPath: IndexPath) -> MessageItem? {
+        if indexPath.row < self.dataArray.count {
+            return self.dataArray[indexPath.row]
+        } else {
+            return nil
+        }
+    }
 }
 
 // tableDelegate
@@ -72,61 +72,5 @@ extension RecommendController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArray.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let messageItem = dataArray[indexPath.row]
-        var cell = UITableViewCell()
-        if let message = messageItem.item as? Message {
-            
-            if let picUrls = message.pictureUrls,
-                picUrls.count > 0 {
-                let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageMultipleImageCell.identifier, for: indexPath) as! MessageMultipleImageCell
-                messageCell.setup(message: message)
-                cell = messageCell
-            } else if message.video != nil {
-                let videoCell = tableView.dequeueReusableCell(withIdentifier: MessageVideoCell.identifier, for: indexPath) as! MessageVideoCell
-                videoCell.setup(message: message)
-                cell = videoCell
-            } else {
-                let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageTextCell.identifier, for: indexPath) as! MessageTextCell
-                messageCell.setup(message: message)
-                cell = messageCell
-            }
-        } else {
-            print(messageItem)
-        }
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let messageItem = dataArray[indexPath.row]
-        
-        if let message = messageItem.item as? Message {
-            if let images = message.pictureUrls,
-                images.count > 0{
-                let vc = ImageDetailController(images)
-                present(vc, animated: true, completion: nil)
-            } else if message.video != nil {
-                let videoPlayerVC = AVPlayerViewController()
-                present(videoPlayerVC, animated: true, completion: {
-                    message.videoUrl({ (item) in
-                        if item != nil{
-                            let player = AVPlayer(playerItem: item)
-                            videoPlayerVC.player = player
-                            videoPlayerVC.player?.play()
-                        }
-                    })
-                })
-            } else if let urlString = message.originalLinkUrl,
-                let url = URL(string: urlString) {
-                let safariVC = OriginDetailController(url: url)
-                present(safariVC, animated: true, completion: nil)
-            } else {
-                
-            }
-        }
     }
 }
