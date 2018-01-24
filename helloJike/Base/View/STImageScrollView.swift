@@ -39,6 +39,10 @@ class STImageScrollView: UIView {
             make.height.equalTo(imageView.snp.width).multipliedBy(image.size.height/image.size.width)
         }
     }
+    
+    func reset() {
+        scrollView.zoomScale = 1
+    }
 }
 
 

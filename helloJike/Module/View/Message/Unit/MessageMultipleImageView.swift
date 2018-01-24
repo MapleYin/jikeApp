@@ -35,7 +35,7 @@ class MessageMultipleImageView : UIView {
             if index < 9 {
                 let imageView = imageViewAtIndex(index)
                 imageView.isHidden = false
-                imageView.setup(image)
+                imageView.kf.setImage(image)
             }
         }
     }

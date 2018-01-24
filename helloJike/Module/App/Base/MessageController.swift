@@ -68,6 +68,14 @@ extension MessageController {
         }
         
         if let message = messageItem.item as? Message {
+            
+            if let images = message.pictureUrls,
+                images.count > 0 {
+                let vc = ImageDetailController(images)
+                present(vc, animated: true, completion: nil)
+                return 
+            }
+            
             if let urlString = message.originalLinkUrl,
                 urlString.hasPrefix("http") == true {
                 let url = URL(string: urlString)

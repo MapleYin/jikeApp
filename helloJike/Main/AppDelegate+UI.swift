@@ -11,7 +11,7 @@ import UIKit
 extension AppDelegate {
     func setupUI() {
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = MainTabBarController();
-        self.window?.makeKeyAndVisible();
+        self.window?.rootViewController = MainTabBarController()
+        self.window?.makeKeyAndVisible()
     }
 }

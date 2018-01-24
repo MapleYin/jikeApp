@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ImageCollectionCell: UICollectionViewCell,UIScrollViewDelegate {
     
-    var containerView = STScrollView()
-    let imageView = ImageView()
+    var imageScrollView = STImageScrollView()
 
     class var identifier:String {
         return "ImageCollectionCell"
@@ -20,17 +20,9 @@ class ImageCollectionCell: UICollectionViewCell,UIScrollViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        containerView = STScrollView(frame: frame)
-        containerView.delegate = self
-        containerView.maximumZoomScale = 3
-        containerView.minimumZoomScale = 1
-        containerView.alwaysBounceVertical = true
+        contentView.addSubview(imageScrollView)
         
-        containerView.addSubview(imageView)
-        
-        contentView.addSubview(containerView)
-        
-        containerView.snp.makeConstraints { (make) in
+        imageScrollView.snp.makeConstraints { (make) in
             make.edges.equalTo(contentView)
         }
     }
@@ -41,43 +33,25 @@ class ImageCollectionCell: UICollectionViewCell,UIScrollViewDelegate {
     
     
     func setup(_ image:Image) {
-        let width = self.contentView.bounds.width
-        let heigh = self.contentView.bounds.height
-        let rato = width / heigh
-
-        imageView.setup(image, quality:.high, progressBlock: nil) { (image, error, type, loadUrl) in
+        KingfisherManager.shared.downloader.downloadImage(image: image, quality: .high, progressBlock: { (recive, total) in
+            
+        }) { (image, error, url, data) in
             if let image = image {
-                let size = image.size
-                let imageRato = size.width / size.height
-                
-                if imageRato > rato {
-                    // 屏幕内
-                    self.imageView.snp.remakeConstraints({ (make) in
-                        make.center.equalTo(self.containerView)
-                        make.width.equalTo(self.containerView)
-                        make.height.equalTo(self.imageView.snp.width).dividedBy(imageRato)
-                    })
-                } else {
-                    // 屏幕外
-                    self.imageView.snp.remakeConstraints({ (make) in
-                        make.centerX.equalTo(self.containerView)
-                        make.top.equalTo(self.containerView)
-                        make.width.equalTo(self.containerView)
-                        make.height.equalTo(self.imageView.snp.width).dividedBy(imageRato)
-                    })
-                }
-                self.containerView.contentSize = CGSize(width: width, height:width / imageRato)
+                self.imageScrollView.setup(image: image)
             }
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageScrollView.reset()
+        
     }
 }
 
 
 // UIScrollViewDelegate
 extension ImageCollectionCell {
-    
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return imageView
-    }
+
 }
 

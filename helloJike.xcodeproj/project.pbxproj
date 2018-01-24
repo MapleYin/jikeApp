@@ -14,6 +14,8 @@
 		6639FAA3200E0D96007220DF /* MessageDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6639FAA2200E0D96007220DF /* MessageDetailController.swift */; };
 		6639FAA6200EED04007220DF /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6639FAA5200EED04007220DF /* ImageView.swift */; };
 		665DB0B62009F84700042C72 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665DB0B52009F84700042C72 /* LoginController.swift */; };
+		666423262018271B00D9472A /* STImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666423252018271A00D9472A /* STImageScrollView.swift */; };
+		666423282018A13E00D9472A /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666423272018A13E00D9472A /* ImageDownloader.swift */; };
 		668E70F31FF3977000D6AF0B /* STImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E70F21FF3977000D6AF0B /* STImageView.swift */; };
 		668E70F51FF39E8600D6AF0B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E70F41FF39E8600D6AF0B /* UIColor.swift */; };
 		668E70F71FF3AC5A00D6AF0B /* MessageMultipleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E70F61FF3AC5A00D6AF0B /* MessageMultipleImageView.swift */; };
@@ -77,6 +79,8 @@
 		6639FAA2200E0D96007220DF /* MessageDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailController.swift; sourceTree = "<group>"; };
 		6639FAA5200EED04007220DF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		665DB0B52009F84700042C72 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		666423252018271A00D9472A /* STImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STImageScrollView.swift; sourceTree = "<group>"; };
+		666423272018A13E00D9472A /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		668E70F21FF3977000D6AF0B /* STImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STImageView.swift; sourceTree = "<group>"; };
 		668E70F41FF39E8600D6AF0B /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		668E70F61FF3AC5A00D6AF0B /* MessageMultipleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMultipleImageView.swift; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 				F5ABB173200B459300D0CFBD /* UIScreen.swift */,
 				F5ABB17C20138BDB00D0CFBD /* UIImage.swift */,
 				F5ABB1872014BD5E00D0CFBD /* DateEx.swift */,
+				666423272018A13E00D9472A /* ImageDownloader.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -401,6 +406,7 @@
 		F53DFE181FF146E0009B649D /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				F53DFE161FF14603009B649D /* Recommendation.swift */,
 				F53DFE021FEF3091009B649D /* Message.swift */,
 				F53DFE141FF140C3009B649D /* MessageItem.swift */,
 				F53DFE101FF13FF7009B649D /* MessageListReponse.swift */,
@@ -424,6 +430,7 @@
 				F53DFE211FF15581009B649D /* BaseCell.swift */,
 				668E70F21FF3977000D6AF0B /* STImageView.swift */,
 				F5ABB17A200ECF5800D0CFBD /* STScrollView.swift */,
+				666423252018271A00D9472A /* STImageScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -454,7 +461,6 @@
 		F53DFE3B1FF29E95009B649D /* Unit */ = {
 			isa = PBXGroup;
 			children = (
-				F53DFE161FF14603009B649D /* Recommendation.swift */,
 				F5ABB175200D0DA400D0CFBD /* MessageSourceView.swift */,
 				F53DFE391FF29E8E009B649D /* MessageBottomView.swift */,
 				F53DFE3C1FF29EB2009B649D /* MessageImageView.swift */,
@@ -638,6 +644,7 @@
 				6639FAA3200E0D96007220DF /* MessageDetailController.swift in Sources */,
 				F53DFE3A1FF29E8E009B649D /* MessageBottomView.swift in Sources */,
 				F51807F81FEE8FCF0021D9D3 /* STNavigationController.swift in Sources */,
+				666423282018A13E00D9472A /* ImageDownloader.swift in Sources */,
 				F53DFDFE1FEEC172009B649D /* RecommendController.swift in Sources */,
 				F5ABB17B200ECF5800D0CFBD /* STScrollView.swift in Sources */,
 				66CFA6522010387700D66546 /* MessageController.swift in Sources */,
@@ -661,6 +668,7 @@
 				F51807FE1FEE9D5E0021D9D3 /* STHJService.swift in Sources */,
 				F51808051FEEA88D0021D9D3 /* UserPreferences.swift in Sources */,
 				F51807DB1FEE8C290021D9D3 /* AppDelegate.swift in Sources */,
+				666423262018271B00D9472A /* STImageScrollView.swift in Sources */,
 				669DB7561FF1F40C006D76C4 /* STUserDefault.swift in Sources */,
 				F53DFE2F1FF29846009B649D /* MessageVideoCell.swift in Sources */,
 				F51807FA1FEE99C10021D9D3 /* STTableViewController.swift in Sources */,
