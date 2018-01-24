@@ -70,7 +70,7 @@ class MediaService: STHJService {
     private func startPrefetchIfNeeded() {
         if let message = prefetchMediaList.first {
             media(message, then: { (media, error) in
-                print("Prefetch success:\(message.content)")
+                print("Prefetch success:\(String(describing: message.content))")
                 message.media = media
                 if self.prefetchMediaList.count > 0 {
                     self.prefetchMediaList.removeFirst()

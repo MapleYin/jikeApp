@@ -32,21 +32,19 @@ enum Quality {
     }
 }
 
-extension ImageDownloader {
-    @discardableResult
-    func downloadImage(image:Image, quality:Quality = .low, progressBlock:ImageDownloaderProgressBlock? = nil, completionHandler:ImageDownloaderCompletionHandler? = nil) -> RetrieveImageDownloadTask? {
-        if let url = URL(string: quality.url(image)) {
-            var option:KingfisherOptionsInfo?
-            if image.format == "webp" {
-                option = [.processor(WebPProcessor.default),.cacheSerializer(WebPSerializer.default)]
-            }
-            
-            return self.downloadImage(with: url, retrieveImageTask: nil, options: option, progressBlock: progressBlock, completionHandler: completionHandler)
-        } else {
-            return nil
+@discardableResult
+func DownloadImage(image:Image, quality:Quality = .low, progressBlock:DownloadProgressBlock? = nil, completionHandler:CompletionHandler? = nil) -> RetrieveImageTask? {
+    if let url = URL(string: quality.url(image)) {
+        var option:KingfisherOptionsInfo?
+        if image.format == "webp" {
+            option = [.processor(WebPProcessor.default),.cacheSerializer(WebPSerializer.default)]
         }
+        return KingfisherManager.shared.retrieveImage(with: url, options: option, progressBlock: progressBlock, completionHandler: completionHandler)
+    } else {
+        return nil
     }
 }
+
 
 extension Kingfisher where Base: ImageView {
     @discardableResult

@@ -69,6 +69,10 @@
 		F5ABB1862014AB8C00D0CFBD /* MessageIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABB1852014AB8C00D0CFBD /* MessageIconTextView.swift */; };
 		F5ABB1882014BD5E00D0CFBD /* DateEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABB1872014BD5E00D0CFBD /* DateEx.swift */; };
 		F5ABB18A2014ECD900D0CFBD /* MessageTopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABB1892014ECD900D0CFBD /* MessageTopicView.swift */; };
+		F5ABB18F20162CD600D0CFBD /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABB18E20162CD600D0CFBD /* MessageViewModel.swift */; };
+		F5ABB1922017893300D0CFBD /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABB1912017893300D0CFBD /* UserMessage.swift */; };
+		F5ABB1952018BD4900D0CFBD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABB1942018BD4900D0CFBD /* LoadingView.swift */; };
+		F5ABB1982018C03A00D0CFBD /* LoadingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABB1972018C03A00D0CFBD /* LoadingProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +142,10 @@
 		F5ABB1852014AB8C00D0CFBD /* MessageIconTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageIconTextView.swift; sourceTree = "<group>"; };
 		F5ABB1872014BD5E00D0CFBD /* DateEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEx.swift; sourceTree = "<group>"; };
 		F5ABB1892014ECD900D0CFBD /* MessageTopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTopicView.swift; sourceTree = "<group>"; };
+		F5ABB18E20162CD600D0CFBD /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		F5ABB1912017893300D0CFBD /* UserMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessage.swift; sourceTree = "<group>"; };
+		F5ABB1942018BD4900D0CFBD /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		F5ABB1972018C03A00D0CFBD /* LoadingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +188,7 @@
 		6639FAA4200EECEB007220DF /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				F5ABB1962018C01C00D0CFBD /* LoadingView */,
 				6639FAA5200EED04007220DF /* ImageView.swift */,
 			);
 			path = Base;
@@ -308,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				668E70F81FF3AD7700D6AF0B /* App */,
+				F5ABB18D20162CBC00D0CFBD /* ViewModel */,
 				F53DFE281FF297D1009B649D /* View */,
 				669DB7521FF1F396006D76C4 /* Cache */,
 				F53DFE0D1FF13D87009B649D /* Service */,
@@ -382,6 +392,7 @@
 		F53DFE0C1FF139A4009B649D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F5ABB19020163A2000D0CFBD /* UserMessage */,
 				F5ABB1822014A1AA00D0CFBD /* Tranform */,
 				F53DFE191FF146EB009B649D /* User */,
 				F53DFE181FF146E0009B649D /* Message */,
@@ -486,6 +497,31 @@
 				F5ABB1832014A1D900D0CFBD /* DefaultDateTransform.swift */,
 			);
 			path = Tranform;
+			sourceTree = "<group>";
+		};
+		F5ABB18D20162CBC00D0CFBD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F5ABB18E20162CD600D0CFBD /* MessageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F5ABB19020163A2000D0CFBD /* UserMessage */ = {
+			isa = PBXGroup;
+			children = (
+				F5ABB1912017893300D0CFBD /* UserMessage.swift */,
+			);
+			path = UserMessage;
+			sourceTree = "<group>";
+		};
+		F5ABB1962018C01C00D0CFBD /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				F5ABB1942018BD4900D0CFBD /* LoadingView.swift */,
+				F5ABB1972018C03A00D0CFBD /* LoadingProgressView.swift */,
+			);
+			path = LoadingView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -641,6 +677,7 @@
 				F5ABB179200E4D9000D0CFBD /* ImageCollectionCell.swift in Sources */,
 				66CFA64D200F291300D66546 /* Media.swift in Sources */,
 				F5ABB174200B459300D0CFBD /* UIScreen.swift in Sources */,
+				F5ABB18F20162CD600D0CFBD /* MessageViewModel.swift in Sources */,
 				6639FAA3200E0D96007220DF /* MessageDetailController.swift in Sources */,
 				F53DFE3A1FF29E8E009B649D /* MessageBottomView.swift in Sources */,
 				F51807F81FEE8FCF0021D9D3 /* STNavigationController.swift in Sources */,
@@ -658,7 +695,9 @@
 				F5ABB18A2014ECD900D0CFBD /* MessageTopicView.swift in Sources */,
 				665DB0B62009F84700042C72 /* LoginController.swift in Sources */,
 				F51807F31FEE8F190021D9D3 /* SubscribeController.swift in Sources */,
+				F5ABB1952018BD4900D0CFBD /* LoadingView.swift in Sources */,
 				F53DFE221FF15581009B649D /* BaseCell.swift in Sources */,
+				F5ABB1982018C03A00D0CFBD /* LoadingProgressView.swift in Sources */,
 				F53DFE0F1FF13E35009B649D /* MessageService.swift in Sources */,
 				F53DFE031FEF3091009B649D /* Message.swift in Sources */,
 				F53DFE311FF29870009B649D /* MessageMultipleImageCell.swift in Sources */,
@@ -688,6 +727,7 @@
 				6639FAA1200E0D61007220DF /* ImageDetailController.swift in Sources */,
 				669DB74B1FF1E3F5006D76C4 /* AppDelegate+UI.swift in Sources */,
 				66CFA64F200F4F7600D66546 /* MediaService.swift in Sources */,
+				F5ABB1922017893300D0CFBD /* UserMessage.swift in Sources */,
 				F5ABB1862014AB8C00D0CFBD /* MessageIconTextView.swift in Sources */,
 				F53DFE071FEFFDAF009B649D /* Image.swift in Sources */,
 				6639FA9E200E0793007220DF /* OriginDetailController.swift in Sources */,

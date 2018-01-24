@@ -13,9 +13,8 @@ import AVKit
 
 class Message : Mappable {
     var id:String!
-    var title:String!
-    var subtitle:String!
-    var content:String!
+    var abstrct:String?
+    var content:String?
     var messageId:Double!
     var topicId:Double!
     var topic:Topic!
@@ -44,10 +43,9 @@ class Message : Mappable {
     }
     func mapping(map: Map) {
         id <- map["id"]
-        title <- map["title"]
-        subtitle <- map["subtitle"]
-        content <- map["content"]
         messageId <- map["messageId"]
+        content <- map["content"]
+        abstrct <- map["abstrct"]
         topicId <- map["topicId"]
         topic <- map["topic"]
         linkUrl <- map["linkUrl"]

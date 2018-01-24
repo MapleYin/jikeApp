@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageDetailController: STViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class ImageDetailController: STViewController {
     
     var imageCollectionView:UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout:UICollectionViewFlowLayout())
     let closeButton = UIButton(type: .custom)
@@ -30,6 +30,7 @@ class ImageDetailController: STViewController,UICollectionViewDelegate,UICollect
         imageCollectionView.isPagingEnabled = true
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
+        imageCollectionView.prefetchDataSource = self
         imageCollectionView.register(ImageCollectionCell.self, forCellWithReuseIdentifier: ImageCollectionCell.identifier)
         view.addSubview(imageCollectionView)
         
@@ -64,12 +65,12 @@ class ImageDetailController: STViewController,UICollectionViewDelegate,UICollect
 
 
 // UICollectionViewDelegate
-extension ImageDetailController {
+extension ImageDetailController : UICollectionViewDelegate {
     
 }
 
 // UICollectionViewDataSource
-extension ImageDetailController {
+extension ImageDetailController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.images.count
     }
@@ -79,5 +80,17 @@ extension ImageDetailController {
         let image = self.images[indexPath.row]
         cell.setup(image)
         return cell
+    }
+}
+
+
+extension ImageDetailController : UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach { (indexPath) in
+            let image = images[indexPath.row]
+            print("prefetchItemsAt:\(indexPath.row)")
+            DownloadImage(image: image, quality: .high)
+        }
+        
     }
 }

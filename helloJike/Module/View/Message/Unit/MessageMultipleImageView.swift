@@ -92,8 +92,13 @@ extension MessageMultipleImageView {
             x = 0
             y = 0
             width = containerWidth
-            let rato = CGFloat(min(image.height/image.width, 0.8))
-            height = width * rato
+            if image.width == 0 || image.height == 0 {
+                height = width
+            } else {
+                let rato = CGFloat(min(image.height/image.width, 0.8))
+                height = width * rato
+            }
+            
             break;
         case 2:
             width = containerWidth / 5 * 2

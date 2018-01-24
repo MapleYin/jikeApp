@@ -18,9 +18,7 @@ class RecommendController: MessageController {
         self.title = "推荐"
         navigationController?.setNavigationBarHidden(true, animated: false)
         tableView.estimatedRowHeight = 300
-        tableView.separatorStyle = .singleLine
-        tableView.separatorColor = UIColor.line
-        tableView.separatorInset = UIEdgeInsets.zero
+        tableView.separatorStyle = .none
     }
     
     @objc func swipe(_ recognizer:UISwipeGestureRecognizer) {

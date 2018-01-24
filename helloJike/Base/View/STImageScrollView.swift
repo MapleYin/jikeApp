@@ -41,6 +41,7 @@ class STImageScrollView: UIView {
     }
     
     func reset() {
+        imageView.image = nil
         scrollView.zoomScale = 1
     }
 }

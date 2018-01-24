@@ -20,6 +20,7 @@ class MessageTextCell: MessageCell {
     let topicView = MessageTopicView()
     let iconImageView = UIImageView()
     let bottomView = MessageBottomView()
+    let bottomLine = UIView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,14 +32,17 @@ class MessageTextCell: MessageCell {
         
         iconImageView.contentMode = .scaleAspectFit
         
+        bottomLine.backgroundColor = UIColor.side
+        
         containerView.addSubview(titleLabel)
         containerView.addSubview(mediaView)
         containerView.addSubview(topicView)
         containerView.addSubview(iconImageView)
         containerView.addSubview(bottomView)
+        containerView.addSubview(bottomLine)
         
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(containerView).offset(10)
+            make.top.equalTo(containerView).offset(15)
             make.leading.equalTo(containerView).offset(11)
             make.trailing.equalTo(containerView).offset(-11)
         }
@@ -63,7 +67,14 @@ class MessageTextCell: MessageCell {
         bottomView.snp.makeConstraints { (make) in
             make.top.equalTo(topicView.snp.bottom).offset(10)
             make.leading.trailing.equalTo(containerView)
-            make.bottom.equalTo(containerView.snp.bottom).offset(-10).priority(.low)
+            
+        }
+        
+        bottomLine.snp.makeConstraints { (make) in
+            make.top.equalTo(bottomView.snp.bottom).offset(10)
+            make.height.equalTo(5)
+            make.leading.trailing.equalTo(containerView)
+            make.bottom.equalTo(containerView.snp.bottom).priority(.low)
         }
     }
     
@@ -74,7 +85,7 @@ class MessageTextCell: MessageCell {
     func setup(message:Message) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 5
-        let attr = NSAttributedString(string: message.content, attributes: [.paragraphStyle : paragraphStyle])
+        let attr = NSAttributedString(string: message.content!, attributes: [.paragraphStyle : paragraphStyle])
         titleLabel.attributedText = attr
         if let urlString = message.iconUrl,
             let url = URL(string: urlString) {

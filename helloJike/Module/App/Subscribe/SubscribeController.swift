@@ -19,9 +19,7 @@ class SubscribeController: MessageController {
         self.title = "订阅"
         
         tableView.estimatedRowHeight = 300
-        tableView.separatorStyle = .singleLine
-        tableView.separatorColor = UIColor.line
-        tableView.separatorInset = UIEdgeInsets.zero
+        tableView.separatorStyle = .none
     }
     
     
