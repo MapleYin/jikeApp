@@ -14,6 +14,7 @@ class ImageCollectionCell: UICollectionViewCell,UIScrollViewDelegate {
     
     var imageScrollView = STImageScrollView()
     var task:RetrieveImageTask?
+    var imageData:Image?
     
     let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
 
@@ -41,21 +42,15 @@ class ImageCollectionCell: UICollectionViewCell,UIScrollViewDelegate {
     }
     
     
-    func setup(_ image:Image) {
-        self.indicatorView.isHidden = false
+    func setup(_ imageData:Image) {
+        indicatorView.isHidden = false
         indicatorView.startAnimating()
-        
-        print(self)
-        
-        print("cancel downloadTask?.url:\(String(describing: task?.downloadTask?.url))")
+        self.imageData = imageData
         task?.cancel()
-        
-        print("Begin DownloadImage url:\(String(describing: Quality.high.url(image)))")
-        task = DownloadImage(image: image, quality: .high, progressBlock: { (recive, total) in
-
-        }) { (image, error, cacheType, imageURL) in
-            print(self)
-            print("End DownloadImage url:\(String(describing: imageURL))")
+        task = DownloadImage(image: imageData, quality: .high, progressBlock: nil) { (image, error, cacheType, imageURL) in
+            if Quality.high.url(self.imageData!) != imageURL?.absoluteString {
+                return
+            }
             if let image = image {
                 self.imageScrollView.setup(image: image)
             }

@@ -88,7 +88,6 @@ extension ImageDetailController : UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { (indexPath) in
             let image = images[indexPath.row]
-            print("prefetchItemsAt:\(indexPath.row)")
             DownloadImage(image: image, quality: .high)
         }
         
