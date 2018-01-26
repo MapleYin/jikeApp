@@ -13,10 +13,12 @@ class ImageDetailController: STViewController {
     var imageCollectionView:UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout:UICollectionViewFlowLayout())
     let closeButton = UIButton(type: .custom)
     var images:[Image] = []
+    var currentDisplayIndex = 0
     
-    convenience init(_ images:[Image]) {
+    convenience init(_ images:[Image], selected index:Int = 0) {
         self.init()
         self.images = images
+        self.currentDisplayIndex = index
     }
 
     override func viewDidLoad() {
@@ -80,6 +82,10 @@ extension ImageDetailController : UICollectionViewDataSource {
         let image = self.images[indexPath.row]
         cell.setup(image)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
     }
 }
 

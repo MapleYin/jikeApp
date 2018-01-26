@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol MessageMultipleImageCellAction : MessageCellAction {
+    func messageCell(_ cell:MessageMultipleImageCell, imageView:ImageView, index:Int) -> Void
+}
+
 class MessageMultipleImageCell: MessageTextCell {
     
-    let multipleImageView = MessageMultipleImageView()
+    weak var delegate:MessageMultipleImageCellAction?
+    
+    private let multipleImageView = MessageMultipleImageView()
     
     override class var identifier:String {
         return "MessageMultipleImageCell"
@@ -20,6 +26,10 @@ class MessageMultipleImageCell: MessageTextCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         mediaView.addSubview(multipleImageView)
+        
+        multipleImageView.imageSelectActionBlock = { (ImageView,index) in
+            self.delegate?.messageCell(self, imageView: ImageView, index: index)
+        }
         
         multipleImageView.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(mediaView)

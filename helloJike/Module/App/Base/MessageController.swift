@@ -10,6 +10,8 @@ import UIKit
 import AVKit
 
 class MessageController: STTableViewController {
+    
+    let customTransition = CustomTransitionDelegate()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,7 @@ extension MessageController {
             if let picUrls = message.pictureUrls,
                 picUrls.count > 0 {
                 let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageMultipleImageCell.identifier, for: indexPath) as! MessageMultipleImageCell
+                messageCell.delegate = self
                 messageCell.setup(message: message)
                 cell = messageCell
             } else if message.video != nil {
@@ -68,14 +71,6 @@ extension MessageController {
         }
         
         if let message = messageItem.item as? Message {
-            
-            if let images = message.pictureUrls,
-                images.count > 0 {
-                let vc = ImageDetailController(images)
-                present(vc, animated: true, completion: nil)
-                return 
-            }
-            
             if let urlString = message.originalLinkUrl,
                 urlString.hasPrefix("http") == true {
                 let url = URL(string: urlString)
@@ -91,6 +86,24 @@ extension MessageController {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 2 {
             loadMore()
+        }
+    }
+}
+
+
+// MessageMultipleImageCellAction
+
+extension MessageController : MessageMultipleImageCellAction {
+    func messageCell(_ cell: MessageMultipleImageCell, imageView: ImageView, index: Int) {
+        if let indexPath = tableView.indexPath(for: cell),
+            let messageItem = self.messageItem(at: indexPath),
+            let message = messageItem.item as? Message,
+            let images = message.pictureUrls,
+            images.count > 0{
+            let vc = ImageDetailController(images, selected: index)
+            vc.modalPresentationStyle = .custom
+            vc.transitioningDelegate = customTransition
+            present(vc, animated: true, completion: nil)
         }
     }
 }

@@ -10,11 +10,11 @@ import UIKit
 
 class MessageMultipleImageView : UIView {
     
-    private let separatorWidth:CGFloat = 3.0
+    var imageSelectActionBlock:((ImageView,Int)->())?
     
+    private let separatorWidth:CGFloat = 3.0
     private var imageViews:[ImageView] = []
     private var images:[Image] = []
-    
     private let containerWidth:CGFloat = UIScreen.chooseByWidth(320.0, 375.0, 414.0)
     
     override var intrinsicContentSize: CGSize {
@@ -48,6 +48,16 @@ class MessageMultipleImageView : UIView {
     }
 }
 
+// Action
+extension MessageMultipleImageView {
+    @objc private func didSelect(gesture:UIGestureRecognizer) {
+        if let view = gesture.view as? ImageView,
+            let index = imageViews.index(of: view){
+            imageSelectActionBlock?(view,index)
+        }
+    }
+}
+
 
 // Source
 extension MessageMultipleImageView {
@@ -69,12 +79,15 @@ extension MessageMultipleImageView {
         let imageView = ImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didSelect(gesture:)))
+        imageView.addGestureRecognizer(gesture)
         return imageView
     }
 }
 
 
-// layout
+// Layout
 extension MessageMultipleImageView {
     
     private func setupLayout(_ images:[Image]) {

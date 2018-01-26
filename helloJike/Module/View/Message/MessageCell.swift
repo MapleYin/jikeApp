@@ -9,6 +9,10 @@
 import UIKit
 import SnapKit
 
+protocol MessageCellAction:class {
+    
+}
+
 class MessageCell: BaseCell {
     
     override class var identifier:String {

@@ -9,14 +9,9 @@
 import UIKit
 import Kingfisher
 
-
-class ImageCollectionCell: UICollectionViewCell,UIScrollViewDelegate {
+class ImageCollectionCell: UICollectionViewCell {
     
-    var imageScrollView = STImageScrollView()
-    var task:RetrieveImageTask?
-    var imageData:Image?
-    
-    let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    var imageScrollView = ImageScrollView()
 
     class var identifier:String {
         return "ImageCollectionCell"
@@ -26,14 +21,9 @@ class ImageCollectionCell: UICollectionViewCell,UIScrollViewDelegate {
         super.init(frame: frame)
         
         contentView.addSubview(imageScrollView)
-        contentView.addSubview(indicatorView)
         
         imageScrollView.snp.makeConstraints { (make) in
             make.edges.equalTo(contentView)
-        }
-        
-        indicatorView.snp.makeConstraints { (make) in
-            make.center.equalTo(contentView)
         }
     }
     
@@ -41,34 +31,14 @@ class ImageCollectionCell: UICollectionViewCell,UIScrollViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    func setup(_ imageData:Image) {
-        indicatorView.isHidden = false
-        indicatorView.startAnimating()
-        self.imageData = imageData
-        task?.cancel()
-        task = DownloadImage(image: imageData, quality: .high, progressBlock: nil) { (image, error, cacheType, imageURL) in
-            if Quality.high.url(self.imageData!) != imageURL?.absoluteString {
-                return
-            }
-            if let image = image {
-                self.imageScrollView.setup(image: image)
-            }
-            self.indicatorView.stopAnimating()
-            self.indicatorView.isHidden = true
-        }
+    func setup(_ image:Image) {
+        self.imageScrollView.setup(image: image)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         imageScrollView.reset()
-        
     }
 }
 
-
-// UIScrollViewDelegate
-extension ImageCollectionCell {
-
-}
 
