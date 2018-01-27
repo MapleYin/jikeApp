@@ -18,7 +18,7 @@ class MessageController: STTableViewController {
     
     private var currentMessageMultipleImageCell : MessageMultipleImageCell?
     private var currentSelectedImageViewIndex : Int = 0
-    
+    private var isStatusBarHidden = false
     
 
     override func viewDidLoad() {
@@ -33,6 +33,25 @@ class MessageController: STTableViewController {
     
     func messageItem(at indexPath:IndexPath) -> MessageItem? {
         return nil
+    }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .slide
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return isStatusBarHidden
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if isStatusBarHidden {
+            isStatusBarHidden = false
+            UIView.animate(withDuration: 0.25) {
+                self.setNeedsStatusBarAppearanceUpdate()
+            }
+        }
     }
 }
 
@@ -117,8 +136,14 @@ extension MessageController : MessageMultipleImageCellAction {
 
             
             let vc = ImageDetailController(images, selected: index, source: imageViews)
-            vc.modalPresentationStyle = .custom
+            vc.modalPresentationStyle = .fullScreen
             vc.transitioningDelegate = customTransition
+            
+            isStatusBarHidden = true
+            UIView.animate(withDuration: 0.25) {
+                self.setNeedsStatusBarAppearanceUpdate()
+            }
+            
             present(vc, animated: true, completion: nil)
         }
     }

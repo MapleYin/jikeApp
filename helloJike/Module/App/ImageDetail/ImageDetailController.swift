@@ -69,7 +69,7 @@ class ImageDetailController: STViewController {
     }
     
     @objc func dismissController() {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 }
 
@@ -90,8 +90,8 @@ extension ImageDetailController {
 
 // UICollectionViewDelegate
 extension ImageDetailController : UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
 }
 

@@ -16,19 +16,8 @@ class RecommendController: MessageController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "推荐"
-        navigationController?.setNavigationBarHidden(true, animated: false)
         tableView.estimatedRowHeight = 300
         tableView.separatorStyle = .none
-    }
-    
-    @objc func swipe(_ recognizer:UISwipeGestureRecognizer) {
-        UIView.animate(withDuration: 0.2) {
-            self.setNeedsStatusBarAppearanceUpdate()
-        }
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
     }
     
     override func refreshData() {

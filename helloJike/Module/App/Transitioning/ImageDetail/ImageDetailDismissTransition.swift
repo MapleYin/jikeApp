@@ -10,7 +10,7 @@ import UIKit
 
 class ImageDetailDismissTransition: NSObject ,UIViewControllerAnimatedTransitioning {
     
-    let animationDuration = 0.2
+    let animationDuration = 0.25
     
     var targetViewController:UIViewController&ImageDetailTransitionProtocol
     var sourceViewController:ImageDetailController
@@ -25,9 +25,16 @@ class ImageDetailDismissTransition: NSObject ,UIViewControllerAnimatedTransition
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let fromView = sourceViewController.view!
+        
         let container = transitionContext.containerView
+        if let toView = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)?.view {
+            container.addSubview(toView)
+        }
+        
+        let fromView = sourceViewController.view!
         container.addSubview(fromView)
+        
+        
         
         if let (sourceImageView,index) = sourceViewController.currentImageView(),
             let (imageView,rect) = self.targetViewController.sourceImageView(at: index){
@@ -40,13 +47,12 @@ class ImageDetailDismissTransition: NSObject ,UIViewControllerAnimatedTransition
             
             imageView.alpha = 0
             sourceImageView.alpha = 0
-            
+
             UIView.animate(withDuration: animationDuration, animations: {
                 fakeImageView.frame = rect
                 fromView.alpha = 0
             }, completion: { (finished) in
                 imageView.alpha = 1
-                fakeImageView.removeFromSuperview()
                 transitionContext.completeTransition(true)
             })
         } else {

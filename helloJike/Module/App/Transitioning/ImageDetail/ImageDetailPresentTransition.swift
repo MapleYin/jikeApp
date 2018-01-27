@@ -10,7 +10,7 @@ import UIKit
 
 class ImageDetailPresentTransition: NSObject ,UIViewControllerAnimatedTransitioning {
     
-    let animationDuration = 0.2
+    let animationDuration = 0.25
     
     var targetViewController:ImageDetailController
     var sourceViewController:UIViewController&ImageDetailTransitionProtocol
