@@ -10,7 +10,7 @@ import UIKit
 
 class MessageMultipleImageView : UIView {
     
-    var imageSelectActionBlock:((ImageView,Int)->())?
+    var imageSelectActionBlock:(([ImageView],Int)->())?
     
     private let separatorWidth:CGFloat = 3.0
     private var imageViews:[ImageView] = []
@@ -53,7 +53,7 @@ extension MessageMultipleImageView {
     @objc private func didSelect(gesture:UIGestureRecognizer) {
         if let view = gesture.view as? ImageView,
             let index = imageViews.index(of: view){
-            imageSelectActionBlock?(view,index)
+            imageSelectActionBlock?(imageViews,index)
         }
     }
 }
@@ -62,7 +62,7 @@ extension MessageMultipleImageView {
 // Source
 extension MessageMultipleImageView {
     
-    private func imageViewAtIndex(_ index:Int) -> ImageView {
+    func imageViewAtIndex(_ index:Int) -> ImageView {
         if index >= imageViews.count {
             var length = index - imageViews.count
             while length >= 0 {

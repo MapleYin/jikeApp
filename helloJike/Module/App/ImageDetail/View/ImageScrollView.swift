@@ -10,7 +10,7 @@ import UIKit
 
 class ImageScrollView: UIView {
     
-    private let imageView = ImageView()
+    let imageView = ImageView()
     private let scrollView = STScrollView()
     private let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
@@ -37,17 +37,19 @@ class ImageScrollView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setup(image:Image) {
+    func setup(image:Image, sourceImageView:ImageView? = nil) {
         indicatorView.startAnimating()
-        imageView.setImage(image, quality: .high, progressBlock: nil) { (image, error, type, url) in
-            if let image = image {
-                self.imageView.snp.remakeConstraints { (make) in
-                    make.center.equalTo(self.scrollView)
-                    make.width.equalTo(self.scrollView)
-                    make.height.equalTo(self.imageView.snp.width).multipliedBy(image.size.height/image.size.width)
-                }
+        imageView.setImage(image, quality: .high, placeholder: sourceImageView?.image, progressBlock: nil) { (image, error, type, url) in
+            if image != nil {
+                sourceImageView?.image = image
             }
             self.indicatorView.stopAnimating()
+        }
+        
+        self.imageView.snp.remakeConstraints { (make) in
+            make.center.equalTo(self.scrollView)
+            make.width.equalTo(self.scrollView)
+            make.height.equalTo(self.imageView.snp.width).multipliedBy(image.height/image.width)
         }
     }
     

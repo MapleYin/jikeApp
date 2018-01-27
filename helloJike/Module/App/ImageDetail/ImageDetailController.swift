@@ -14,11 +14,13 @@ class ImageDetailController: STViewController {
     let closeButton = UIButton(type: .custom)
     var images:[Image] = []
     var currentDisplayIndex = 0
+    var sourceImageViews:[ImageView] = []
     
-    convenience init(_ images:[Image], selected index:Int = 0) {
+    convenience init(_ images:[Image], selected index:Int = 0, source imageViews:[ImageView]) {
         self.init()
         self.images = images
         self.currentDisplayIndex = index
+        self.sourceImageViews = imageViews
     }
 
     override func viewDidLoad() {
@@ -28,13 +30,15 @@ class ImageDetailController: STViewController {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-        imageCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        
+        view.addSubview(imageCollectionView)
+        
         imageCollectionView.isPagingEnabled = true
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
         imageCollectionView.prefetchDataSource = self
         imageCollectionView.register(ImageCollectionCell.self, forCellWithReuseIdentifier: ImageCollectionCell.identifier)
-        view.addSubview(imageCollectionView)
+        imageCollectionView.setCollectionViewLayout(layout, animated: false)
         
         imageCollectionView.snp.makeConstraints { (make) in
             var edge = view.safeAreaInsets
@@ -54,6 +58,10 @@ class ImageDetailController: STViewController {
             make.leading.equalTo(view).offset(20)
             make.top.equalTo(view).offset(view.safeAreaInsets.top)
         }
+        
+        let indexPath = IndexPath(row: currentDisplayIndex, section: 0)
+        imageCollectionView.layoutIfNeeded()
+        imageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -66,9 +74,25 @@ class ImageDetailController: STViewController {
 }
 
 
+// Public
+
+extension ImageDetailController {
+    func currentImageView() -> (ImageView,Int)? {
+        imageCollectionView.layoutIfNeeded()
+        if let cell = imageCollectionView.visibleCells.first as? ImageCollectionCell {
+            let indexPath = imageCollectionView.indexPath(for: cell)
+            return (cell.imageScrollView.imageView,indexPath!.row)
+        }
+        return nil
+    }
+}
+
+
 // UICollectionViewDelegate
 extension ImageDetailController : UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+
+    }
 }
 
 // UICollectionViewDataSource
@@ -80,13 +104,11 @@ extension ImageDetailController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionCell.identifier, for: indexPath) as! ImageCollectionCell
         let image = self.images[indexPath.row]
-        cell.setup(image)
+        let imageView = self.sourceImageViews[indexPath.row]
+        cell.setup(image, sourceImageView: imageView)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-    }
 }
 
 

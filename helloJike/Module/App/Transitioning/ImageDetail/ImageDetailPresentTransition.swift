@@ -9,20 +9,53 @@
 import UIKit
 
 class ImageDetailPresentTransition: NSObject ,UIViewControllerAnimatedTransitioning {
+    
+    let animationDuration = 0.2
+    
+    var targetViewController:ImageDetailController
+    var sourceViewController:UIViewController&ImageDetailTransitionProtocol
+    
+    init(target:ImageDetailController,source:UIViewController&ImageDetailTransitionProtocol) {
+        self.targetViewController = target
+        self.sourceViewController = source
+    }
+    
+    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 1.0
+        return animationDuration
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to), let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) else { return }
         
-        let fromView = fromViewController.view!
-        let toView = toViewController.view!
-        
+        let toView = targetViewController.view!
         let container = transitionContext.containerView
-        
         container.addSubview(toView)
-        transitionContext.completeTransition(true)
+        
+        if let (destImageView,index) = targetViewController.currentImageView(),
+            let (imageView,rect) = self.sourceViewController.sourceImageView(at: index) {
+            let fakeImageView = ImageView()
+            fakeImageView.contentMode = imageView.contentMode
+            fakeImageView.clipsToBounds = true
+            fakeImageView.image = imageView.image
+            fakeImageView.frame = rect
+            container.addSubview(fakeImageView)
+            
+            imageView.alpha = 0
+            destImageView.alpha = 0
+            
+            toView.alpha = 0
+            UIView.animate(withDuration: animationDuration, animations: {
+                fakeImageView.frame = destImageView.frame
+                toView.alpha = 1
+            }, completion: { (finished) in
+                imageView.alpha = 1
+                destImageView.alpha = 1
+                fakeImageView.removeFromSuperview()
+                transitionContext.completeTransition(true)
+            })
+        } else {
+            transitionContext.completeTransition(true)
+        }
     }
     
     

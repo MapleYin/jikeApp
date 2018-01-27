@@ -31,9 +31,11 @@ class ImageCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(_ image:Image) {
-        self.imageScrollView.setup(image: image)
+    func setup(_ image:Image, sourceImageView:ImageView? = nil) {
+        self.imageScrollView.setup(image: image, sourceImageView: sourceImageView)
     }
+    
+    
     
     override func prepareForReuse() {
         super.prepareForReuse()

@@ -11,7 +11,15 @@ import AVKit
 
 class MessageController: STTableViewController {
     
-    let customTransition = CustomTransitionDelegate()
+    let customTransition = ImageDetailTransitionDelegate()
+    
+    
+    //
+    
+    private var currentMessageMultipleImageCell : MessageMultipleImageCell?
+    private var currentSelectedImageViewIndex : Int = 0
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,16 +102,38 @@ extension MessageController {
 // MessageMultipleImageCellAction
 
 extension MessageController : MessageMultipleImageCellAction {
-    func messageCell(_ cell: MessageMultipleImageCell, imageView: ImageView, index: Int) {
+    
+    
+    
+    func messageCell(_ cell: MessageMultipleImageCell, imageViews: [ImageView], index: Int) {
         if let indexPath = tableView.indexPath(for: cell),
             let messageItem = self.messageItem(at: indexPath),
             let message = messageItem.item as? Message,
             let images = message.pictureUrls,
             images.count > 0{
-            let vc = ImageDetailController(images, selected: index)
+            
+            currentMessageMultipleImageCell = cell
+            currentSelectedImageViewIndex = index
+
+            
+            let vc = ImageDetailController(images, selected: index, source: imageViews)
             vc.modalPresentationStyle = .custom
             vc.transitioningDelegate = customTransition
             present(vc, animated: true, completion: nil)
         }
+    }
+}
+
+// ImageDetailTransitionProtocol
+
+extension MessageController : ImageDetailTransitionProtocol {
+    
+    func sourceImageView(at index: Int) -> (ImageView, CGRect)? {
+        if let cell = currentMessageMultipleImageCell {
+            var (imageView,rect) = cell.selectedImageViewRect(at: index)
+            rect = cell.convert(rect, to: self.view)
+            return (imageView,rect)
+        }
+        return nil
     }
 }

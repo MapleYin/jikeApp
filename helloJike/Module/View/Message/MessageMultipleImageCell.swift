@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MessageMultipleImageCellAction : MessageCellAction {
-    func messageCell(_ cell:MessageMultipleImageCell, imageView:ImageView, index:Int) -> Void
+    func messageCell(_ cell:MessageMultipleImageCell, imageViews:[ImageView], index:Int) -> Void
 }
 
 class MessageMultipleImageCell: MessageTextCell {
@@ -27,8 +27,8 @@ class MessageMultipleImageCell: MessageTextCell {
         
         mediaView.addSubview(multipleImageView)
         
-        multipleImageView.imageSelectActionBlock = { (ImageView,index) in
-            self.delegate?.messageCell(self, imageView: ImageView, index: index)
+        multipleImageView.imageSelectActionBlock = { (imageViews,index) in
+            self.delegate?.messageCell(self, imageViews: imageViews, index: index)
         }
         
         multipleImageView.snp.makeConstraints { (make) in
@@ -46,5 +46,11 @@ class MessageMultipleImageCell: MessageTextCell {
     override func setup(message:Message) {
         super.setup(message: message)
         multipleImageView.setup(message.pictureUrls!)
+    }
+    
+    func selectedImageViewRect(at index:Int) -> (ImageView, CGRect) {
+        let imageView = multipleImageView.imageViewAtIndex(index)
+        let rect = multipleImageView.convert(imageView.frame, to: self.contentView)
+        return (imageView,rect)
     }
 }
