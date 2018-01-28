@@ -187,6 +187,7 @@
 		6639FA9F200E0D40007220DF /* ImageDetail */ = {
 			isa = PBXGroup;
 			children = (
+				6699C119201B1E7100BA43E1 /* Transitioning */,
 				F5ABB177200E4CBE00D0CFBD /* View */,
 				6639FAA0200E0D61007220DF /* ImageDetailController.swift */,
 			);
@@ -213,7 +214,6 @@
 		668E70F81FF3AD7700D6AF0B /* App */ = {
 			isa = PBXGroup;
 			children = (
-				6699C119201B1E7100BA43E1 /* Transitioning */,
 				66CFA6502010384600D66546 /* Base */,
 				66CFA649200F254E00D66546 /* VideoPlayer */,
 				6639FA9F200E0D40007220DF /* ImageDetail */,
@@ -238,20 +238,12 @@
 		6699C119201B1E7100BA43E1 /* Transitioning */ = {
 			isa = PBXGroup;
 			children = (
-				6699C11D201B1F1A00BA43E1 /* ImageDetail */,
-			);
-			path = Transitioning;
-			sourceTree = "<group>";
-		};
-		6699C11D201B1F1A00BA43E1 /* ImageDetail */ = {
-			isa = PBXGroup;
-			children = (
 				F5ABB199201BF9AF00D0CFBD /* ImageDetailTransitionProtocol.swift */,
 				6699C11B201B1EEE00BA43E1 /* ImageDetailTransitionDelegate.swift */,
 				6699C11E201B1F9900BA43E1 /* ImageDetailPresentTransition.swift */,
 				6699C120201B227E00BA43E1 /* ImageDetailDismissTransition.swift */,
 			);
-			path = ImageDetail;
+			path = Transitioning;
 			sourceTree = "<group>";
 		};
 		669DB74C1FF1E47A006D76C4 /* Utils */ = {
