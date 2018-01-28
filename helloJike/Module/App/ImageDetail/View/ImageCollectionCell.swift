@@ -34,8 +34,6 @@ class ImageCollectionCell: UICollectionViewCell {
         self.imageScrollView.setup(image: image, sourceImageView: sourceImageView)
     }
     
-    
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         imageScrollView.reset()

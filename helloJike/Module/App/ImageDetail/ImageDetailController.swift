@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ImageDetailController: STViewController {
     
     var imageCollectionView:UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout:UICollectionViewFlowLayout())
-    let closeButton = UIButton(type: .custom)
     var images:[Image] = []
     var currentDisplayIndex = 0
     var sourceImageViews:[ImageView] = []
+    
+    var downloadMap:[Int:RetrieveImageTask] = [:]
     
     convenience init(_ images:[Image], selected index:Int = 0, source imageViews:[ImageView]) {
         self.init()
@@ -47,29 +49,28 @@ class ImageDetailController: STViewController {
             make.edges.equalTo(view).inset(edge)
         }
         
-        
-        closeButton.setTitle("X", for: .normal)
-        closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        closeButton.setTitleColor(UIColor.white, for: .normal)
-        closeButton.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
-        view.addSubview(closeButton)
-        
-        closeButton.snp.makeConstraints { (make) in
-            make.leading.equalTo(view).offset(20)
-            make.top.equalTo(view).offset(view.safeAreaInsets.top)
-        }
-        
         let indexPath = IndexPath(row: currentDisplayIndex, section: 0)
         imageCollectionView.layoutIfNeeded()
         imageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
+        self.view.addGestureRecognizer(tap)
+        
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
-    @objc func dismissController() {
+    func dismissController() {
         dismiss(animated: true)
+    }
+    
+    @objc func tap(_ gesture:UIGestureRecognizer) {
+        if gesture.numberOfTouches == 1 {
+            dismissController()
+        }
     }
 }
 
@@ -116,8 +117,22 @@ extension ImageDetailController : UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { (indexPath) in
             let image = images[indexPath.row]
-            DownloadImage(image: image, quality: .high)
+            let imageView = self.sourceImageViews[indexPath.row]
+            downloadMap[indexPath.row] = DownloadImage(image: image, quality: .high, completionHandler: { (image, error, type, url) in
+                if let image = image {
+                    imageView.image = image
+                }
+                self.downloadMap[indexPath.row] = nil
+            })
         }
-        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach { (indexPath) in
+            if let task = downloadMap[indexPath.row] {
+                task.cancel()
+                self.downloadMap[indexPath.row] = nil
+            }
+        }
     }
 }
