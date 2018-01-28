@@ -44,6 +44,9 @@
 		F51808011FEEA6990021D9D3 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51808001FEEA6990021D9D3 /* AccountService.swift */; };
 		F51808031FEEA7C80021D9D3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51808021FEEA7C80021D9D3 /* User.swift */; };
 		F51808051FEEA88D0021D9D3 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51808041FEEA88D0021D9D3 /* UserPreferences.swift */; };
+		F51F7AF7201D5D0F00ADFAEE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F7AF6201D5D0F00ADFAEE /* PlayerView.swift */; };
+		F51F7AF9201DB31100ADFAEE /* PlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F7AF8201DB31100ADFAEE /* PlayerControlView.swift */; };
+		F51F7AFC201DFD2300ADFAEE /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F7AFB201DFD2300ADFAEE /* ProgressView.swift */; };
 		F53DFDFE1FEEC172009B649D /* RecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFDFD1FEEC172009B649D /* RecommendController.swift */; };
 		F53DFE031FEF3091009B649D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE021FEF3091009B649D /* Message.swift */; };
 		F53DFE071FEFFDAF009B649D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE061FEFFDAF009B649D /* Image.swift */; };
@@ -121,6 +124,9 @@
 		F51808001FEEA6990021D9D3 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		F51808021FEEA7C80021D9D3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F51808041FEEA88D0021D9D3 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		F51F7AF6201D5D0F00ADFAEE /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		F51F7AF8201DB31100ADFAEE /* PlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlView.swift; sourceTree = "<group>"; };
+		F51F7AFB201DFD2300ADFAEE /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		F53DFDFD1FEEC172009B649D /* RecommendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendController.swift; sourceTree = "<group>"; };
 		F53DFE021FEF3091009B649D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F53DFE061FEFFDAF009B649D /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -401,6 +407,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F51F7AF5201D5CB800ADFAEE /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				F51F7AFA201DFD0A00ADFAEE /* ProgressView */,
+				F51F7AF6201D5D0F00ADFAEE /* PlayerView.swift */,
+				F51F7AF8201DB31100ADFAEE /* PlayerControlView.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		F51F7AFA201DFD0A00ADFAEE /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				F51F7AFB201DFD2300ADFAEE /* ProgressView.swift */,
+			);
+			path = ProgressView;
+			sourceTree = "<group>";
+		};
 		F53DFDFC1FEEC12D009B649D /* Recommend */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +494,7 @@
 			children = (
 				6639FAA4200EECEB007220DF /* Base */,
 				F53DFE291FF297DC009B649D /* Message */,
+				F51F7AF5201D5CB800ADFAEE /* Player */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -746,6 +771,7 @@
 				669DB7581FF1FDA8006D76C4 /* AppDelegate+Data.swift in Sources */,
 				F51807F61FEE8F670021D9D3 /* MainTabBarController.swift in Sources */,
 				66CFA64B200F26BB00D66546 /* VideoPlayerController.swift in Sources */,
+				F51F7AF7201D5D0F00ADFAEE /* PlayerView.swift in Sources */,
 				F5ABB1882014BD5E00D0CFBD /* DateEx.swift in Sources */,
 				6639FAA1200E0D61007220DF /* ImageDetailController.swift in Sources */,
 				669DB74B1FF1E3F5006D76C4 /* AppDelegate+UI.swift in Sources */,
@@ -757,7 +783,9 @@
 				F53DFE1D1FF14773009B649D /* MessageItemTransformType.swift in Sources */,
 				F53DFE0B1FF11EC8009B649D /* Topic.swift in Sources */,
 				6699C11C201B1EEE00BA43E1 /* ImageDetailTransitionDelegate.swift in Sources */,
+				F51F7AFC201DFD2300ADFAEE /* ProgressView.swift in Sources */,
 				F5ABB176200D0DA400D0CFBD /* MessageSourceView.swift in Sources */,
+				F51F7AF9201DB31100ADFAEE /* PlayerControlView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

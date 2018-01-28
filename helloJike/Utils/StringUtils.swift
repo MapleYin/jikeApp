@@ -21,3 +21,11 @@ func RandomString(_ lengthOfString:Int) -> String {
     }
     return resultString
 }
+
+
+
+func TimeString(_ time:Int) -> String {
+    let minite = time / 60
+    let secend:Int = Int(Float(time).truncatingRemainder(dividingBy: 60))
+    return String(format: "%.2d:%.2d", minite,secend)
+}

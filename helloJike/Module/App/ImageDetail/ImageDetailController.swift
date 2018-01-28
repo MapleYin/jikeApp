@@ -72,6 +72,11 @@ class ImageDetailController: STViewController {
             dismissController()
         }
     }
+    
+    
+    override func prefersHomeIndicatorAutoHidden() -> Bool {
+        return true
+    }
 }
 
 

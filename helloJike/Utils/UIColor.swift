@@ -16,6 +16,8 @@ extension UIColor {
     
     static let black66 = UIColor(red:0.400, green:0.400, blue:0.400, alpha:1.000)
     
+    static let black5B = UIColor(red:0.357, green:0.357, blue:0.357, alpha:1.000)
+    
     static let title = UIColor(red:0.200, green:0.200, blue:0.200, alpha:1.000)
     
     static let subtitle = UIColor(red:0.518, green:0.522, blue:0.525, alpha:1.000)

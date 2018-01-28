@@ -8,7 +8,15 @@
 
 import UIKit
 
+
+protocol MessageVideoCellAction : MessageCellAction {
+    func messageCell(_ cell:MessageVideoCell, playVideo player:(PlayerView)->Void) -> Void
+}
+
 class MessageVideoCell: MessageTextCell {
+    
+    weak var delegate:MessageVideoCellAction?
+    private weak var playerView:PlayerView?
     
     let videoView = MessageVideoView()
     
@@ -26,6 +34,11 @@ class MessageVideoCell: MessageTextCell {
             make.leading.equalTo(mediaView)
             make.trailing.equalTo(mediaView)
         }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(videoTap(_:)))
+        
+        videoView.addGestureRecognizer(tapGesture)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,5 +49,26 @@ class MessageVideoCell: MessageTextCell {
         super.setup(message: message)
         videoView.setup(message.video!)
     }
-
+    
+    
+    @objc private func videoTap(_ gestureRecognizer:UIGestureRecognizer) {
+        delegate?.messageCell(self, playVideo: { (playerView) in
+            self.playerView = playerView
+            if playerView.superview != mediaView {
+                mediaView.addSubview(playerView)
+                playerView.snp.makeConstraints({ (make) in
+                    make.edges.equalTo(videoView)
+                })
+            }
+            
+            playerView.play()
+        })
+    }
+    
+    
+    func removePlayerIfNeeded() {
+        self.playerView?.pause()
+        self.playerView?.removeFromSuperview()
+        self.playerView = nil
+    }
 }

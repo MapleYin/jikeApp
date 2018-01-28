@@ -20,6 +20,8 @@ class MessageController: STTableViewController {
     private var currentSelectedImageViewIndex : Int = 0
     private var isStatusBarHidden = false
     
+    private let playerView = PlayerView()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +78,7 @@ extension MessageController {
                 cell = messageCell
             } else if message.video != nil {
                 let videoCell = tableView.dequeueReusableCell(withIdentifier: MessageVideoCell.identifier, for: indexPath) as! MessageVideoCell
+                videoCell.delegate = self
                 videoCell.setup(message: message)
                 cell = videoCell
             } else {
@@ -115,15 +118,17 @@ extension MessageController {
             loadMore()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let videoCell = cell as? MessageVideoCell {
+            videoCell.removePlayerIfNeeded()
+        }
+    }
 }
 
 
-// MessageMultipleImageCellAction
-
+// MARK: - MessageMultipleImageCellAction
 extension MessageController : MessageMultipleImageCellAction {
-    
-    
-    
     func messageCell(_ cell: MessageMultipleImageCell, imageViews: [ImageView], index: Int) {
         if let indexPath = tableView.indexPath(for: cell),
             let messageItem = self.messageItem(at: indexPath),
@@ -149,8 +154,22 @@ extension MessageController : MessageMultipleImageCellAction {
     }
 }
 
-// ImageDetailTransitionProtocol
 
+// MARK: - MessageVideoCellAction
+
+extension MessageController : MessageVideoCellAction {
+    func messageCell(_ cell: MessageVideoCell, playVideo player: (PlayerView) -> Void) {
+        if let indexPath = tableView.indexPath(for: cell),
+            let messageItem = self.messageItem(at: indexPath),
+            let message = messageItem.item as? Message {
+            playerView.setup(message: message)
+            player(playerView)
+        }
+    }
+}
+
+
+// MARK: - ImageDetailTransitionProtocol
 extension MessageController : ImageDetailTransitionProtocol {
     
     func sourceImageView(at index: Int) -> (ImageView, CGRect)? {
