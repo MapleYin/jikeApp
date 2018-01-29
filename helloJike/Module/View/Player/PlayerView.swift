@@ -169,4 +169,9 @@ extension PlayerView : PlayerControlDelegate{
             play()
         }
     }
+    
+    func controlView(_ controlView: PlayerControlView, didClickExpandButton: UIButton) {
+        
+//        UIApplication.shared.keyWindow?.rootViewController?.present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+    }
 }

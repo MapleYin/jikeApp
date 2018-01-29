@@ -77,6 +77,10 @@ class ImageDetailController: STViewController {
     override func prefersHomeIndicatorAutoHidden() -> Bool {
         return true
     }
+    
+    deinit {
+        print("ImageDetailController deinit")
+    }
 }
 
 
@@ -123,21 +127,10 @@ extension ImageDetailController : UICollectionViewDataSourcePrefetching {
         indexPaths.forEach { (indexPath) in
             let image = images[indexPath.row]
             let imageView = self.sourceImageViews[indexPath.row]
-            downloadMap[indexPath.row] = DownloadImage(image: image, quality: .high, completionHandler: { (image, error, type, url) in
-                if let image = image {
-                    imageView.image = image
-                }
-                self.downloadMap[indexPath.row] = nil
-            })
+            imageView.setImage(image, quality: .high, placeholder: imageView.image, progressBlock: nil, completionHandler: nil)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        indexPaths.forEach { (indexPath) in
-            if let task = downloadMap[indexPath.row] {
-                task.cancel()
-                self.downloadMap[indexPath.row] = nil
-            }
-        }
     }
 }

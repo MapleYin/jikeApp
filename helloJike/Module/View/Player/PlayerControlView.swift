@@ -11,6 +11,7 @@ import UIKit
 
 protocol PlayerControlDelegate:class {
     func controlView(_ controlView:PlayerControlView, didClickPlayButton:UIButton) -> Void
+    func controlView(_ controlView:PlayerControlView, didClickExpandButton:UIButton) -> Void
 }
 
 class PlayerControlView: UIView {
