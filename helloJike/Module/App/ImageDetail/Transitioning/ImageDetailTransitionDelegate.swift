@@ -10,8 +10,8 @@ import UIKit
 
 class ImageDetailTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
-    var targetViewController:ImageDetailController?
-    var sourceViewController:(UIViewController&ImageDetailTransitionProtocol)?
+    weak var targetViewController:ImageDetailController?
+    weak var sourceViewController:(UIViewController&ImageDetailTransitionProtocol)?
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if presented is ImageDetailController,

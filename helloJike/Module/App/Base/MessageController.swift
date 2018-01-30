@@ -11,7 +11,7 @@ import AVKit
 
 class MessageController: STTableViewController {
     
-    let customTransition = ImageDetailTransitionDelegate()
+    var customTransition:UIViewControllerTransitioningDelegate?
     
     
     //
@@ -54,6 +54,10 @@ class MessageController: STTableViewController {
                 self.setNeedsStatusBarAppearanceUpdate()
             }
         }
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return [.portrait]
     }
 }
 
@@ -139,7 +143,7 @@ extension MessageController : MessageMultipleImageCellAction {
             currentMessageMultipleImageCell = cell
             currentSelectedImageViewIndex = index
 
-            
+            customTransition = ImageDetailTransitionDelegate()
             let vc = ImageDetailController(images, selected: index, source: imageViews)
             vc.modalPresentationStyle = .fullScreen
             vc.transitioningDelegate = customTransition

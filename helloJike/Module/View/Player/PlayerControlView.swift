@@ -37,6 +37,7 @@ class PlayerControlView: UIView {
         totalTimeLabel.font = UIFont.systemFont(ofSize: 12)
         
         expandButton.setImage(#imageLiteral(resourceName: "icon_expand"), for: .normal)
+        expandButton.addTarget(self, action: #selector(didClickButton(_:)), for: .touchUpInside)
         
         playButton.setImage(#imageLiteral(resourceName: "icon_play"), for: .normal)
         playButton.addTarget(self, action: #selector(didClickButton(_:)), for: .touchUpInside)
@@ -111,7 +112,11 @@ class PlayerControlView: UIView {
     }
     
     @objc func didClickButton(_ btn:UIButton) {
-        delegate?.controlView(self, didClickPlayButton: btn)
+        if btn == self.playButton {
+            delegate?.controlView(self, didClickPlayButton: btn)
+        } else if btn == self.expandButton {
+            delegate?.controlView(self, didClickExpandButton: btn)
+        }
     }
     
     func updatPlayStatus(_ isPlaying:Bool) {

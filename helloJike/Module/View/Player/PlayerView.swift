@@ -19,9 +19,15 @@ class PlayerView: UIView {
     private let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     
+    weak var portraitParentView:UIView?
+    
+    
     var isPlaying = false
     var isAnimating = false
     var periodicTimeObserver:Any?
+    
+    
+    var isFullScreen = false
     
     
     init() {
@@ -161,7 +167,7 @@ extension PlayerView {
 
 
 // MARK: - PlayerControlDelegate
-extension PlayerView : PlayerControlDelegate{
+extension PlayerView : PlayerControlDelegate {
     func controlView(_ controlView: PlayerControlView, didClickPlayButton: UIButton) {
         if isPlaying {
             pause()
@@ -172,6 +178,34 @@ extension PlayerView : PlayerControlDelegate{
     
     func controlView(_ controlView: PlayerControlView, didClickExpandButton: UIButton) {
         
-//        UIApplication.shared.keyWindow?.rootViewController?.present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+        if isFullScreen {
+            isFullScreen = false
+            let keyWindows = UIApplication.shared.keyWindow
+            keyWindows?.rootViewController?.presentedViewController?.dismiss(animated: true, completion: {
+                
+            })
+        } else {
+            isFullScreen = true
+            let keyWindows = UIApplication.shared.keyWindow
+            let rect = self.convert(self.frame, to: keyWindows)
+            let vc = VideoPlayerLandscapeController(self, from: rect)
+            portraitParentView = superview
+            vc.modalPresentationStyle = .fullScreen
+            vc.transitioningDelegate = self
+            keyWindows?.rootViewController?.present(vc, animated: true, completion: nil)
+        }
+    }
+}
+
+
+// MARK: - UIViewControllerTransitioningDelegate
+
+extension PlayerView : UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return VideoPlayerLandscapeTransition()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return VideoPlayerPortraitTransition()
     }
 }

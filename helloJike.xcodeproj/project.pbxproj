@@ -48,6 +48,8 @@
 		F51F7AF7201D5D0F00ADFAEE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F7AF6201D5D0F00ADFAEE /* PlayerView.swift */; };
 		F51F7AF9201DB31100ADFAEE /* PlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F7AF8201DB31100ADFAEE /* PlayerControlView.swift */; };
 		F51F7AFC201DFD2300ADFAEE /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F7AFB201DFD2300ADFAEE /* ProgressView.swift */; };
+		F51F7AFF201F603300ADFAEE /* VideoPlayerLandscapeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F7AFE201F603300ADFAEE /* VideoPlayerLandscapeTransition.swift */; };
+		F51F7B01201F943E00ADFAEE /* VideoPlayerPortraitTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F7B00201F943E00ADFAEE /* VideoPlayerPortraitTransition.swift */; };
 		F53DFDFE1FEEC172009B649D /* RecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFDFD1FEEC172009B649D /* RecommendController.swift */; };
 		F53DFE031FEF3091009B649D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE021FEF3091009B649D /* Message.swift */; };
 		F53DFE071FEFFDAF009B649D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DFE061FEFFDAF009B649D /* Image.swift */; };
@@ -129,6 +131,8 @@
 		F51F7AF6201D5D0F00ADFAEE /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		F51F7AF8201DB31100ADFAEE /* PlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlView.swift; sourceTree = "<group>"; };
 		F51F7AFB201DFD2300ADFAEE /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		F51F7AFE201F603300ADFAEE /* VideoPlayerLandscapeTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerLandscapeTransition.swift; sourceTree = "<group>"; };
+		F51F7B00201F943E00ADFAEE /* VideoPlayerPortraitTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerPortraitTransition.swift; sourceTree = "<group>"; };
 		F53DFDFD1FEEC172009B649D /* RecommendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendController.swift; sourceTree = "<group>"; };
 		F53DFE021FEF3091009B649D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F53DFE061FEFFDAF009B649D /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -412,6 +416,7 @@
 		F51F7AF5201D5CB800ADFAEE /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				F51F7AFD201F5F8200ADFAEE /* Transitioning */,
 				F51F7AFA201DFD0A00ADFAEE /* ProgressView */,
 				F51F7AF6201D5D0F00ADFAEE /* PlayerView.swift */,
 				F51F7AF8201DB31100ADFAEE /* PlayerControlView.swift */,
@@ -426,6 +431,15 @@
 				F51F7AFB201DFD2300ADFAEE /* ProgressView.swift */,
 			);
 			path = ProgressView;
+			sourceTree = "<group>";
+		};
+		F51F7AFD201F5F8200ADFAEE /* Transitioning */ = {
+			isa = PBXGroup;
+			children = (
+				F51F7AFE201F603300ADFAEE /* VideoPlayerLandscapeTransition.swift */,
+				F51F7B00201F943E00ADFAEE /* VideoPlayerPortraitTransition.swift */,
+			);
+			path = Transitioning;
 			sourceTree = "<group>";
 		};
 		F53DFDFC1FEEC12D009B649D /* Recommend */ = {
@@ -728,9 +742,11 @@
 				F5ABB18F20162CD600D0CFBD /* MessageViewModel.swift in Sources */,
 				6639FAA3200E0D96007220DF /* MessageDetailController.swift in Sources */,
 				F53DFE3A1FF29E8E009B649D /* MessageBottomView.swift in Sources */,
+				F51F7AFF201F603300ADFAEE /* VideoPlayerLandscapeTransition.swift in Sources */,
 				F51807F81FEE8FCF0021D9D3 /* STNavigationController.swift in Sources */,
 				666423282018A13E00D9472A /* ImageDownloader.swift in Sources */,
 				F53DFDFE1FEEC172009B649D /* RecommendController.swift in Sources */,
+				F51F7B01201F943E00ADFAEE /* VideoPlayerPortraitTransition.swift in Sources */,
 				F5ABB17B200ECF5800D0CFBD /* STScrollView.swift in Sources */,
 				66CFA6522010387700D66546 /* MessageController.swift in Sources */,
 				6699C125201F273100BA43E1 /* VideoPlayerLandscapeController.swift in Sources */,
