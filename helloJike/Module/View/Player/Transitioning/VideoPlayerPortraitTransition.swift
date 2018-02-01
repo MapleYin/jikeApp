@@ -39,6 +39,7 @@ class VideoPlayerPortraitTransition: NSObject ,UIViewControllerAnimatedTransitio
         UIView.animate(withDuration:transitionDuration(using: transitionContext), animations: {
             fromView.transform = CGAffineTransform.identity
             fromView.frame = originRect
+            fromView.layoutIfNeeded()
         }) { (finished) in
             if let superView = player.portraitParentView {
                 superView.addSubview(player)

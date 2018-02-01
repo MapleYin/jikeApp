@@ -38,6 +38,7 @@ class VideoPlayerLandscapeTransition: NSObject ,UIViewControllerAnimatedTransiti
         UIView.animate(withDuration:transitionDuration(using: transitionContext), animations: {
             toView.transform = CGAffineTransform.identity
             toView.frame = finalFrame
+            toView.layoutIfNeeded()
         }) { (finished) in
             transitionContext.completeTransition(true)
         }
