@@ -17,10 +17,7 @@ class MessageTextCell: MessageCell {
     
     let titleLabel = UILabel()
     let mediaView = UIView()
-    let topicView = MessageTopicView()
-    let iconImageView = UIImageView()
-    let bottomView = MessageBottomView()
-    let bottomLine = UIView()
+    
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -36,10 +33,7 @@ class MessageTextCell: MessageCell {
         
         containerView.addSubview(titleLabel)
         containerView.addSubview(mediaView)
-        containerView.addSubview(topicView)
-        containerView.addSubview(iconImageView)
-        containerView.addSubview(bottomView)
-        containerView.addSubview(bottomLine)
+        
         
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(containerView).offset(15)
@@ -52,29 +46,9 @@ class MessageTextCell: MessageCell {
             make.leading.trailing.equalTo(containerView)
         }
         
-        topicView.snp.makeConstraints { (make) in
+        topicView.snp.remakeConstraints { (make) in
             make.top.equalTo(mediaView.snp.bottom).offset(10)
             make.leading.equalTo(containerView).offset(10)
-        }
-        iconImageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        iconImageView.snp.makeConstraints { (make) in
-            make.centerY.equalTo(topicView)
-            make.trailing.equalTo(containerView).offset(-10)
-            make.height.equalTo(12)
-            make.width.equalTo(20)
-        }
-        
-        bottomView.snp.makeConstraints { (make) in
-            make.top.equalTo(topicView.snp.bottom).offset(10)
-            make.leading.trailing.equalTo(containerView)
-            
-        }
-        
-        bottomLine.snp.makeConstraints { (make) in
-            make.top.equalTo(bottomView.snp.bottom).offset(10)
-            make.height.equalTo(5)
-            make.leading.trailing.equalTo(containerView)
-            make.bottom.equalTo(containerView.snp.bottom).priority(.low)
         }
     }
     
@@ -82,7 +56,9 @@ class MessageTextCell: MessageCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(message:Message) {
+    override func setup(message:Message) {
+        super.setup(message: message)
+        
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 5
         let attr = NSAttributedString(string: message.content!, attributes: [.paragraphStyle : paragraphStyle])
@@ -97,8 +73,6 @@ class MessageTextCell: MessageCell {
                 }
             })
         }
-        topicView.setup(topic: message.topic)
-        bottomView.setup(likeCount: message.likeCount, commentCount: message.commentCount, time: message.createdAt)
     }
     
     override func prepareForReuse() {

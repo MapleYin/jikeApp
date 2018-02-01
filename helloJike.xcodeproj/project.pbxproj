@@ -296,6 +296,13 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		66FA77B4202304DC00DEA2BF /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
 		8689E1310141C53849084A32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,6 +516,7 @@
 		F53DFE281FF297D1009B649D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				66FA77B4202304DC00DEA2BF /* Comment */,
 				6639FAA4200EECEB007220DF /* Base */,
 				F53DFE291FF297DC009B649D /* Message */,
 				F51F7AF5201D5CB800ADFAEE /* Player */,

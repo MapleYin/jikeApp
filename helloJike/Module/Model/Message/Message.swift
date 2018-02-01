@@ -13,8 +13,9 @@ import AVKit
 
 class Message : Mappable {
     var id:String!
-    var abstrct:String?
+    var abstract:String?
     var content:String?
+    var type:String?
     var messageId:Double!
     var topicId:Double!
     var topic:Topic!
@@ -45,7 +46,8 @@ class Message : Mappable {
         id <- map["id"]
         messageId <- map["messageId"]
         content <- map["content"]
-        abstrct <- map["abstrct"]
+        abstract <- map["abstract"]
+        type <- map["type"]
         topicId <- map["topicId"]
         topic <- map["topic"]
         linkUrl <- map["linkUrl"]

@@ -9,9 +9,15 @@
 import UIKit
 
 class MessageDetailController: STTableViewController {
+    var message:Message
     
-    convenience init(_ message:Message) {
-        self.init()
+    init(_ message:Message) {
+        self.message = message
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {

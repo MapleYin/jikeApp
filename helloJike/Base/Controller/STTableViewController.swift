@@ -21,7 +21,7 @@ class STTableViewController: STViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.refreshControl = refreshControl
-        
+        tableView.contentInsetAdjustmentBehavior = .never
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (maker) in
@@ -30,6 +30,13 @@ class STTableViewController: STViewController {
         
         
         registCellClasses(cellToRegist())
+    }
+    
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        let insets = self.view.safeAreaInsets
+        tableView.contentInset = insets
+        tableView.scrollIndicatorInsets = insets
     }
     
     @objc open func refreshData() {

@@ -13,9 +13,9 @@ class MeController: STTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let user = Cache.userDefault.getUser(), !user.isLoginUser else {
+        guard let user = Cache.userDefault.getUser(), user.isLoginUser else {
             
-//            self.present(LoginController(), animated: true, completion: nil)
+            self.present(LoginController(), animated: true, completion: nil)
             
             return
         }

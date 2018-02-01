@@ -23,19 +23,10 @@ class MessageController: STTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 300
-        
-        tableView.contentInsetAdjustmentBehavior = .never
-    }
-    
-    override func viewSafeAreaInsetsDidChange() {
-        super.viewSafeAreaInsetsDidChange()
-        let insets = self.view.safeAreaInsets
-        tableView.contentInset = insets
-        tableView.scrollIndicatorInsets = insets
     }
     
     override func cellToRegist() -> [BaseCell.Type] {
-        return [MessageCell.self,MessageTextCell.self,MessageMultipleImageCell.self,MessageVideoCell.self]
+        return [MessageCell.self,MessageTextCell.self,MessageMultipleImageCell.self,MessageVideoCell.self,MessageTextImageCell.self]
     }
     
     func messageItem(at indexPath:IndexPath) -> MessageItem? {
@@ -78,8 +69,12 @@ extension MessageController {
         
         
         if let message = messageItem.item as? Message {
-            
-            if let picUrls = message.pictureUrls,
+            if let type = message.type,
+                type == "article" {
+                let messageTextImageCell = tableView.dequeueReusableCell(withIdentifier: MessageTextImageCell.identifier, for: indexPath) as! MessageTextImageCell
+                messageTextImageCell.setup(message: message)
+                cell = messageTextImageCell
+            } else if let picUrls = message.pictureUrls,
                 picUrls.count > 0 {
                 let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageMultipleImageCell.identifier, for: indexPath) as! MessageMultipleImageCell
                 messageCell.delegate = self
@@ -90,7 +85,7 @@ extension MessageController {
                 videoCell.delegate = self
                 videoCell.setup(message: message)
                 cell = videoCell
-            } else {
+            } else  {
                 let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageTextCell.identifier, for: indexPath) as! MessageTextCell
                 messageCell.setup(message: message)
                 cell = messageCell

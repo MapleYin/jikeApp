@@ -41,10 +41,6 @@ class RecommendController: MessageController {
         }
     }
     
-    override func cellToRegist() -> [BaseCell.Type] {
-        return [MessageCell.self,MessageTextCell.self,MessageMultipleImageCell.self,MessageVideoCell.self]
-    }
-    
     override func messageItem(at indexPath: IndexPath) -> MessageItem? {
         if indexPath.row < self.dataArray.count {
             return self.dataArray[indexPath.row]
@@ -67,9 +63,7 @@ class RecommendController: MessageController {
                         index = index + 1
                     }
                 }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                self.tableView.insertRows(at: indexPathArray, with: .automatic)
             }
         }
     }
