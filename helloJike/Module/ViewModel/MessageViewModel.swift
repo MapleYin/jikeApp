@@ -6,38 +6,73 @@
 //  Copyright © 2018年 Maple Yin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct MessageViewModel {
-    enum CellType {
-        case text,image,video
+    struct MediaOptions:OptionSet{
+        let rawValue: Int
+        
+        static let text    = MediaOptions(rawValue: 1 << 0)
+        static let image   = MediaOptions(rawValue: 1 << 1)
+        static let video   = MediaOptions(rawValue: 1 << 2)
+        static let audio   = MediaOptions(rawValue: 1 << 3)
+        
+        static let imageText:MediaOptions = [.text,.image]
     }
     
-    let type:CellType
+    enum CellType {
+        case imageText,media
+    }
     
-    var title:String?
-    var content:String?
-    var images:[Image]?
-    var video:Video?
-    var tpoic:Topic
+    
+    let cellType:CellType
+    let mediaType:MediaOptions
+    
+    var title:NSAttributedString?
+    var content:NSAttributedString?
+    let images:[Image]
+    var video:VideoViewModel?
+    let tpoic:MessageTopicViewModel
     
     init(message:Message) {
-        tpoic = message.topic
-        type = {
-            if let picUrls = message.pictureUrls,
-                picUrls.count > 0 {
-                return .image
-            } else if message.video != nil {
-                return .video
-            } else {
-                return .text
-            }
-        }()
         
-        title = message.content
-//        content = message.
-        images = message.pictureUrls
-        video = message.video
+        if message.type == "article" {
+            cellType = .imageText
+        } else {
+            cellType = .media
+        }
+        
+        var medias = MediaOptions()
+        if message.content != nil {
+            medias.update(with: .text)
+        }
+        if let images = message.pictureUrls,
+            images.count > 0 {
+            medias.update(with: .image)
+        }
+        if message.video != nil {
+           medias.update(with: .video)
+        }
+        mediaType = medias
+
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 5
+        if let content = message.content {
+            let attributedString = NSAttributedString(string: content, attributes: [.paragraphStyle : paragraphStyle])
+            title = attributedString
+        }
+        if let abstract = message.abstract {
+            let attributedString = NSAttributedString(string: abstract, attributes: [.paragraphStyle : paragraphStyle])
+            content = attributedString
+        }
+        
+        
+        images = message.pictureUrls ?? []
+        if let video = message.video {
+            self.video = VideoViewModel(video)
+        }
+        tpoic = MessageTopicViewModel(message.topic)
     }
     
 }

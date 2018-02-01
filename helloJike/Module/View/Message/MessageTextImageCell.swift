@@ -72,16 +72,11 @@ class MessageTextImageCell: MessageCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setup(message: Message) {
-        super.setup(message: message)
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 5
-        paragraphStyle.lineBreakMode = .byTruncatingTail
-        let attr = NSAttributedString(string: message.content!, attributes: [.paragraphStyle : paragraphStyle])
-        titleLabel.attributedText = attr
-        let abstract = NSAttributedString(string: message.abstract!, attributes: [.paragraphStyle : paragraphStyle])
-        digestLabel.attributedText = abstract
-        if let image = message.pictureUrls?.first {
+    override func setup(viewModel: MessageViewModel) {
+        super.setup(viewModel: viewModel)
+        titleLabel.attributedText = viewModel.title
+        digestLabel.attributedText = viewModel.content
+        if let image = viewModel.images.first {
             postImageView.setImage(image)
             postImageView.isHidden = false
             self.titleConstraint?.constraint.deactivate()

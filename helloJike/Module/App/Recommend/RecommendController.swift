@@ -10,7 +10,8 @@ import UIKit
 
 class RecommendController: MessageController {
     
-    var dataArray:[MessageItem] = []
+    var modelArray:[Message] = []
+    var viewModelArray:[Any] = []
     var dataService:MessageService = MessageService(type: .recommend)
 
     override func viewDidLoad() {
@@ -27,10 +28,12 @@ class RecommendController: MessageController {
                 var indexPathArray:[IndexPath] = []
                 
                 var index = 0
-                for (_ ,message) in messageLit.enumerated() {
-                    if message.type == "MESSAGE_RECOMMENDATION" {
+                for (_ ,messageItem) in messageLit.enumerated() {
+                    if messageItem.type == "MESSAGE_RECOMMENDATION",
+                        let message = messageItem.item as? Message {
                         indexPathArray.append(IndexPath(row: index, section: 0))
-                        self.dataArray.insert(message, at: index)
+                        self.modelArray.insert(message, at: index)
+                        self.viewModelArray.append(MessageViewModel(message: message))
                         index = index + 1
                     }
                 }
@@ -41,9 +44,17 @@ class RecommendController: MessageController {
         }
     }
     
-    override func messageItem(at indexPath: IndexPath) -> MessageItem? {
-        if indexPath.row < self.dataArray.count {
-            return self.dataArray[indexPath.row]
+    override func viewModel(at indexPath: IndexPath) -> Any? {
+        if indexPath.row < self.viewModelArray.count {
+            return self.viewModelArray[indexPath.row]
+        } else {
+            return nil
+        }
+    }
+    
+    override func model(at indexPath: IndexPath) -> Any? {
+        if indexPath.row < self.modelArray.count {
+            return self.modelArray[indexPath.row]
         } else {
             return nil
         }
@@ -55,11 +66,13 @@ class RecommendController: MessageController {
                 
                 var indexPathArray:[IndexPath] = []
                 
-                var index = self.dataArray.count
-                for (_ ,message) in messageLit.enumerated() {
-                    if message.type == "MESSAGE_RECOMMENDATION" {
+                var index = self.modelArray.count
+                for (_ ,messageItem) in messageLit.enumerated() {
+                    if messageItem.type == "MESSAGE_RECOMMENDATION",
+                        let message = messageItem.item as? Message {
                         indexPathArray.append(IndexPath(row: index, section: 0))
-                        self.dataArray.append(message)
+                        self.modelArray.append(message)
+                        self.viewModelArray.append(MessageViewModel(message: message))
                         index = index + 1
                     }
                 }
@@ -73,6 +86,6 @@ class RecommendController: MessageController {
 extension RecommendController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataArray.count
+        return self.viewModelArray.count
     }
 }

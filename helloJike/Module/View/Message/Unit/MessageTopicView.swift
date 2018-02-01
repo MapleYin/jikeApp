@@ -40,10 +40,8 @@ class MessageTopicView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(topic:Topic) {
-        if let url = URL(string: topic.thumbnailUrl) {
-            avatarImageView.kf.setImage(with: url)
-        }
-        nameLabel.text = topic.content
+    func setup(viewModel:MessageTopicViewModel) {
+        avatarImageView.kf.setImage(with: viewModel.avatarUrl)
+        nameLabel.text = viewModel.topicName
     }
 }

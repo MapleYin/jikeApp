@@ -52,9 +52,8 @@ class MessageVideoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(_ video:Video) {
-        let url = URL(string: video.thumbnailUrl)
-        imageView.kf.setImage(with: url)
-        timeLabel.text = video.durationText
+    func setup(_ viewModel:VideoViewModel) {
+        imageView.kf.setImage(with: viewModel.coverImageUrl)
+        timeLabel.text = viewModel.durationText
     }
 }

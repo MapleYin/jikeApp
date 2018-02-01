@@ -81,9 +81,9 @@ class MessageCell: BaseCell {
         }
     }
     
-    func setup(message:Message) {
-        topicView.setup(topic: message.topic)
-        bottomView.setup(likeCount: message.likeCount, commentCount: message.commentCount, time: message.createdAt)
+    func setup(viewModel: MessageViewModel) {
+        topicView.setup(viewModel: viewModel.tpoic)
+//        bottomView.setup(likeCount: message.likeCount, commentCount: message.commentCount, time: message.createdAt)
     }
     
 }
