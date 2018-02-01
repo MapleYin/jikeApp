@@ -28,15 +28,19 @@ class MessageCell: BaseCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // Initialization code
+        selectionStyle = .none
         contentView.addSubview(containerView)
+        
+        iconImageView.contentMode = .scaleAspectFit
+        bottomLine.backgroundColor = UIColor.side
         
         containerView.addSubview(topicView)
         containerView.addSubview(iconImageView)
         containerView.addSubview(bottomView)
-        containerView.addSubview(bottomLine)
+        contentView.addSubview(bottomLine)
         
         containerView.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentView)
+            make.leading.trailing.top.equalTo(contentView)
         }
         
         topicView.snp.makeConstraints { (make) in
@@ -54,18 +58,27 @@ class MessageCell: BaseCell {
         bottomView.snp.makeConstraints { (make) in
             make.top.equalTo(topicView.snp.bottom).offset(10)
             make.leading.trailing.equalTo(containerView)
+            make.bottom.equalTo(containerView).offset(-10)
         }
         
         bottomLine.snp.makeConstraints { (make) in
-            make.top.equalTo(bottomView.snp.bottom).offset(10)
+            make.top.equalTo(containerView.snp.bottom)
             make.height.equalTo(5)
-            make.leading.trailing.equalTo(containerView)
-            make.bottom.equalTo(containerView.snp.bottom).priority(.low)
+            make.leading.trailing.equalTo(contentView)
+            make.bottom.equalTo(contentView.snp.bottom).priority(.low)
         }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        if highlighted {
+            containerView.backgroundColor = UIColor.line
+        } else {
+            containerView.backgroundColor = UIColor.clear
+        }
     }
     
     func setup(message:Message) {

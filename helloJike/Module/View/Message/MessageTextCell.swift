@@ -27,10 +27,6 @@ class MessageTextCell: MessageCell {
         titleLabel.numberOfLines = 10
         titleLabel.textColor = UIColor.title
         
-        iconImageView.contentMode = .scaleAspectFit
-        
-        bottomLine.backgroundColor = UIColor.side
-        
         containerView.addSubview(titleLabel)
         containerView.addSubview(mediaView)
         

@@ -31,7 +31,7 @@ class MessageTextImageCell: MessageCell {
         
         digestLabel.font = UIFont.systemFont(ofSize: 14)
         digestLabel.numberOfLines = 2
-        digestLabel.textColor = UIColor.darkText
+        digestLabel.textColor = UIColor.subtitle
         
         postImageView.contentMode = .scaleAspectFill
         postImageView.clipsToBounds = true
@@ -61,7 +61,8 @@ class MessageTextImageCell: MessageCell {
         }
         
         topicView.snp.remakeConstraints { (make) in
-            make.top.equalTo(digestLabel.snp.bottom).offset(10)
+            make.top.equalTo(digestLabel.snp.bottom).offset(10).priority(.high)
+            make.top.greaterThanOrEqualTo(postImageView.snp.bottom).offset(10)
             make.leading.equalTo(containerView).offset(10)
         }
         
@@ -75,9 +76,11 @@ class MessageTextImageCell: MessageCell {
         super.setup(message: message)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 5
+        paragraphStyle.lineBreakMode = .byTruncatingTail
         let attr = NSAttributedString(string: message.content!, attributes: [.paragraphStyle : paragraphStyle])
         titleLabel.attributedText = attr
-        digestLabel.text = message.abstract
+        let abstract = NSAttributedString(string: message.abstract!, attributes: [.paragraphStyle : paragraphStyle])
+        digestLabel.attributedText = abstract
         if let image = message.pictureUrls?.first {
             postImageView.setImage(image)
             postImageView.isHidden = false

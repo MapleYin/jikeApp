@@ -94,6 +94,10 @@ extension MessageController {
             print(messageItem)
         }
         
+        if indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1 {
+            loadMore()
+        }
+        
         return cell
     }
     
@@ -113,13 +117,6 @@ extension MessageController {
             } else {
                 print(message.originalLinkUrl ?? "")
             }
-        }
-    }
-    
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 2 {
-            loadMore()
         }
     }
     
