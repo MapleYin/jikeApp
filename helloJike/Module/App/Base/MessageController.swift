@@ -13,9 +13,6 @@ class MessageController: STTableViewController {
     
     var customTransition:UIViewControllerTransitioningDelegate?
     
-    
-    //
-    
     private var currentMessageMultipleImageCell : MessageMultipleImageCell?
     private var currentSelectedImageViewIndex : Int = 0
     private var isStatusBarHidden = false
@@ -25,8 +22,16 @@ class MessageController: STTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.estimatedRowHeight = 300
+        
+        tableView.contentInsetAdjustmentBehavior = .never
+    }
+    
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        let insets = self.view.safeAreaInsets
+        tableView.contentInset = insets
+        tableView.scrollIndicatorInsets = insets
     }
     
     override func cellToRegist() -> [BaseCell.Type] {

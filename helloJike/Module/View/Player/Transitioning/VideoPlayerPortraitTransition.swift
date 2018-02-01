@@ -23,18 +23,22 @@ class VideoPlayerPortraitTransition: NSObject ,UIViewControllerAnimatedTransitio
         
         toView.frame = transitionContext.finalFrame(for: toVC)
         
-        containerView.addSubview(toView)
-        containerView.addSubview(fromView)
-        
-        
         let player = formVC.player
         let originRect = formVC.originRect
         
-        fromView.frame = originRect
+        containerView.addSubview(toView)
+        containerView.addSubview(fromView)
         
+        fromView.frame = transitionContext.finalFrame(for: formVC)
         
-        UIView.animate(withDuration:2, animations: {
-            fromView.backgroundColor = UIColor(red:0.000, green:0.000, blue:0.000, alpha:0.000)
+        let rotate = CGFloat(Double.pi/2)
+        let tramsform = CGAffineTransform(rotationAngle: rotate)
+        fromView.transform = tramsform
+        
+    
+        UIView.animate(withDuration:transitionDuration(using: transitionContext), animations: {
+            fromView.transform = CGAffineTransform.identity
+            fromView.frame = originRect
         }) { (finished) in
             if let superView = player.portraitParentView {
                 superView.addSubview(player)

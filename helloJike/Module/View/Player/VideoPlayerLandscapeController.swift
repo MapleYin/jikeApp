@@ -34,8 +34,7 @@ class VideoPlayerLandscapeController: STViewController {
             make.edges.equalTo(view)
         }
     }
-    
-    
+
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return [.landscapeLeft,.landscapeRight]
     }
@@ -47,5 +46,4 @@ class VideoPlayerLandscapeController: STViewController {
     override func prefersHomeIndicatorAutoHidden() -> Bool {
         return true
     }
-    
 }

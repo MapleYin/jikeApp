@@ -20,25 +20,24 @@ class VideoPlayerLandscapeTransition: NSObject ,UIViewControllerAnimatedTransiti
         
         let finalFrame = transitionContext.finalFrame(for: toVC)
         let toView = toVC.view!
-        toView.frame = finalFrame
-        
-        let originRect = toVC.originRect
-        
-        let scale = toVC.originRect.width / finalFrame.width
-        let translate = CGPoint(x: finalFrame.midX - originRect.midY, y: finalFrame.midY - originRect.midX)
-        let rotate = -Double.pi/2
-        
-        let tramsform = CGAffineTransform(a: scale*CGFloat(cos(rotate)), b: scale*CGFloat(sin(rotate)), c: scale*CGFloat(-sin(rotate)), d: scale*CGFloat(cos(rotate)), tx: -translate.x, ty: -translate.y)
-        
-        toView.transform = tramsform
-        
-        toView.backgroundColor = UIColor(red:0.000, green:0.000, blue:0.000, alpha:0.000)
         
         containerView.addSubview(toView)
+        
+        let originRect = toVC.originRect
+        let center = CGPoint(x: originRect.midY, y: originRect.midX)
+        toView.frame = CGRect(x: center.x - originRect.width * 0.5,
+                              y: center.y - originRect.height * 0.5,
+                              width: originRect.width,
+                              height: originRect.height)
+        
+        let rotate = CGFloat(-Double.pi/2)
+        let tramsform = CGAffineTransform(rotationAngle: rotate)
+        toView.transform = tramsform
 
-        UIView.animate(withDuration:2, animations: {
+
+        UIView.animate(withDuration:transitionDuration(using: transitionContext), animations: {
             toView.transform = CGAffineTransform.identity
-            toView.backgroundColor = UIColor(red:0.000, green:0.000, blue:0.000, alpha:1.000)
+            toView.frame = finalFrame
         }) { (finished) in
             transitionContext.completeTransition(true)
         }
