@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 
-class UserPreferences: Mappable {
+class Preferences: Mappable {
     var openMessageTabOnLaunch:Bool!
     var tabOnLaunch:String!
     var repostWithComment:Bool!

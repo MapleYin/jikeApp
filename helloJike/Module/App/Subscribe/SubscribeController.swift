@@ -11,7 +11,7 @@ import AVKit
 
 class SubscribeController: MessageController {
 
-    var modelArray:[Message] = []
+    var modelArray:[FeedMessage] = []
     var viewModelArray:[Any] = []
     var dataService:MessageService = MessageService(type: .subscribe)
     
@@ -32,11 +32,11 @@ class SubscribeController: MessageController {
                 
                 var index = 0
                 for (_ ,messageItem) in messageLit.enumerated() {
-                    if messageItem.type == "MESSAGE",
-                        let message = messageItem.item as? Message {
+                    if messageItem.type == .message ,
+                        let message = messageItem.item as? FeedMessage {
                         indexPathArray.append(IndexPath(row: index, section: 0))
                         self.modelArray.insert(message, at: index)
-                        self.viewModelArray.append(MessageViewModel(message: message))
+                        self.viewModelArray.append(MessageViewModel(feedMessage: message))
                         index = index + 1
                     }
                 }
@@ -55,11 +55,11 @@ class SubscribeController: MessageController {
                 
                 var index = self.modelArray.count
                 for (_ ,messageItem) in messageLit.enumerated() {
-                    if messageItem.type == "MESSAGE",
-                        let message = messageItem.item as? Message {
+                    if messageItem.type == .message ,
+                        let message = messageItem.item as? FeedMessage {
                         indexPathArray.append(IndexPath(row: index, section: 0))
                         self.modelArray.append(message)
-                        self.viewModelArray.append(MessageViewModel(message: message))
+                        self.viewModelArray.append(MessageViewModel(feedMessage: message))
                         index = index + 1
                     }
                 }

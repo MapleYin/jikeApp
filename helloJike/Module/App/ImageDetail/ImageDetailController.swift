@@ -124,11 +124,11 @@ extension ImageDetailController : UICollectionViewDataSource {
 
 extension ImageDetailController : UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        indexPaths.forEach { (indexPath) in
-            let image = images[indexPath.row]
-            let imageView = self.sourceImageViews[indexPath.row]
-            imageView.setImage(image, quality: .high, placeholder: imageView.image, progressBlock: nil, completionHandler: nil)
-        }
+//        indexPaths.forEach { (indexPath) in
+//            let image = images[indexPath.row]
+//            let imageView = self.sourceImageViews[indexPath.row]
+//            imageView.setImage(image, quality: .high, placeholder: imageView.image, progressBlock: nil, completionHandler: nil)
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {

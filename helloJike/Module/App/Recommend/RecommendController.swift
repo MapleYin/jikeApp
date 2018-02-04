@@ -29,11 +29,16 @@ class RecommendController: MessageController {
                 
                 var index = 0
                 for (_ ,messageItem) in messageLit.enumerated() {
-                    if messageItem.type == "MESSAGE_RECOMMENDATION",
-                        let message = messageItem.item as? Message {
+                    
+                    if let message = messageItem.item as? FeedMessage {
                         indexPathArray.append(IndexPath(row: index, section: 0))
                         self.modelArray.insert(message, at: index)
-                        self.viewModelArray.append(MessageViewModel(message: message))
+                        self.viewModelArray.insert(MessageViewModel(feedMessage: message), at: index)
+                        index = index + 1
+                    } else if let message = messageItem.item as? UserMessage {
+                        indexPathArray.append(IndexPath(row: index, section: 0))
+                        self.modelArray.insert(message, at: index)
+                        self.viewModelArray.insert(MessageViewModel(userMessage: message), at: index)
                         index = index + 1
                     }
                 }
@@ -68,11 +73,11 @@ class RecommendController: MessageController {
                 
                 var index = self.modelArray.count
                 for (_ ,messageItem) in messageLit.enumerated() {
-                    if messageItem.type == "MESSAGE_RECOMMENDATION",
-                        let message = messageItem.item as? Message {
+                    if messageItem.type == .messageRecommend ,
+                        let message = messageItem.item as? FeedMessage {
                         indexPathArray.append(IndexPath(row: index, section: 0))
                         self.modelArray.append(message)
-                        self.viewModelArray.append(MessageViewModel(message: message))
+                        self.viewModelArray.append(MessageViewModel(feedMessage: message))
                         index = index + 1
                     }
                 }

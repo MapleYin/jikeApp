@@ -8,12 +8,22 @@
 
 import UIKit
 
+// item
+extension STButton {
+    func setupMessageBottomIconButton() {
+        titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        spacing = 5
+        tintColor = UIColor.mute
+    }
+}
+
+
 class MessageBottomView: UIView {
     let containerView = UIStackView()
     
-    let likeButton = MessageIconTextView(icon: #imageLiteral(resourceName: "icon_like_normal"))
-    let commentButton = MessageIconTextView(icon: #imageLiteral(resourceName: "icon_comment"))
-    let timeButton = MessageIconTextView(icon: #imageLiteral(resourceName: "icon_time"))
+    let likeButton = STButton(type: .system)
+    let commentButton = STButton(type: .system)
+    let timeButton = STButton(type: .system)
     
     let shareButton = UIButton(type: .custom)
     
@@ -21,29 +31,39 @@ class MessageBottomView: UIView {
         super.init(frame: CGRect.zero)
         
         containerView.axis = .horizontal
-        containerView.spacing = 10
+        containerView.spacing = 20
+        containerView.alignment = .center
         containerView.addArrangedSubview(likeButton)
         containerView.addArrangedSubview(commentButton)
         containerView.addArrangedSubview(timeButton)
         
         addSubview(containerView)
         
+        likeButton.setImage(#imageLiteral(resourceName: "icon_like_normal"), for: .normal)
+        likeButton.setupMessageBottomIconButton()
+        commentButton.setImage(#imageLiteral(resourceName: "icon_comment"), for: .normal)
+        commentButton.setupMessageBottomIconButton()
+        timeButton.setImage(#imageLiteral(resourceName: "icon_time"), for: .normal)
+        timeButton.setupMessageBottomIconButton()
+        timeButton.isUserInteractionEnabled = false
+        
         shareButton.setImage(#imageLiteral(resourceName: "icon_more").withRenderingMode(.alwaysTemplate), for: .normal)
         shareButton.tintColor = UIColor.subtitle
         addSubview(shareButton)
         
-        shareButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
         containerView.snp.makeConstraints { (make) in
             make.leading.equalTo(self).offset(10)
             make.centerY.equalTo(self)
+            make.height.equalTo(self)
         }
         shareButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         shareButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         shareButton.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self)
             make.leading.greaterThanOrEqualTo(containerView.snp.trailing).offset(10)
             make.trailing.equalTo(self).offset(-10)
-            make.top.bottom.equalTo(self)
+            make.centerY.equalTo(self)
+            make.width.height.equalTo(44)
         }
         
     }
@@ -53,9 +73,20 @@ class MessageBottomView: UIView {
     }
     
     
-    func setup(likeCount:Int,commentCount:Int,time:Date) {
-        likeButton.text = String(likeCount)
-        commentButton.text = String(commentCount)
-        timeButton.text = time.messageDateString
+    func setup(likeCount:String,commentCount:String,time:String) {
+        likeButton.setTitle(likeCount, for: .normal)
+        commentButton.setTitle(commentCount, for: .normal)
+        timeButton.setTitle(time, for: .normal)
     }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let inside = self.shareButton.frame.contains(point)
+        if inside {
+            return self.shareButton
+        } else {
+            return super.hitTest(point, with: event)
+        }
+    }
+    
+    
 }

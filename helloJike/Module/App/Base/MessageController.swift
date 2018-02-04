@@ -105,14 +105,13 @@ extension MessageController {
             return
         }
         
-        if let message = model as? Message {
-            if let urlString = message.originalLinkUrl,
-                urlString.hasPrefix("http") == true {
-                let url = URL(string: urlString)
-                let safariVC = OriginDetailController(url: url!)
+        if let feedMessage = model as? FeedMessage {
+            if feedMessage.originalLinkUrl.hasPrefix("http") == true,
+                let url = URL(string: feedMessage.originalLinkUrl) {
+                let safariVC = OriginDetailController(url: url)
                 present(safariVC, animated: true, completion: nil)
             } else {
-                print(message.originalLinkUrl ?? "")
+                print(feedMessage.originalLinkUrl)
             }
         }
     }

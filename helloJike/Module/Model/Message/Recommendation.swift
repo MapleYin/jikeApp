@@ -11,13 +11,33 @@ import ObjectMapper
 
 
 class Recommendation : Mappable {
-    var id:String!
-    var type:String!
-    var url:String!
-    var picUrl:String!
-    var tag:String?
-    var title:String?
     
+    enum RecommendType:String {
+        case web = "web"
+        case topic = "topic"
+        case unknown
+        
+        init(rawValue:String) {
+            switch rawValue {
+            case "web":
+                self = .web
+                break
+            case "topic":
+                self = .topic
+                break
+            default:
+                self = .unknown
+            }
+        }
+    }
+    
+    
+    var id:String = ""
+    var type:RecommendType = .unknown
+    var url:String = ""
+    var picUrl:String = ""
+    var tag:String = ""
+    var title:String = ""
     
     
     required init?(map: Map){

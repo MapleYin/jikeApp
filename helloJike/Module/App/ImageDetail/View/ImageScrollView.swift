@@ -56,6 +56,7 @@ class ImageScrollView: UIView {
     func reset() {
         imageView.image = nil
         scrollView.zoomScale = 1
+        scrollView.contentOffset = CGPoint.zero
     }
 }
 

@@ -12,91 +12,82 @@ import AVKit
 
 
 class Message : Mappable {
-    var id:String!
-    var abstract:String?
-    var content:String?
-    var type:String?
-    var messageId:Double!
-    var topicId:Double!
-    var topic:Topic!
-    var linkUrl:String?
-    var originalLinkUrl:String?
-    var sourceRawValue:String!
-    var collectCount:Int!
-    var commentCount:Int!
-    var popularity:Int!
-    var repostCount:Int!
-    var likeCount:Int!
-    var collected:Bool!
-    var liked:Bool!
-    var messageType:String!
-    var targetId:String!
-    var pictureUrls:[Image]?
-    var video:Video?
-    var iconUrl:String?
-    var updatedAt:Date!
-    var createdAt:Date!
     
-    var media:Media?
+    // Base
+    var id:String = ""
+    
+    // Content
+    var content:String = ""
+
+    
+    // Stats
+    var likeCount:Int = 0
+    var repostCount:Int = 0
+    var shareCount:Int = 0
+    var collectCount:Int = 0
+    var commentCount:Int = 0
+    
+    var liked:Bool = false
+    var collected:Bool = false
+    
+    // Media
+    var audio:Audio?
+    var video:Video?
+    var pictureUrls:[Image]?
+    
+    var linkInfo:Link?
     
     required init?(map: Map){
         
     }
     func mapping(map: Map) {
         id <- map["id"]
-        messageId <- map["messageId"]
+        
         content <- map["content"]
-        abstract <- map["abstract"]
-        type <- map["type"]
-        topicId <- map["topicId"]
-        topic <- map["topic"]
-        linkUrl <- map["linkUrl"]
-        originalLinkUrl <- map["originalLinkUrl"]
-        sourceRawValue <- map["sourceRawValue"]
+
         collectCount <- map["collectCount"]
         commentCount <- map["commentCount"]
-        popularity <- map["popularity"]
         repostCount <- map["repostCount"]
         likeCount <- map["likeCount"]
-        collected <- map["collected"]
+        
         liked <- map["liked"]
-        messageType <- map["messageType"]
-        targetId <- map["targetId"]
-        pictureUrls <- map["pictureUrls"]
+        collected <- map["collected"]
+        
+        audio <- map["media"]
         video <- map["video"]
-        iconUrl <- map["iconUrl"]
-        updatedAt <- (map["updatedAt"],DefaultDateTransform())
-        createdAt <- (map["createdAt"],DefaultDateTransform())
+        pictureUrls <- map["pictureUrls"]
+        
+
     }
     
     func videoUrl(_ then: ((_ item:AVPlayerItem?)->Void)?) {
-        if let media = media,
-            let url = URL(string: media.url) {
-            print("contain cache:\(String(describing: url))")
-            var option:[String:Any]?
-            if let headers = media.headers {
-                option = ["AVURLAssetHTTPHeaderFieldsKey":headers as Any]
-            }
-            let asset = AVURLAsset(url: url, options: option)
-            let item = AVPlayerItem(asset: asset)
-            then?(item)
-        } else {
-            MediaService.shared.media(self, then: { (media, error) in
-                if let media = media,
-                    let urlString = media.url,
-                    let url = URL(string: urlString) {
-                    var option:[String:Any]?
-                    if let headers = media.headers {
-                        option = ["AVURLAssetHTTPHeaderFieldsKey":headers as Any]
-                    }
-                    let asset = AVURLAsset(url: url, options: option)
-                    let item = AVPlayerItem(asset: asset)
-                    then?(item)
-                } else {
-                    then?(nil)
-                }
-            })
-        }
+//        if let media = media,
+//            let url = URL(string: media.url) {
+//            print("contain cache:\(String(describing: url))")
+//            var option:[String:Any]?
+//            if let headers = media.headers {
+//                option = ["AVURLAssetHTTPHeaderFieldsKey":headers as Any]
+//            }
+//            let asset = AVURLAsset(url: url, options: option)
+//            let item = AVPlayerItem(asset: asset)
+//            then?(item)
+//        } else {
+//            MediaService.shared.media(self, then: { (media, error) in
+//                if let media = media,
+//                    let urlString = media.url,
+//                    let url = URL(string: urlString) {
+//                    var option:[String:Any]?
+//                    if let headers = media.headers {
+//                        option = ["AVURLAssetHTTPHeaderFieldsKey":headers as Any]
+//                    }
+//                    let asset = AVURLAsset(url: url, options: option)
+//                    let item = AVPlayerItem(asset: asset)
+//                    then?(item)
+//                } else {
+//                    then?(nil)
+//                }
+//            })
+//        }
     }
 }
 

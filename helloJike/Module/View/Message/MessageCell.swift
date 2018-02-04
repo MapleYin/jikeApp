@@ -20,8 +20,8 @@ class MessageCell: BaseCell {
     }
 
     let containerView = UIView()
-    let topicView = MessageTopicView()
-    let iconImageView = UIImageView()
+    let topicView = STButton(type: .custom)
+    let sourceView = MessageSourceView()
     let bottomView = MessageBottomView()
     let bottomLine = UIView()
 
@@ -31,11 +31,20 @@ class MessageCell: BaseCell {
         selectionStyle = .none
         contentView.addSubview(containerView)
         
-        iconImageView.contentMode = .scaleAspectFit
+        
         bottomLine.backgroundColor = UIColor.side
         
+        topicView.imageView?.layer.cornerRadius = 5
+        topicView.imageView?.clipsToBounds = true
+        
+        topicView.setTitleColor(UIColor.subtitle, for: .normal)
+        topicView.spacing = 10
+        topicView.imageSize = CGSize(width: 25, height: 25)
+        topicView.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+
+        
         containerView.addSubview(topicView)
-        containerView.addSubview(iconImageView)
+        containerView.addSubview(sourceView)
         containerView.addSubview(bottomView)
         contentView.addSubview(bottomLine)
         
@@ -47,18 +56,17 @@ class MessageCell: BaseCell {
             make.top.equalTo(containerView.snp.top).offset(10)
             make.leading.equalTo(containerView).offset(10)
         }
-        iconImageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        iconImageView.snp.makeConstraints { (make) in
+        sourceView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        sourceView.snp.makeConstraints { (make) in
             make.centerY.equalTo(topicView)
             make.trailing.equalTo(containerView).offset(-10)
-            make.height.equalTo(12)
-            make.width.equalTo(20)
         }
         
         bottomView.snp.makeConstraints { (make) in
-            make.top.equalTo(topicView.snp.bottom).offset(10)
+            make.top.equalTo(topicView.snp.bottom)
             make.leading.trailing.equalTo(containerView)
-            make.bottom.equalTo(containerView).offset(-10)
+            make.height.equalTo(40)
+            make.bottom.equalTo(containerView)
         }
         
         bottomLine.snp.makeConstraints { (make) in
@@ -82,8 +90,16 @@ class MessageCell: BaseCell {
     }
     
     func setup(viewModel: MessageViewModel) {
-        topicView.setup(viewModel: viewModel.tpoic)
-//        bottomView.setup(likeCount: message.likeCount, commentCount: message.commentCount, time: message.createdAt)
+        if let topic = viewModel.topic {
+            if let url = topic.avatarUrl {
+                topicView.kf.setImage(with: url, for: .normal)
+            }
+            topicView.setTitle(topic.topicName , for: .normal)
+        }
+        
+        sourceView.setup(viewModel: viewModel)
+        
+        bottomView.setup(likeCount: viewModel.likeCountString , commentCount: viewModel.commentCountString, time: viewModel.timeString)
     }
     
 }

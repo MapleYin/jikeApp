@@ -25,54 +25,97 @@ struct MessageViewModel {
     }
     
     
-    let cellType:CellType
-    let mediaType:MediaOptions
+    var cellType:CellType = .media
+    var mediaType:MediaOptions = []
     
     var title:NSAttributedString?
     var content:NSAttributedString?
-    let images:[Image]
+    var images:[Image] = []
     var video:VideoViewModel?
-    let tpoic:MessageTopicViewModel
+    var topic:MessageTopicViewModel?
     
-    init(message:Message) {
+    var likeCountString:String = ""
+    var commentCountString:String = ""
+    var timeString:String = ""
+    
+    
+    var iconImageUrl:URL?
+    var userImageUrl:URL?
+    var userName:String?
+    
+    
+    init(userMessage:UserMessage) {
+        self.init(message: userMessage)
+        if let topic = userMessage.topics.first {
+            self.topic = MessageTopicViewModel(topic)
+        }
         
-        if message.type == "article" {
-            cellType = .imageText
+        self.timeString = userMessage.actionTime.messageDateString
+        if let user = userMessage.users.first {
+            self.userImageUrl = URL(string: user.profileImageUrl)
+            self.userName = user.screenName
+        }
+        
+    }
+    
+    init(feedMessage:FeedMessage) {
+        
+        if let message = feedMessage.personalUpdate {
+            self.init(message: message)
         } else {
-            cellType = .media
+            self.init(message: feedMessage)
         }
         
-        var medias = MediaOptions()
-        if message.content != nil {
-            medias.update(with: .text)
+        if feedMessage.type == .article {
+            cellType = .imageText
         }
-        if let images = message.pictureUrls,
-            images.count > 0 {
-            medias.update(with: .image)
-        }
-        if message.video != nil {
-           medias.update(with: .video)
-        }
-        mediaType = medias
-
         
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 5
-        if let content = message.content {
-            let attributedString = NSAttributedString(string: content, attributes: [.paragraphStyle : paragraphStyle])
-            title = attributedString
-        }
-        if let abstract = message.abstract {
+        if let abstract = feedMessage.abstract {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 5
+            paragraphStyle.lineBreakMode = .byTruncatingTail
+            
             let attributedString = NSAttributedString(string: abstract, attributes: [.paragraphStyle : paragraphStyle])
             content = attributedString
         }
         
+        if let topic = feedMessage.topic {
+            self.topic = MessageTopicViewModel(topic)
+        }
         
-        images = message.pictureUrls ?? []
+        self.timeString = feedMessage.updatedAt.messageDateString
+        self.iconImageUrl = URL(string: feedMessage.iconUrl)
+    }
+    
+    init(message:Message) {
+        var medias = MediaOptions()
+        if message.content.count > 0 {
+            medias.update(with: .text)
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 5
+            paragraphStyle.lineBreakMode = .byTruncatingTail
+            
+            let attributedString = NSAttributedString(string: message.content, attributes: [.paragraphStyle : paragraphStyle])
+            
+            self.title = attributedString
+        }
+        if let images = message.pictureUrls,
+            images.count > 0 {
+            medias.update(with: .image)
+            
+            self.images = images
+        }
         if let video = message.video {
+            medias.update(with: .video)
             self.video = VideoViewModel(video)
         }
-        tpoic = MessageTopicViewModel(message.topic)
+        self.mediaType = medias
+        
+        self.likeCountString = "\(message.likeCount)"
+        self.commentCountString = "\(message.commentCount)"
+    
+        
     }
     
 }

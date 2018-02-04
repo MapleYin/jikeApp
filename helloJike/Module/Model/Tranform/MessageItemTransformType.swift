@@ -10,10 +10,15 @@ import Foundation
 import ObjectMapper
 
 class MessageItemTransformType: TransformType {
+
     typealias Object = Any
-    
     typealias JSON = [String:Any]
     
+    let itemType:MessageItem.itemType
+    
+    init(_ itemType:MessageItem.itemType) {
+        self.itemType = itemType
+    }
     
     func transformFromJSON(_ value: Any?) -> Object? {
         if let data = value as? [String:Any] {
@@ -26,9 +31,15 @@ class MessageItemTransformType: TransformType {
                 }
                 return result
             }
-            
-            if let message = Message(JSON: data) {
-                return message
+            if itemType == .messageRecommend ||
+                itemType == .message {
+                if let message = FeedMessage(JSON: data) {
+                    return message
+                }
+            } else if itemType == .personalUpdate {
+                if let message = UserMessage(JSON: data) {
+                    return message
+                }
             }
         }
         return nil
@@ -42,7 +53,9 @@ class MessageItemTransformType: TransformType {
             }
             return ["recommendations":result]
         }
-        if let message = value as? Message {
+        if let message = value as? FeedMessage {
+            return message.toJSON()
+        } else if let message = value as? UserMessage {
             return message.toJSON()
         }
         return nil
