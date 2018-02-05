@@ -60,6 +60,11 @@ class Message : Mappable {
 
     }
     
+    
+    func deepFetchImages() -> [Image]? {
+        return self.pictureUrls
+    }
+    
     func videoUrl(_ then: ((_ item:AVPlayerItem?)->Void)?) {
 //        if let media = media,
 //            let url = URL(string: media.url) {

@@ -18,7 +18,6 @@ class ImageScrollView: UIView {
         super.init(frame: frame)
         addSubview(scrollView)
         scrollView.addSubview(imageView)
-        scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.delegate = self
         scrollView.alwaysBounceVertical = true
         scrollView.minimumZoomScale = 1
@@ -36,6 +35,7 @@ class ImageScrollView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 
     func setup(image:Image, sourceImageView:ImageView? = nil) {
         indicatorView.startAnimating()

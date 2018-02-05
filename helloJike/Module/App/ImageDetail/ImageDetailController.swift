@@ -43,10 +43,9 @@ class ImageDetailController: STViewController {
         imageCollectionView.setCollectionViewLayout(layout, animated: false)
         
         imageCollectionView.snp.makeConstraints { (make) in
-            var edge = view.safeAreaInsets
-            edge.left = -5
-            edge.right = -5
-            make.edges.equalTo(view).inset(edge)
+            make.top.bottom.equalTo(view)
+            make.leading.equalTo(view).offset(-5)
+            make.trailing.equalTo(view).offset(5)
         }
         
         let indexPath = IndexPath(row: currentDisplayIndex, section: 0)
@@ -124,11 +123,11 @@ extension ImageDetailController : UICollectionViewDataSource {
 
 extension ImageDetailController : UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-//        indexPaths.forEach { (indexPath) in
-//            let image = images[indexPath.row]
-//            let imageView = self.sourceImageViews[indexPath.row]
-//            imageView.setImage(image, quality: .high, placeholder: imageView.image, progressBlock: nil, completionHandler: nil)
-//        }
+        indexPaths.forEach { (indexPath) in
+            let image = images[indexPath.row]
+            let imageView = self.sourceImageViews[indexPath.row]
+            imageView.setImage(image, quality: .high, placeholder: imageView.image, progressBlock: nil, completionHandler: nil)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {

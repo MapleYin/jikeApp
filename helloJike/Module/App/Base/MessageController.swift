@@ -8,6 +8,7 @@
 
 import UIKit
 import AVKit
+import Kingfisher
 
 class MessageController: STTableViewController {
     
@@ -131,8 +132,9 @@ extension MessageController : MessageMediaCellAction {
         if let indexPath = tableView.indexPath(for: cell),
             let model = self.model(at: indexPath),
             let message = model as? Message,
-            let images = message.pictureUrls,
-            images.count > 0{
+            let images = message.deepFetchImages(),
+            images.count > 0 {
+
             
             currentMessageMultipleImageCell = cell
             currentSelectedImageViewIndex = index

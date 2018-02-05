@@ -42,7 +42,9 @@ class ImageDetailDismissTransition: NSObject ,UIViewControllerAnimatedTransition
             fakeImageView.clipsToBounds = true
             fakeImageView.contentMode = imageView.contentMode
             fakeImageView.image = sourceImageView.image
-            fakeImageView.frame = sourceImageView.frame
+            var frame = sourceImageView.frame
+            frame.origin.y = frame.origin.y + container.safeAreaInsets.top
+            fakeImageView.frame = frame
             container.addSubview(fakeImageView)
             
             imageView.alpha = 0

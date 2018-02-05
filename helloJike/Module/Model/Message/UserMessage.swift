@@ -59,4 +59,16 @@ class UserMessage : Message {
         repostPersonalUpdate <- map["repostPersonalUpdate"]
         
     }
+    
+    override func deepFetchImages() -> [Image]? {
+        if let images = super.deepFetchImages() {
+            return images
+        } else if let feedMessage = self.message {
+            return feedMessage.deepFetchImages()
+        } else if let userMessage = self.repostPersonalUpdate {
+            return userMessage.deepFetchImages()
+        } else {
+            return nil
+        }
+    }
 }

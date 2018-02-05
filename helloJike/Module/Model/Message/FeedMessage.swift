@@ -72,5 +72,12 @@ class FeedMessage : Message {
         
         topic <- map["topic"]
     }
-
+    
+    override func deepFetchImages() -> [Image]? {
+        if let images = super.deepFetchImages() {
+            return images
+        } else {
+            return  self.personalUpdate?.deepFetchImages()
+        }
+    }
 }

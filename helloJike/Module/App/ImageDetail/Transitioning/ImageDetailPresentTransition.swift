@@ -31,6 +31,7 @@ class ImageDetailPresentTransition: NSObject ,UIViewControllerAnimatedTransition
         let container = transitionContext.containerView
         container.addSubview(toView)
         
+        
         if let (destImageView,index) = targetViewController.currentImageView(),
             let (imageView,rect) = self.sourceViewController.sourceImageView(at: index) {
             let fakeImageView = ImageView()
@@ -43,9 +44,12 @@ class ImageDetailPresentTransition: NSObject ,UIViewControllerAnimatedTransition
             imageView.alpha = 0
             destImageView.alpha = 0
             
+            var destFrame = destImageView.frame
+            destFrame.origin.y = max(destFrame.origin.y, container.safeAreaInsets.top)
+            
             toView.alpha = 0
             UIView.animate(withDuration: animationDuration, animations: {
-                fakeImageView.frame = destImageView.frame
+                fakeImageView.frame = destFrame
                 toView.alpha = 1
             }, completion: { (finished) in
                 imageView.alpha = 1

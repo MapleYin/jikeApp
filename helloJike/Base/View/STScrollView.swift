@@ -27,11 +27,11 @@ extension STScrollView {
         if let viewForZooming = delegate?.viewForZooming,
             let view = viewForZooming(self) {
             
-            let contentWidth = bounds.width * zoomScale
+            let contentWidth = (bounds.width - safeAreaInsets.left - safeAreaInsets.right) * zoomScale
             let size = view.bounds.size
             if size.width != 0 {
                 let imageHeight = size.height / size.width * contentWidth
-                let y = max(0.0,( bounds.height - imageHeight ) / 2)
+                let y = max(0,( bounds.height - imageHeight ) / 2 - safeAreaInsets.top)
                 view.frame = CGRect(x: 0, y: y, width: contentWidth, height: imageHeight)
             }
             
