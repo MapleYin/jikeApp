@@ -18,6 +18,7 @@ class PlayerView: UIView {
     private let controlView = PlayerControlView()
     private let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
+    private var needReplace = false
     
     weak var portraitParentView:UIView?
     
@@ -91,6 +92,12 @@ class PlayerView: UIView {
 extension PlayerView {
     
     func setup(message:Message) {
+        
+        if self.message?.id == message.id {
+            return ;
+        }
+        
+        self.needReplace = true
         self.message = message
         self.controlView.update(0, totalTime: 0)
         if let urlString = message.video?.thumbnailUrl,
@@ -103,15 +110,22 @@ extension PlayerView {
     
     func play() {
         isPlaying = true
-        indicatorView.startAnimating()
-        self.playerLayer.isHidden = true
-        self.message?.videoUrl { (item) in
-            self.playerLayer.isHidden = false
-            self.player.replaceCurrentItem(with: item)
+        if self.needReplace {
+            indicatorView.startAnimating()
+            self.playerLayer.isHidden = true
+            self.message?.videoUrl { (item) in
+                self.playerLayer.isHidden = false
+                self.player.replaceCurrentItem(with: item)
+                self.player.play()
+                
+                self.indicatorView.stopAnimating()
+                
+                self.needReplace = false
+            }
+        } else {
             self.player.play()
-            
-            self.indicatorView.stopAnimating()
         }
+        
         controlView.updatPlayStatus(isPlaying)
     }
     
