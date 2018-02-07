@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 protocol MessageCellAction:class {
-    
+    func messageCell(_ cell:MessageCell, action:MessageBottomView.ActionType) -> Void
 }
 
 class MessageCell: BaseCell {
@@ -18,6 +18,8 @@ class MessageCell: BaseCell {
     override class var identifier:String {
         return "MessageCell"
     }
+    
+    weak open var delegate:MessageCellAction?
 
     let containerView = UIView()
     let topicView = STButton(type: .custom)
@@ -41,6 +43,11 @@ class MessageCell: BaseCell {
         topicView.spacing = 10
         topicView.imageSize = CGSize(width: 25, height: 25)
         topicView.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        
+        
+        bottomView.action = { (action) in
+            self.delegate?.messageCell(self, action: action)
+        }
 
         
         containerView.addSubview(topicView)

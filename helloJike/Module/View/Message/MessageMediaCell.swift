@@ -22,7 +22,7 @@ class MessageMediaCell: MessageCell {
         return "MessageMediaCell"
     }
     
-    weak var delegate:MessageMediaCellAction?
+    weak open var mediaDelegate:MessageMediaCellAction?
     
     private let titleLabel = UILabel()
     private let videoView = MessageVideoView()
@@ -52,7 +52,7 @@ class MessageMediaCell: MessageCell {
         
         // image
         imageMediaView.imageSelectActionBlock = { (imageViews,index) in
-            self.delegate?.messageCell(self, imageViews: imageViews, index: index)
+            self.mediaDelegate?.messageCell(self, imageViews: imageViews, index: index)
         }
         containerView.addSubview(imageMediaView)
         
@@ -156,7 +156,7 @@ extension MessageMediaCell {
 extension MessageMediaCell {
     
     @objc private func videoTap(_ gestureRecognizer:UIGestureRecognizer) {
-        delegate?.messageCell(self, playVideo: { (playerView) in
+        mediaDelegate?.messageCell(self, playVideo: { (playerView) in
             self.playerView = playerView
             if playerView.superview != videoView {
                 videoView.addSubview(playerView)

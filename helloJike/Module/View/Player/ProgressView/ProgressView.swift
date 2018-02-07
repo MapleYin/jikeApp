@@ -27,6 +27,8 @@ class ProgressView: UIView {
         indicatorView.layer.shadowOffset = CGSize(width: 0, height: 0)
         indicatorView.layer.shadowOpacity = 0.6
         
+        let t = UIPanGestureRecognizer(target: self, action: #selector(progressIndicatorPan(_:)))
+        
         addSubview(totalProgressView)
         addSubview(currentProgressView)
         addSubview(indicatorView)
@@ -53,6 +55,9 @@ class ProgressView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc func progressIndicatorPan(_ gestureRecognizer:UIPanGestureRecognizer) {
+        
+    }
     
     func addPendingProgress(range:Range<CGFloat>) {
         

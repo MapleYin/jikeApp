@@ -64,6 +64,7 @@ class SubscribeController: MessageController {
                     }
                 }
                 self.tableView.reloadData()
+//                self.tableView.insertRows(at: indexPathArray, with: .automatic)
             }
         }
     }

@@ -73,13 +73,26 @@ class PlayerControlView: UIView {
         
         
         playButton.snp.makeConstraints { (make) in
-            make.center.equalTo(self)
+            make.leading.equalTo(playTimeLabel.snp.leading)
+            make.bottom.equalTo(playTimeLabel.snp.top).offset(-10)
+            make.width.height.equalTo(50)
         }
 
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func safeAreaInsetsDidChange() {
+        super.safeAreaInsetsDidChange()
+        playTimeLabel.snp.updateConstraints { (make) in
+            make.leading.equalTo(self).offset(11 + safeAreaInsets.left)
+        }
+        
+        expandButton.snp.updateConstraints { (make) in
+            make.trailing.equalTo(self).offset(-safeAreaInsets.right)
+        }
     }
     
     func update(_ currentPlayTime:Double, totalTime:Double) {
@@ -131,8 +144,10 @@ class PlayerControlView: UIView {
     func layoutProgress(_ isHidden:Bool) {
         if isHidden {
             progressView.snp.remakeConstraints { (make) in
-                make.leading.trailing.bottom.equalTo(self)
-                make.height.equalTo(3)
+                make.leading.equalTo(self).offset(safeAreaInsets.left)
+                make.trailing.equalTo(self).offset(-safeAreaInsets.right)
+                make.bottom.equalTo(self)
+                make.height.equalTo(1)
             }
         } else {
             progressView.snp.remakeConstraints { (make) in
@@ -142,6 +157,7 @@ class PlayerControlView: UIView {
                 make.centerY.equalTo(playTimeLabel)
             }
         }
-        self.layoutIfNeeded()
+        
+        layoutIfNeeded()
     }
 }

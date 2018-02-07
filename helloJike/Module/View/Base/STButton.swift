@@ -69,11 +69,11 @@ class STButton: UIButton {
             switch layout {
             case .LR,.RL:
                 if titleSize.height > imageSize.height {
-                    y = 0
+                    y = contentEdgeInsets.top
                 } else {
                     switch contentVerticalAlignment {
                     case .top:
-                        y = 0
+                        y = contentEdgeInsets.top
                         break
                     case .center:
                         y = (imageSize.height - titleSize.height) / 2
@@ -82,7 +82,7 @@ class STButton: UIButton {
                         y = imageSize.height - titleSize.height
                         break
                     case .fill:
-                        y = 0
+                        y = contentEdgeInsets.top
                         titleSize.height = imageSize.height
                         break
                     }
@@ -90,11 +90,11 @@ class STButton: UIButton {
                 break
             case .TB,.BT:
                 if titleSize.width > imageSize.width {
-                    x = 0
+                    x = contentEdgeInsets.left
                 } else {
                     switch contentHorizontalAlignment {
                     case .left,.leading:
-                        x = 0
+                        x = contentEdgeInsets.left
                         break
                     case .center:
                         x = (imageSize.width - titleSize.width) / 2
@@ -103,7 +103,7 @@ class STButton: UIButton {
                         x = imageSize.width - titleSize.width
                         break
                     case .fill:
-                        x = 0
+                        x = contentEdgeInsets.left
                         titleSize.width = imageSize.width
                         break
                     }
@@ -135,10 +135,11 @@ class STButton: UIButton {
     
     
     override func imageRect(forContentRect contentRect: CGRect) -> CGRect {
+        let rect = super.imageRect(forContentRect: contentRect)
         if contentRect.equalTo(CGRect.zero)  {
-            return super.imageRect(forContentRect: contentRect)
+            return rect
         } else {
-            var imageSize = imageView?.intrinsicContentSize ?? CGSize.zero
+            var imageSize = rect.size
             if !self.imageSize.equalTo(CGSize.zero) {
                 imageSize = self.imageSize
             }
@@ -150,11 +151,11 @@ class STButton: UIButton {
             switch layout {
             case .LR,.RL:
                 if imageSize.height > titleSize.height {
-                    y = 0
+                    y = contentEdgeInsets.top
                 } else {
                     switch contentVerticalAlignment {
                     case .top:
-                        y = 0
+                        y = contentEdgeInsets.top
                         break
                     case .center,.fill:
                         y =  (titleSize.height - imageSize.height) / 2
@@ -167,11 +168,11 @@ class STButton: UIButton {
                 break
             case .TB,.BT:
                 if imageSize.width > titleSize.width {
-                    x = 0
+                    x = contentEdgeInsets.left
                 } else {
                     switch contentHorizontalAlignment {
                     case .left,.leading:
-                        x = 0
+                        x = contentEdgeInsets.left
                         break
                     case .center,.fill:
                         x = (titleSize.width - imageSize.width) / 2

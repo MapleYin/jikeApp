@@ -99,6 +99,7 @@ extension MessageImageView {
     }
     
     private func rectForIndex(_ index:Int, imageCount:Int, image:Image) -> CGRect {
+//        let containerWidth = self.intrinsicContentSize.width
         var x:CGFloat,y:CGFloat,width:CGFloat,height:CGFloat
         switch imageCount {
         case 1:
@@ -123,7 +124,7 @@ extension MessageImageView {
             switch index {
             case 0:
                 width = containerWidth
-                height = containerWidth / 3.0
+                height = containerWidth / 2.0
                 x = 0
                 y = 0
                 break
@@ -131,7 +132,7 @@ extension MessageImageView {
                 width = (containerWidth - 2 * separatorWidth) / 3.0
                 height = width
                 x = CGFloat(index - 1) * (width + separatorWidth)
-                y = CGFloat((index + 2) / 3) * (containerWidth / 3.0 + separatorWidth)
+                y = CGFloat((index + 2) / 3) * (containerWidth / 2.0 + separatorWidth)
                 break
             }
             break
@@ -169,6 +170,7 @@ extension MessageImageView {
     }
     
     private func heightForImageCount(_ images:[Image]) -> CGFloat {
+//        let containerWidth = self.intrinsicContentSize.width
         let imageCount = images.count
         var height:CGFloat
         switch imageCount {
@@ -184,7 +186,7 @@ extension MessageImageView {
             height = CGFloat(imageCount / 3) * ((containerWidth - 2 * separatorWidth) / 3.0) + CGFloat(imageCount / 3 - 1) * separatorWidth
             break
         case 4,7:
-            height = containerWidth / 3.0 + separatorWidth + CGFloat(imageCount / 3) * (containerWidth - 2 * separatorWidth) / 3.0 + CGFloat(imageCount / 3 - 1) * separatorWidth
+            height = containerWidth / 2.0 + separatorWidth + CGFloat(imageCount / 3) * (containerWidth - 2 * separatorWidth) / 3.0 + CGFloat(imageCount / 3 - 1) * separatorWidth
             break
         case 5,8:
             height = (containerWidth - separatorWidth) / 2.0 + separatorWidth + CGFloat(imageCount / 3) * (containerWidth - 2 * separatorWidth) / 3.0 + CGFloat(imageCount / 3 - 1) * separatorWidth

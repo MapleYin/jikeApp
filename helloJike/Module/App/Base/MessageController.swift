@@ -78,16 +78,15 @@ extension MessageController {
             if viewModel.cellType == .media {
                 let messageMediaCell = tableView.dequeueReusableCell(withIdentifier: MessageMediaCell.identifier, for: indexPath) as! MessageMediaCell
                 messageMediaCell.delegate = self
+                messageMediaCell.mediaDelegate = self
                 messageMediaCell.setup(viewModel: viewModel)
                 cell = messageMediaCell
             } else if viewModel.cellType == .imageText {
                 let messageTextImageCell = tableView.dequeueReusableCell(withIdentifier: MessageTextImageCell.identifier, for: indexPath) as! MessageTextImageCell
+                messageTextImageCell.delegate = self
                 messageTextImageCell.setup(viewModel: viewModel)
                 cell = messageTextImageCell
             }
-            
-            
-            
         } else {
             print(viewModel)
         }
@@ -128,6 +127,44 @@ extension MessageController {
 // MARK: - MessageMediaCellAction
 
 extension MessageController : MessageMediaCellAction {
+    
+    func messageCell(_ cell: MessageCell, action: MessageBottomView.ActionType) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            switch action {
+            case .like:
+                break
+            case .comment:
+                break
+            case .share:
+                if let message = model(at: indexPath) as? FeedMessage {
+                    var item:[Any] = []
+                    
+                    if let url = URL(string:message.originalLinkUrl) {
+                        item.append(url)
+                    }
+                    item.append(message.content)
+                    if let imageData = message.deepFetchImages()?.first,
+                        let url = URL(string: imageData.thumbnailUrl) {
+                        KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil, completionHandler: { (image, error, type, url) in
+                            if let image = image {
+                                item.append(image)
+                            }
+                            
+                            let vc = UIActivityViewController(activityItems: item, applicationActivities: nil)
+                            self.present(vc, animated: true, completion: nil)
+                        })
+                    } else {
+                        let vc = UIActivityViewController(activityItems: item, applicationActivities: nil)
+                        self.present(vc, animated: true, completion: nil)
+                    }
+                }
+                
+                break
+            }
+        }
+        
+    }
+    
     func messageCell(_ cell: MessageMediaCell, imageViews: [ImageView], index: Int) {
         if let indexPath = tableView.indexPath(for: cell),
             let model = self.model(at: indexPath),

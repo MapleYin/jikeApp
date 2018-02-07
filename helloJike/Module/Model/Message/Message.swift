@@ -93,6 +93,21 @@ class Message : Mappable {
 //                }
 //            })
 //        }
+        MediaService.shared.media(self, then: { (media, error) in
+            if let media = media,
+                let urlString = media.url,
+                let url = URL(string: urlString) {
+                var option:[String:Any]?
+                if let headers = media.headers {
+                    option = ["AVURLAssetHTTPHeaderFieldsKey":headers as Any]
+                }
+                let asset = AVURLAsset(url: url, options: option)
+                let item = AVPlayerItem(asset: asset)
+                then?(item)
+            } else {
+                then?(nil)
+            }
+        })
     }
 }
 

@@ -74,7 +74,8 @@ class FeedMessage : Message {
     }
     
     override func deepFetchImages() -> [Image]? {
-        if let images = super.deepFetchImages() {
+        if let images = super.deepFetchImages(),
+            images.count > 0 {
             return images
         } else {
             return  self.personalUpdate?.deepFetchImages()
