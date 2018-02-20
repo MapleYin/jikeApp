@@ -142,6 +142,10 @@ extension MessageController : MessageMediaCellAction {
                     }
                     let commentController = CommentController(messageId)
                     self.navigationController?.pushViewController(commentController, animated: true)
+                } else if let message = model(at: indexPath) as? UserMessage {
+                    let messageId = message.id
+                    let commentController = CommentController(messageId)
+                    self.navigationController?.pushViewController(commentController, animated: true)
                 }
                 break
             case .share:

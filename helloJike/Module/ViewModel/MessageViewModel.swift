@@ -61,7 +61,7 @@ struct MessageViewModel {
     init(feedMessage:FeedMessage) {
         
         if let message = feedMessage.personalUpdate {
-            self.init(message: message)
+            self.init(userMessage: message)
         } else {
             self.init(message: feedMessage)
         }

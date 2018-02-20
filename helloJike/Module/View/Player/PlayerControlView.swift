@@ -12,6 +12,8 @@ import UIKit
 protocol PlayerControlDelegate:class {
     func controlView(_ controlView:PlayerControlView, didClickPlayButton:UIButton) -> Void
     func controlView(_ controlView:PlayerControlView, didClickExpandButton:UIButton) -> Void
+    func controlView(_ controlView:PlayerControlView, didChangeProgress:CGFloat) -> Void
+    func controlView(_ controlView:PlayerControlView, endChangeProgress:CGFloat) -> Void
 }
 
 class PlayerControlView: UIView {
@@ -27,6 +29,10 @@ class PlayerControlView: UIView {
     
     weak var delegate:PlayerControlDelegate?
     
+    var isDragProgress: Bool {
+        return progressView.isDragging
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -41,6 +47,8 @@ class PlayerControlView: UIView {
         
         playButton.setImage(#imageLiteral(resourceName: "icon_play"), for: .normal)
         playButton.addTarget(self, action: #selector(didClickButton(_:)), for: .touchUpInside)
+        
+        progressView.delegate = self
         
         addSubview(playTimeLabel)
         addSubview(totalTimeLabel)
@@ -67,10 +75,11 @@ class PlayerControlView: UIView {
         }
         
         progressView.snp.makeConstraints { (make) in
-            make.leading.trailing.bottom.equalTo(self)
-            make.height.equalTo(3)
+            make.leading.equalTo(playTimeLabel.snp.trailing).offset(10)
+            make.trailing.equalTo(totalTimeLabel.snp.leading).offset(-10)
+            make.height.equalTo(2)
+            make.centerY.equalTo(playTimeLabel)
         }
-        
         
         playButton.snp.makeConstraints { (make) in
             make.leading.equalTo(playTimeLabel.snp.leading)
@@ -115,8 +124,6 @@ class PlayerControlView: UIView {
             controlHidden = !controlHidden
         }
         
-        
-        progressView.indicatorView.alpha = controlHidden ? 0 : 1
         playTimeLabel.alpha = controlHidden ? 0 : 1
         totalTimeLabel.alpha = controlHidden ? 0 : 1
         expandButton.alpha = controlHidden ? 0 : 1
@@ -142,6 +149,7 @@ class PlayerControlView: UIView {
     
     
     func layoutProgress(_ isHidden:Bool) {
+        progressView.indicatorView.alpha = isHidden ? 0 : 1
         if isHidden {
             progressView.snp.remakeConstraints { (make) in
                 make.leading.equalTo(self).offset(safeAreaInsets.left)
@@ -153,11 +161,22 @@ class PlayerControlView: UIView {
             progressView.snp.remakeConstraints { (make) in
                 make.leading.equalTo(playTimeLabel.snp.trailing).offset(10)
                 make.trailing.equalTo(totalTimeLabel.snp.leading).offset(-10)
-                make.height.equalTo(3)
+                make.height.equalTo(2)
                 make.centerY.equalTo(playTimeLabel)
             }
         }
         
         layoutIfNeeded()
+    }
+}
+
+
+extension PlayerControlView : ProgressViewDelegate {
+    func progressView(_ progressView: ProgressView, progressDidChanged: CGFloat) {
+        delegate?.controlView(self, didChangeProgress: progressDidChanged)
+    }
+    
+    func progressView(_ progressView: ProgressView, progressEndChanged: CGFloat) {
+        delegate?.controlView(self, endChangeProgress: progressEndChanged)
     }
 }

@@ -161,7 +161,9 @@ extension PlayerView {
         let cmTime = playerItemDuration()
         if cmTime != kCMTimeInvalid {
             let total = playerItemDuration().seconds
-            self.controlView.update(seconds, totalTime: total)
+            if !self.controlView.isDragProgress {
+                self.controlView.update(seconds, totalTime: total)
+            }
         }
     }
 }
@@ -207,6 +209,24 @@ extension PlayerView : PlayerControlDelegate {
             vc.modalPresentationStyle = .fullScreen
             vc.transitioningDelegate = self
             keyWindows?.rootViewController?.present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    func controlView(_ controlView: PlayerControlView, didChangeProgress: CGFloat) {
+        let cmTime = playerItemDuration()
+        if cmTime != kCMTimeInvalid {
+            let total = playerItemDuration().seconds
+            self.controlView.update(total*Double(didChangeProgress), totalTime: total)
+        }
+    }
+    
+    func controlView(_ controlView: PlayerControlView, endChangeProgress: CGFloat) {
+        let cmTime = playerItemDuration()
+        if cmTime != kCMTimeInvalid {
+            let total = playerItemDuration().seconds
+            let current = total * Double(endChangeProgress)
+            let currentCMTime = CMTime(seconds: current, preferredTimescale: cmTime.timescale)
+            player.seek(to: currentCMTime)
         }
     }
 }

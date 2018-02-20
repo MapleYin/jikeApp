@@ -56,4 +56,9 @@ class MessageVideoView: UIView {
         imageView.kf.setImage(with: viewModel.coverImageUrl)
         timeLabel.text = viewModel.durationText
     }
+    
+    func setupPlayStatus(isPlaying:Bool) {
+        palyIconView.isHidden = isPlaying
+        imageView.isHidden = isPlaying
+    }
 }

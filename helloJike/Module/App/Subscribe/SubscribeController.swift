@@ -30,6 +30,9 @@ class SubscribeController: MessageController {
                 
                 var indexPathArray:[IndexPath] = []
                 
+                self.modelArray = []
+                self.viewModelArray = []
+                
                 if self.tableView.visibleCells.count > 0 {
                     self.tableView.reloadData()
                 }

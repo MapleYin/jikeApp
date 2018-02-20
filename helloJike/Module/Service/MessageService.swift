@@ -46,9 +46,7 @@ extension MessageService {
             ])
         post(url, oprion: option) { (dataResponse:DataResponse<MessageListReponse>) in
             dataResponse.result.ifSuccess {
-                if self.loadMoreKey == nil {
-                    self.loadMoreKey = dataResponse.result.value?.loadMoreKey
-                }                
+                self.loadMoreKey = dataResponse.result.value?.loadMoreKey
                 then(dataResponse.result.value,nil)
             }
             

@@ -160,6 +160,7 @@ extension MessageMediaCell {
             self.playerView = playerView
             if playerView.superview != videoView {
                 videoView.addSubview(playerView)
+                videoView.setupPlayStatus(isPlaying: true)
                 playerView.snp.makeConstraints({ (make) in
                     make.edges.equalTo(videoView)
                 })
@@ -170,6 +171,7 @@ extension MessageMediaCell {
     }
     
     func removePlayerIfNeeded() {
+        videoView.setupPlayStatus(isPlaying: false)
         self.playerView?.pause()
         self.playerView?.removeFromSuperview()
         self.playerView = nil
