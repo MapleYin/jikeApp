@@ -28,9 +28,9 @@ class MessageMediaCell: MessageCell {
     private let videoView = MessageVideoView()
     private let imageMediaView = MessageImageView()
     
-    private var constraintFotTitle: [ConstraintMakerFinalizable] = []
-    private var constraintFotVideo: [ConstraintMakerFinalizable] = []
-    private var constraintFotImage: [ConstraintMakerFinalizable] = []
+    private var constraintForTitle: [ConstraintMakerFinalizable] = []
+    private var constraintForVideo: [ConstraintMakerFinalizable] = []
+    private var constraintForImage: [ConstraintMakerFinalizable] = []
     
     
     
@@ -65,22 +65,22 @@ class MessageMediaCell: MessageCell {
         
         videoView.snp.makeConstraints { (make) in
             make.top.equalTo(containerView).offset(10).priority(52)
-            self.constraintFotTitle.append(make.top.equalTo(titleLabel.snp.bottom).offset(10).priority(102))
+            self.constraintForTitle.append(make.top.equalTo(titleLabel.snp.bottom).offset(10).priority(102))
             make.leading.trailing.equalTo(containerView)
         }
         
         imageMediaView.snp.makeConstraints { (make) in
             make.top.equalTo(containerView).offset(10).priority(51)
-            self.constraintFotTitle.append(make.top.equalTo(titleLabel.snp.bottom).offset(10).priority(101))
-            self.constraintFotVideo.append(make.top.equalTo(videoView.snp.bottom).offset(10).priority(201))
+            self.constraintForTitle.append(make.top.equalTo(titleLabel.snp.bottom).offset(10).priority(101))
+            self.constraintForVideo.append(make.top.equalTo(videoView.snp.bottom).offset(10).priority(201))
             make.leading.trailing.equalTo(containerView)
         }
         
         topicView.snp.remakeConstraints { (make) in
             make.top.equalTo(containerView.snp.top).offset(10).priority(50)
-            self.constraintFotTitle.append(make.top.equalTo(titleLabel.snp.bottom).offset(10).priority(100))
-            self.constraintFotVideo.append(make.top.equalTo(videoView.snp.bottom).offset(10).priority(200))
-            self.constraintFotImage.append(make.top.equalTo(imageMediaView.snp.bottom).offset(10).priority(300))
+            self.constraintForTitle.append(make.top.equalTo(titleLabel.snp.bottom).offset(10).priority(100))
+            self.constraintForVideo.append(make.top.equalTo(videoView.snp.bottom).offset(10).priority(200))
+            self.constraintForImage.append(make.top.equalTo(imageMediaView.snp.bottom).offset(10).priority(300))
             make.leading.equalTo(containerView).offset(10)
         }
         
@@ -101,11 +101,11 @@ class MessageMediaCell: MessageCell {
         titleLabel.isHidden = !viewModel.mediaType.contains(.text)
         if viewModel.mediaType.contains(.text) {
             titleLabel.attributedText = viewModel.title
-            self.constraintFotTitle.forEach({ (constraint) in
+            self.constraintForTitle.forEach({ (constraint) in
                 constraint.constraint.activate()
             })
         } else {
-            self.constraintFotTitle.forEach({ (constraint) in
+            self.constraintForTitle.forEach({ (constraint) in
                 constraint.constraint.deactivate()
             })
         }
@@ -113,11 +113,11 @@ class MessageMediaCell: MessageCell {
         videoView.isHidden = !viewModel.mediaType.contains(.video)
         if viewModel.mediaType.contains(.video) {
             videoView.setup(viewModel.video!)
-            self.constraintFotVideo.forEach({ (constraint) in
+            self.constraintForVideo.forEach({ (constraint) in
                 constraint.constraint.activate()
             })
         } else {
-            self.constraintFotVideo.forEach({ (constraint) in
+            self.constraintForVideo.forEach({ (constraint) in
                 constraint.constraint.deactivate()
             })
         }
@@ -125,11 +125,11 @@ class MessageMediaCell: MessageCell {
         imageMediaView.isHidden = !viewModel.mediaType.contains(.image)
         if viewModel.mediaType.contains(.image) {
             imageMediaView.setup(viewModel.images)
-            self.constraintFotImage.forEach({ (constraint) in
+            self.constraintForImage.forEach({ (constraint) in
                 constraint.constraint.activate()
             })
         } else {
-            self.constraintFotImage.forEach({ (constraint) in
+            self.constraintForImage.forEach({ (constraint) in
                 constraint.constraint.deactivate()
             })
         }

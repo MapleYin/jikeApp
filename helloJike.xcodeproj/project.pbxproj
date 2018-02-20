@@ -31,6 +31,10 @@
 		669DB7581FF1FDA8006D76C4 /* AppDelegate+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DB7571FF1FDA8006D76C4 /* AppDelegate+Data.swift */; };
 		66BDC567202B274100F66F96 /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BDC566202B274100F66F96 /* CommentController.swift */; };
 		66BDC569202B28E000F66F96 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BDC568202B28E000F66F96 /* CommentCell.swift */; };
+		66BF8AEF202FF61F003A7ADF /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BF8AEE202FF61F003A7ADF /* Comment.swift */; };
+		66BF8AF1203292AF003A7ADF /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BF8AF0203292AF003A7ADF /* CommentViewModel.swift */; };
+		66BF8AF32032B549003A7ADF /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BF8AF22032B549003A7ADF /* CommentService.swift */; };
+		66BF8AF52032C738003A7ADF /* CommentListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BF8AF42032C738003A7ADF /* CommentListResponse.swift */; };
 		66CFA64B200F26BB00D66546 /* VideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CFA64A200F26BB00D66546 /* VideoPlayerController.swift */; };
 		66CFA64D200F291300D66546 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CFA64C200F291300D66546 /* Media.swift */; };
 		66CFA64F200F4F7600D66546 /* MediaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CFA64E200F4F7600D66546 /* MediaService.swift */; };
@@ -82,7 +86,6 @@
 		F5B4F89F202592E80085F19A /* GenderTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B4F89E202592E80085F19A /* GenderTransform.swift */; };
 		F5B4F8A12025B3490085F19A /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B4F8A02025B3490085F19A /* Link.swift */; };
 		F5B4F8A32025B77B0085F19A /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B4F8A22025B77B0085F19A /* Audio.swift */; };
-		F5B4F8A62025CD570085F19A /* ReplyComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B4F8A52025CD570085F19A /* ReplyComment.swift */; };
 		F5B4F8A82025CE170085F19A /* FeedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B4F8A72025CE170085F19A /* FeedMessage.swift */; };
 		F5B4F8AA2026D5BE0085F19A /* STButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B4F8A92026D5BE0085F19A /* STButton.swift */; };
 		F5DBCE0D20235D1700204592 /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DBCE0C20235D1700204592 /* VideoViewModel.swift */; };
@@ -116,6 +119,10 @@
 		669DB7571FF1FDA8006D76C4 /* AppDelegate+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Data.swift"; sourceTree = "<group>"; };
 		66BDC566202B274100F66F96 /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
 		66BDC568202B28E000F66F96 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		66BF8AEE202FF61F003A7ADF /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		66BF8AF0203292AF003A7ADF /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
+		66BF8AF22032B549003A7ADF /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
+		66BF8AF42032C738003A7ADF /* CommentListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentListResponse.swift; sourceTree = "<group>"; };
 		66CFA64A200F26BB00D66546 /* VideoPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerController.swift; sourceTree = "<group>"; };
 		66CFA64C200F291300D66546 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		66CFA64E200F4F7600D66546 /* MediaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaService.swift; sourceTree = "<group>"; };
@@ -171,7 +178,6 @@
 		F5B4F89E202592E80085F19A /* GenderTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderTransform.swift; sourceTree = "<group>"; };
 		F5B4F8A02025B3490085F19A /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		F5B4F8A22025B77B0085F19A /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
-		F5B4F8A52025CD570085F19A /* ReplyComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyComment.swift; sourceTree = "<group>"; };
 		F5B4F8A72025CE170085F19A /* FeedMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMessage.swift; sourceTree = "<group>"; };
 		F5B4F8A92026D5BE0085F19A /* STButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STButton.swift; sourceTree = "<group>"; };
 		F5DBCE0C20235D1700204592 /* VideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
@@ -502,6 +508,7 @@
 			children = (
 				F51808001FEEA6990021D9D3 /* AccountService.swift */,
 				F53DFE0E1FF13E35009B649D /* MessageService.swift */,
+				66BF8AF22032B549003A7ADF /* CommentService.swift */,
 				66CFA64E200F4F7600D66546 /* MediaService.swift */,
 			);
 			path = Service;
@@ -599,6 +606,7 @@
 				F5ABB18E20162CD600D0CFBD /* MessageViewModel.swift */,
 				F5DBCE0C20235D1700204592 /* VideoViewModel.swift */,
 				F5DBCE0E20235DCC00204592 /* MessageTopicViewModel.swift */,
+				66BF8AF0203292AF003A7ADF /* CommentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -615,7 +623,8 @@
 		F5B4F8A42025CD360085F19A /* Comment */ = {
 			isa = PBXGroup;
 			children = (
-				F5B4F8A52025CD570085F19A /* ReplyComment.swift */,
+				66BF8AEE202FF61F003A7ADF /* Comment.swift */,
+				66BF8AF42032C738003A7ADF /* CommentListResponse.swift */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -798,6 +807,7 @@
 				665DB0B62009F84700042C72 /* LoginController.swift in Sources */,
 				66BDC567202B274100F66F96 /* CommentController.swift in Sources */,
 				F51807F31FEE8F190021D9D3 /* SubscribeController.swift in Sources */,
+				66BF8AF32032B549003A7ADF /* CommentService.swift in Sources */,
 				F5ABB1952018BD4900D0CFBD /* LoadingView.swift in Sources */,
 				F53DFE221FF15581009B649D /* BaseCell.swift in Sources */,
 				F5ABB1982018C03A00D0CFBD /* LoadingProgressView.swift in Sources */,
@@ -815,14 +825,15 @@
 				F51807FA1FEE99C10021D9D3 /* STTableViewController.swift in Sources */,
 				F53DFE151FF140C3009B649D /* MessageItem.swift in Sources */,
 				F51808031FEEA7C80021D9D3 /* User.swift in Sources */,
+				66BF8AF1203292AF003A7ADF /* CommentViewModel.swift in Sources */,
 				669DB7511FF1E536006D76C4 /* StringUtils.swift in Sources */,
 				F5ABB17D20138BDB00D0CFBD /* UIImage.swift in Sources */,
 				6699C121201B227E00BA43E1 /* ImageDetailDismissTransition.swift in Sources */,
 				F5DBCE0D20235D1700204592 /* VideoViewModel.swift in Sources */,
+				66BF8AF52032C738003A7ADF /* CommentListResponse.swift in Sources */,
 				F53DFE091FEFFE46009B649D /* Video.swift in Sources */,
 				668E70F71FF3AC5A00D6AF0B /* MessageImageView.swift in Sources */,
 				F5ABB1842014A1D900D0CFBD /* DefaultDateTransform.swift in Sources */,
-				F5B4F8A62025CD570085F19A /* ReplyComment.swift in Sources */,
 				669DB7581FF1FDA8006D76C4 /* AppDelegate+Data.swift in Sources */,
 				F5B4F8A12025B3490085F19A /* Link.swift in Sources */,
 				F5B4F89D202563560085F19A /* StatsCount.swift in Sources */,
@@ -842,6 +853,7 @@
 				6639FA9E200E0793007220DF /* OriginDetailController.swift in Sources */,
 				F53DFE1D1FF14773009B649D /* MessageItemTransformType.swift in Sources */,
 				F53DFE0B1FF11EC8009B649D /* Topic.swift in Sources */,
+				66BF8AEF202FF61F003A7ADF /* Comment.swift in Sources */,
 				6699C11C201B1EEE00BA43E1 /* ImageDetailTransitionDelegate.swift in Sources */,
 				F51F7AFC201DFD2300ADFAEE /* ProgressView.swift in Sources */,
 				F5ABB176200D0DA400D0CFBD /* MessageSourceView.swift in Sources */,

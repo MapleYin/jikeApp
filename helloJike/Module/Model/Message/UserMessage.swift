@@ -40,7 +40,7 @@ class UserMessage : Message {
     var users:[User] = []
     
     
-    var syncCommentId:ReplyComment?
+    var syncCommentId:Comment?
     var message:FeedMessage?
     var repostPersonalUpdate:UserMessage?
     

@@ -131,8 +131,8 @@ extension MessageImageView {
             default:
                 width = (containerWidth - 2 * separatorWidth) / 3.0
                 height = width
-                x = CGFloat(index - 1) * (width + separatorWidth)
-                y = CGFloat((index + 2) / 3) * (containerWidth / 2.0 + separatorWidth)
+                x = CGFloat(index - 1).truncatingRemainder(dividingBy: 3) * (width + separatorWidth)
+                y = ((containerWidth - separatorWidth) / 2.0 + separatorWidth) + CGFloat(index / 4) * (height + separatorWidth)
                 break
             }
             break

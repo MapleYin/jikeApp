@@ -19,11 +19,11 @@ class MessageController: STTableViewController {
     private var isStatusBarHidden = false
     
     private let playerView = PlayerView()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 300
+        
     }
     
     override func cellToRegist() -> [BaseCell.Type] {
@@ -62,7 +62,7 @@ class MessageController: STTableViewController {
     }
 }
 
-// TableViewDelegate
+// MARK: - TableViewDelegate
 extension MessageController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -134,6 +134,15 @@ extension MessageController : MessageMediaCellAction {
             case .like:
                 break
             case .comment:
+                
+                if let message = model(at: indexPath) as? FeedMessage {
+                    var messageId = message.id
+                    if let userMessage = message.personalUpdate {
+                        messageId = userMessage.id
+                    }
+                    let commentController = CommentController(messageId)
+                    self.navigationController?.pushViewController(commentController, animated: true)
+                }
                 break
             case .share:
                 if let message = model(at: indexPath) as? FeedMessage {

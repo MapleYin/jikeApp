@@ -12,6 +12,9 @@ class STTableViewController: STViewController {
     
     var tableView:UITableView = UITableView.init(frame: CGRect.zero, style: .plain);
     var refreshControl = UIRefreshControl()
+    var pageLoadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +31,14 @@ class STTableViewController: STViewController {
             maker.edges.equalTo(view)
         }
         
-        
         registCellClasses(cellToRegist())
+        
+        view.addSubview(pageLoadingIndicator)
+        pageLoadingIndicator.snp.makeConstraints { (make) in
+            make.center.equalTo(view)
+        }
+        
+        refreshData()
     }
     
     override func viewSafeAreaInsetsDidChange() {
@@ -44,10 +53,21 @@ class STTableViewController: STViewController {
     }
     
     func loadMore() {
+        
     }
     
     open func cellToRegist() -> [BaseCell.Type] {
         return []
+    }
+    
+    func endRefresh() {
+        if pageLoadingIndicator.isAnimating {
+            pageLoadingIndicator.stopAnimating()
+        }
+        
+        if self.refreshControl.isRefreshing {
+            self.refreshControl.endRefreshing()
+        }
     }
 }
 

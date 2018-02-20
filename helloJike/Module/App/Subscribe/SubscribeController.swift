@@ -30,6 +30,10 @@ class SubscribeController: MessageController {
                 
                 var indexPathArray:[IndexPath] = []
                 
+                if self.tableView.visibleCells.count > 0 {
+                    self.tableView.reloadData()
+                }
+                
                 var index = 0
                 for (_ ,messageItem) in messageLit.enumerated() {
                     if messageItem.type == .message ,
