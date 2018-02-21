@@ -12,19 +12,27 @@ import Alamofire
 
 class CommentService: STHJService {
     
+    enum CommentType {
+        case message,personalUpdate
+    }
+    
     private let commentPath = "/1.0/messageComments/listPrimary"
+    private let personalUpdateCommentsPath = "/1.0/personalUpdateComments/listPrimary"
     
     private var loadMoreKey:Any?
     
     private let messageId:String
-    
-    init(messageId:String) {
+    private let type:CommentType
+
+    init(messageId:String, type:CommentType = .message) {
         self.messageId = messageId
+        self.type = type
         super.init()
     }
 
     func loadComment(then: @escaping (CommentListResponse?,Error?) -> Void)  {
-        let url = host+commentPath
+        let path = self.type == .message ? commentPath : personalUpdateCommentsPath
+        let url = host+path
         let option = RequestOption(nil, query: nil, body:[
             "targetId": messageId,
             ])

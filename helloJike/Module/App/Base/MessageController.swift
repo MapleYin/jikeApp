@@ -137,14 +137,16 @@ extension MessageController : MessageMediaCellAction {
                 
                 if let message = model(at: indexPath) as? FeedMessage {
                     var messageId = message.id
+                    var commentType:CommentService.CommentType = .message
                     if let userMessage = message.personalUpdate {
                         messageId = userMessage.id
+                        commentType = .personalUpdate
                     }
-                    let commentController = CommentController(messageId)
+                    let commentController = CommentController(messageId,type:commentType)
                     self.navigationController?.pushViewController(commentController, animated: true)
                 } else if let message = model(at: indexPath) as? UserMessage {
                     let messageId = message.id
-                    let commentController = CommentController(messageId)
+                    let commentController = CommentController(messageId, type:.personalUpdate)
                     self.navigationController?.pushViewController(commentController, animated: true)
                 }
                 break

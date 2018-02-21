@@ -19,9 +19,9 @@ class CommentController: STTableViewController {
     var modelArray:[Comment] = []
     var viewModelArray:[CommentViewModel] = []
     
-    init(_ messageId:String) {
+    init(_ messageId:String, type:CommentService.CommentType = .message) {
         self.messageId = messageId
-        self.commentService = CommentService(messageId: messageId)
+        self.commentService = CommentService(messageId: messageId, type:type)
         super.init(nibName: nil, bundle: nil)
         self.hidesBottomBarWhenPushed = true
     }
