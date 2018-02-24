@@ -16,6 +16,7 @@ target 'helloJike' do
   pod 'Kingfisher', '~> 4.0'
   pod 'KingfisherWebP' , '~> 0.3'
   pod 'NVActivityIndicatorView', '~> 4.1'
+  pod 'Texture'
 
 
   
