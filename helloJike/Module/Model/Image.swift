@@ -26,10 +26,10 @@ class Image : Mappable {
     var smallPicUrl:String!
     var middlePicUrl:String!
     var picUrl:String!
-    var cropperPosX:Float!
-    var cropperPosY:Float!
-    var width:Float!
-    var height:Float!
+    var cropperPosX:CGFloat!
+    var cropperPosY:CGFloat!
+    var width:CGFloat!
+    var height:CGFloat!
     var format:String!
     
     required init?(map: Map){
@@ -45,6 +45,30 @@ class Image : Mappable {
         width <- map["width"]
         height <- map["height"]
         format <- map["format"]
+    }
+    
+    func urls() -> [URL] {
+        var urls = [URL]()
+//        if let url = URL(string: thumbnailUrl) {
+//            urls.append(url)
+//        }
+//
+//        if let url = URL(string: smallPicUrl) {
+//            urls.append(url)
+//        }
         
+        if let url = URL(string: middlePicUrl) {
+            urls.append(url)
+        }
+        
+//        if let url = URL(string: picUrl) {
+//            urls.append(url)
+//        }
+        
+        return urls
+    }
+    
+    func cropRect() -> CGRect {
+        return CGRect(x: cropperPosX, y: cropperPosY, width: 0, height: 0)
     }
 }

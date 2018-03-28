@@ -10,12 +10,7 @@ import UIKit
 
 class MessageDetailController: STTableViewController {
     var message:Message
-    
-    init(_ message:Message) {
-        self.message = message
-        super.init(nibName: nil, bundle: nil)
-    }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

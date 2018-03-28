@@ -7,106 +7,127 @@
 //
 
 import UIKit
-import SnapKit
+import AsyncDisplayKit
 
-protocol MessageCellAction:class {
-    func messageCell(_ cell:MessageCell, action:MessageBottomView.ActionType) -> Void
-}
-
-class MessageCell: BaseCell {
+class MessageCell: ASCellNode {
+    var messageModel:MessageViewModel
+    let titleLable = ASTextNode2()
+    let digestLabel = ASTextNode2()
+    let imageNode = ASNetworkImageNode()
+    let messageSourceNode:MessageSourceView
     
-    override class var identifier:String {
-        return "MessageCell"
+    var videoNode:MessageVideoNode?
+    
+    var mutipleImage:MessageImageNode?
+    
+    init(messageModel:MessageViewModel) {
+        self.messageModel = messageModel
+        self.messageSourceNode = MessageSourceView(viewModel: messageModel)
+        super.init()
+        
+        if let titleString = messageModel.title {
+            titleLable.attributedText = titleString
+            titleLable.maximumNumberOfLines = messageModel.cellType == .imageText ? 3 : 10
+            self.addSubnode(titleLable)
+        }
+        
+        if let digest = messageModel.content {
+            digestLabel.attributedText = digest
+            digestLabel.maximumNumberOfLines = 3
+            self.addSubnode(digestLabel)
+        }
+        
+        if messageModel.cellType == .imageText,
+            messageModel.images.count > 0,
+            let image = messageModel.images.first,
+            let imageUrl = URL(string: image.smallPicUrl) {
+            
+            imageNode.style.preferredSize = CGSize(width: 86, height: 86)
+            imageNode.url = imageUrl
+            self.addSubnode(imageNode)
+        } else if messageModel.images.count > 0 {
+            mutipleImage = MessageImageNode(imageList: messageModel.images)
+            self.addSubnode(mutipleImage!)
+        }
+        
+        if let video = messageModel.video {
+            self.videoNode = MessageVideoNode(viewModel: video)
+            self.addSubnode(self.videoNode!)
+        }
+        
+        self.addSubnode(self.messageSourceNode)
+        
+        
     }
     
-    weak open var delegate:MessageCellAction?
-
-    let containerView = UIView()
-    let topicView = STButton(type: .custom)
-    let sourceView = MessageSourceView()
-    let bottomView = MessageBottomView()
-    let bottomLine = UIView()
-
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        // Initialization code
-        selectionStyle = .none
-        contentView.addSubview(containerView)
+    override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         
+        var verticalLayoutList = [ASLayoutElement]()
         
-        bottomLine.backgroundColor = UIColor.side
-        
-        topicView.imageView?.layer.cornerRadius = 5
-        topicView.imageView?.clipsToBounds = true
-        
-        topicView.setTitleColor(UIColor.subtitle, for: .normal)
-        topicView.spacing = 10
-        topicView.imageSize = CGSize(width: 25, height: 25)
-        topicView.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        
-        
-        bottomView.action = { (action) in
-            self.delegate?.messageCell(self, action: action)
-        }
-
-        
-        containerView.addSubview(topicView)
-        containerView.addSubview(sourceView)
-        containerView.addSubview(bottomView)
-        contentView.addSubview(bottomLine)
-        
-        containerView.snp.makeConstraints { (make) in
-            make.leading.trailing.top.equalTo(contentView)
-        }
-        
-        topicView.snp.makeConstraints { (make) in
-            make.top.equalTo(containerView.snp.top).offset(10)
-            make.leading.equalTo(containerView).offset(10)
-        }
-        sourceView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        sourceView.snp.makeConstraints { (make) in
-            make.centerY.equalTo(topicView)
-            make.trailing.equalTo(containerView).offset(-10)
-        }
-        
-        bottomView.snp.makeConstraints { (make) in
-            make.top.equalTo(topicView.snp.bottom)
-            make.leading.trailing.equalTo(containerView)
-            make.height.equalTo(40)
-            make.bottom.equalTo(containerView)
-        }
-        
-        bottomLine.snp.makeConstraints { (make) in
-            make.top.equalTo(containerView.snp.bottom)
-            make.height.equalTo(5)
-            make.leading.trailing.equalTo(contentView)
-            make.bottom.equalTo(contentView.snp.bottom).priority(.low)
-        }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        if highlighted {
-            containerView.backgroundColor = UIColor.line
-        } else {
-            containerView.backgroundColor = UIColor.clear
-        }
-    }
-    
-    func setup(viewModel: MessageViewModel) {
-        if let topic = viewModel.topic {
-            if let url = topic.avatarUrl {
-                topicView.kf.setImage(with: url, for: .normal)
+        if messageModel.cellType == .imageText {
+            // MARK: - Article
+            
+            var verticalNodeList = [ASDisplayNode]()
+            
+            if messageModel.title != nil {
+                verticalNodeList.append(titleLable)
             }
-            topicView.setTitle(topic.topicName , for: .normal)
+            
+            if messageModel.content != nil {
+                verticalNodeList.append(digestLabel)
+            }
+            
+            let verticalLayout = ASStackLayoutSpec(direction: .vertical,
+                                                   spacing: 10,
+                                                   justifyContent: .start,
+                                                   alignItems: .start,
+                                                   children: verticalNodeList)
+            
+        
+            verticalLayout.style.flexShrink = 1
+            
+            var horizontalNodeList:[ASLayoutElement] = [verticalLayout]
+            
+            if self.messageModel.images.count > 0 {
+                horizontalNodeList.append(imageNode)
+            }
+            
+            let horizontalLayout = ASStackLayoutSpec(direction: .horizontal,
+                                                     spacing: 10,
+                                                     justifyContent: .spaceBetween,
+                                                     alignItems: .start,
+                                                     children: horizontalNodeList)
+            let insetLayout = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 11, bottom: 0, right: 11),
+                                                child: horizontalLayout)
+            
+            verticalLayoutList.append(insetLayout)
+  
+        } else {
+            // MARK: - Media
+            
+            if messageModel.title != nil {
+                let titleLayout = ASInsetLayoutSpec(insets:  UIEdgeInsets(top: 0, left: 11, bottom: 0, right: 11) ,
+                                                    child: titleLable)
+                verticalLayoutList.append(titleLayout)
+            }
+            
+            if let mutipleImage = self.mutipleImage {
+                verticalLayoutList.append(mutipleImage)
+            }
+            
+            if let videoNode = self.videoNode {
+                verticalLayoutList.append(videoNode)
+            }
+            
         }
         
-        sourceView.setup(viewModel: viewModel)
         
-        bottomView.setup(likeCount: viewModel.likeCountString , commentCount: viewModel.commentCountString, time: viewModel.timeString)
+        messageSourceNode.style.spacingBefore = 5
+        verticalLayoutList.append(messageSourceNode)
+        
+        let verticalLayout = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .stretch, children: verticalLayoutList)
+        
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0), child: verticalLayout)
+        
     }
-    
 }

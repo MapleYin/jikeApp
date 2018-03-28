@@ -17,7 +17,7 @@ target 'helloJike' do
   pod 'KingfisherWebP' , '~> 0.3'
   pod 'NVActivityIndicatorView', '~> 4.1'
   pod 'Texture'
-
+  pod 'PINRemoteImage/WebP'
 
   
 

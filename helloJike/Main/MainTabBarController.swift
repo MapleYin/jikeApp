@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AsyncDisplayKit
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: ASTabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

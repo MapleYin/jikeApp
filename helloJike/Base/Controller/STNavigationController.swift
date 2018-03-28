@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AsyncDisplayKit
 
-class STNavigationController: UINavigationController {
+class STNavigationController: ASNavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

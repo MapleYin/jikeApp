@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import SnapKit
+import AsyncDisplayKit
 
-class STViewController: UIViewController {
+class STViewController: ASViewController<ASTableNode> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
