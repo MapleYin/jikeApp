@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Maple Yin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
@@ -42,12 +42,15 @@ func += <K, V> (left: inout [K:V], right: [K:V]) {
 
 class STHJService {
     
-    public static var COMMON_HEADER : HTTPHeaders = ["User-Agent" : "%E5%8D%B3%E5%88%BB/989 CFNetwork/893.14.2 Darwin/17.3.0",
-                                              "OS-Version" : "Version 11.2.1 (Build 15C153)",
-                                              "App-BuildNo" : "989",
-                                              "App-Version": "3.9.1",
-                                              "OS": "ios",
-                                              "Model" : "iPhone10,3"];
+    public static var COMMON_HEADER : HTTPHeaders = [
+        "User-Agent" : "%E5%8D%B3%E5%88%BB/1328 CFNetwork/975.0.3 Darwin/18.2.0",
+        "OS-Version" : "Version 12.1 (Build 16B92)",
+        "App-BuildNo" : "1328",
+        "App-Version": "4.15.2",
+        "OS": "ios",
+        "Model" : "iPhone10,3",
+        "x-jike-device-id": UIDevice.current.identifierForVendor?.uuidString ?? ""
+    ];
     
     public var host = "https://app.jike.ruguoapp.com"
     

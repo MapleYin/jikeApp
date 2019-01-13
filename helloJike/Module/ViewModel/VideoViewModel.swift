@@ -10,8 +10,8 @@ import Foundation
 
 class VideoViewModel {
     
-    let durationText:String
-    let coverImageUrl:URL?
+    let durationText: String
+    var coverImageUrl: URL?
     
     init(_ video:Video) {
         durationText = {
@@ -19,7 +19,8 @@ class VideoViewModel {
             let secend:Int = Int(Float(video.duration).truncatingRemainder(dividingBy: 60000) / 1000)
             return String(format: "%.2d:%.2d", minite,secend)
         }()
-        
-        coverImageUrl = URL(string: video.thumbnailUrl)
+        if let url = video.image?.thumbnailUrl {
+            coverImageUrl = URL(string: url)
+        }
     }
 }

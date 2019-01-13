@@ -33,19 +33,18 @@ import ObjectMapper
 }
 */
 class Topic : Mappable {
-    var id:String = ""
-    var content:String = ""
-    var briefIntro:String = ""
-    var subscribersCount:Int = 0
-    var thumbnailUrl:String = ""
-    var squarePicture:Image!
-    var topicType:String = ""
-    var isValid:Bool = false
-    var operateStatus:String = ""
-    var subscribedStatusRawValue:Int = 0
-    var updatedAt:Date?
-    var ref:String!
-    var refRemarkTitle:String!
+    var id: String = ""
+    var content: String = ""
+    var briefIntro: String = ""
+    var subscribersCount: Int = 0
+    var squarePicture: Image?
+    var topicType: String = ""
+    var isValid: Bool = false
+    var operateStatus: String = ""
+    var subscribedStatusRawValue: Int = 0
+    var updatedAt: Date?
+    var ref: String = ""
+    var refRemarkTitle: String = ""
     
     required init?(map: Map){
         
@@ -55,13 +54,12 @@ class Topic : Mappable {
         content <- map["content"]
         briefIntro <- map["briefIntro"]
         subscribersCount <- map["subscribersCount"]
-        thumbnailUrl <- map["thumbnailUrl"]
         squarePicture <- map["squarePicture"]
         topicType <- map["topicType"]
         isValid <- map["isValid"]
         operateStatus <- map["operateStatus"]
         subscribedStatusRawValue <- map["subscribedStatusRawValue"]
-        updatedAt <- (map["updatedAt"],DefaultDateTransform())
+        updatedAt <- (map["updatedAt"], DefaultDateTransform())
         ref <- map["ref"]
         refRemarkTitle <- map["refRemark.subtype"]
     }

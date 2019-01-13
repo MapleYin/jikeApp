@@ -15,14 +15,18 @@ import ObjectMapper
 //"duration": 210000
 
 class Video : Mappable {
-    var thumbnailUrl:String!
-    var duration:Int!
+    var image: Image?
+    var duration:Int = 0
+    var width: Int = 0
+    var height: Int = 0
     
     required init?(map: Map){
         
     }
     func mapping(map: Map) {
-        thumbnailUrl <- map["thumbnailUrl"]
+        image <- map["image"]
         duration <- map["duration"]
+        width <- map["width"]
+        height <- map["height"]
     }
 }

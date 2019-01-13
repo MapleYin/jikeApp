@@ -104,7 +104,7 @@ struct MessageViewModel {
         self.iconImageUrl = URL(string: feedMessage.iconUrl)
     }
     
-    init(message:Message) {
+    init(message: Message) {
         var medias = MediaOptions()
         if message.content.count > 0 {
             medias.update(with: .text)
@@ -121,7 +121,7 @@ struct MessageViewModel {
             
             self.title = attributedString
         }
-        if let images = message.pictureUrls,
+        if let images = message.pictures,
             images.count > 0 {
             medias.update(with: .image)
             

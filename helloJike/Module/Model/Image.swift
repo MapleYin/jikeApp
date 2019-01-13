@@ -22,15 +22,15 @@ import ObjectMapper
 //}
 
 class Image : Mappable {
-    var thumbnailUrl:String!
-    var smallPicUrl:String!
-    var middlePicUrl:String!
-    var picUrl:String!
-    var cropperPosX:CGFloat!
-    var cropperPosY:CGFloat!
-    var width:CGFloat!
-    var height:CGFloat!
-    var format:String!
+    var thumbnailUrl:String = ""
+    var smallPicUrl:String = ""
+    var middlePicUrl:String = ""
+    var picUrl:String = ""
+    var cropperPosX:CGFloat = 0
+    var cropperPosY:CGFloat = 0
+    var width:CGFloat = 0
+    var height:CGFloat = 0
+    var format:String = ""
     
     required init?(map: Map){
         

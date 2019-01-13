@@ -12,9 +12,9 @@ import ObjectMapper
 
 class MessageItem : Mappable {
     
-    enum itemType:String {
+    enum itemType: String {
         case topRecommend = "HEADLINE_RECOMMENDATION"
-        case messageRecommend = "MESSAGE_RECOMMENDATION"
+        case messageRecommend = "RECOMMENDED_MESSAGE"
         case personalUpdate = "PERSONAL_UPDATE"
         case backToTop = "BACK_TO_TOP"
         case daily = "DAILY"
@@ -29,7 +29,7 @@ class MessageItem : Mappable {
             case "HEADLINE_RECOMMENDATION":
                 self = .topRecommend
                 break
-            case "MESSAGE_RECOMMENDATION":
+            case "RECOMMENDED_MESSAGE":
                 self = .messageRecommend
                 break
             case "PERSONAL_UPDATE":
@@ -53,14 +53,14 @@ class MessageItem : Mappable {
         }
     }
     
-    var item:Any!
-    var type:itemType = .unknown
+    var item: Any?
+    var type: itemType = .unknown
     
     required init?(map: Map){
         
     }
     func mapping(map: Map) {
         type <- map["type"]
-        item <- (map["item"],MessageItemTransformType(type))
+        item <- (map["item"], MessageItemTransformType(type))
     }
 }

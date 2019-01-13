@@ -27,7 +27,7 @@ class AccountService: STHJService {
     
     override init() {
         super.init()
-        user = Cache.userDefault.getUser()
+//        user = Cache.userDefault.getUser()
     }
 }
 
@@ -36,17 +36,28 @@ class AccountService: STHJService {
 
 extension AccountService {
     
-    func register(_ then: @escaping (User?,Error?) -> Void) {
+    func register(_ then: @escaping (User?, Error?) -> Void) {
         let url = host+registerPath
-        let username = UIDevice.current.identifierForVendor?.uuidString
+        let username = UUID().uuidString
+        let idfa = UUID().uuidString
         
-        request(url, method: .post, parameters: ["username":username!,"password":RandomString(16)], encoding: JSONEncoding.default, headers: STHJService.COMMON_HEADER).responseJSON { (dataResponse) in
+        request(url, method: .post, parameters: [
+            "username" : username,
+            "password" : RandomString(16),
+            "saDeviceId" : idfa,
+            "idfa" : idfa
+        ], encoding: JSONEncoding.default, headers: STHJService.COMMON_HEADER).responseJSON { (dataResponse) in
+            if let headers = dataResponse.response?.allHeaderFields {
+                let accessToken = headers["x-jike-access-token"] as? String
+                let refreshToken = headers["x-jike-refresh-token"] as? String
+            }
+            
             if let result = dataResponse.result.value as? [String:Any] {
                 if result["success"] as? Bool == true ,
                 let userInfo = result["user"] as? [String:Any]{
-                    let user = User(JSON: userInfo)
-                    self.user = user
-                    Cache.userDefault.saveUser(user)
+//                    let user = User(JSON: userInfo)
+//                    self.user = user
+//                    Cache.userDefault.saveUser(user)
                 } else {
                     print("\(String(describing: result["error"]))")
                 }
@@ -62,7 +73,7 @@ extension AccountService {
                     
                     let user = User(JSON: userInfo)
                     self.user = user
-                    Cache.userDefault.saveUser(user)
+//                    Cache.userDefault.saveUser(user)
                 } else {
                     print("\(String(describing: result["error"]))")
                 }
@@ -179,11 +190,11 @@ extension AccountService {
                 dataResponse.result.ifSuccess {
                     if let result = dataResponse.result.value as? [String:Any] {
                         if let userInfo = result["user"] as? [String:Any] {
-                            let user = User(JSON: userInfo)
-                            self.user = user
-                            Cache.userDefault.saveUser(user)
-                            NotificationCenter.default.post(name: .loginStatus, object: user)
-                            then(user,nil)
+//                            let user = User(JSON: userInfo)
+//                            self.user = user
+//                            Cache.userDefault.saveUser(user)
+//                            NotificationCenter.default.post(name: .loginStatus, object: user)
+//                            then(user,nil)
                         } else if result["successs"] as? Bool == false{
                             then(nil,result["error"] as? String)
                         }

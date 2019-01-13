@@ -27,7 +27,6 @@
 		669DB74B1FF1E3F5006D76C4 /* AppDelegate+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DB74A1FF1E3F5006D76C4 /* AppDelegate+UI.swift */; };
 		669DB7511FF1E536006D76C4 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DB7501FF1E536006D76C4 /* StringUtils.swift */; };
 		669DB7541FF1F3CC006D76C4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DB7531FF1F3CC006D76C4 /* Cache.swift */; };
-		669DB7561FF1F40C006D76C4 /* STUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DB7551FF1F40C006D76C4 /* STUserDefault.swift */; };
 		669DB7581FF1FDA8006D76C4 /* AppDelegate+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DB7571FF1FDA8006D76C4 /* AppDelegate+Data.swift */; };
 		66BDC567202B274100F66F96 /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BDC566202B274100F66F96 /* CommentController.swift */; };
 		66BDC569202B28E000F66F96 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BDC568202B28E000F66F96 /* CommentCell.swift */; };
@@ -92,6 +91,17 @@
 		F5DBCE0F20235DCC00204592 /* MessageTopicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DBCE0E20235DCC00204592 /* MessageTopicViewModel.swift */; };
 		F5DBCE112023609500204592 /* MessageMediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DBCE102023609500204592 /* MessageMediaCell.swift */; };
 		F5DBCE13202379BC00204592 /* MessageTextImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DBCE12202379BC00204592 /* MessageTextImageCell.swift */; };
+		F5E7013D21EA1B840054FF6C /* STJAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E7013C21EA1B840054FF6C /* STJAccountManager.swift */; };
+		F5E7014021EA1DF70054FF6C /* STJRequestDefined.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E7013F21EA1DF70054FF6C /* STJRequestDefined.swift */; };
+		F5E7014221EA1EF70054FF6C /* STJGlobalRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E7014121EA1EF70054FF6C /* STJGlobalRequestManager.swift */; };
+		F5E7014421EA1F780054FF6C /* STJHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E7014321EA1F780054FF6C /* STJHeaders.swift */; };
+		F5E7014621EA469B0054FF6C /* STJUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E7014521EA469B0054FF6C /* STJUserDefault.swift */; };
+		F5E7014821EA4AC80054FF6C /* Dictionary+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E7014721EA4AC80054FF6C /* Dictionary+Data.swift */; };
+		F5E7014A21EA51450054FF6C /* Sysctl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E7014921EA51440054FF6C /* Sysctl.swift */; };
+		F5E7014C21EAE0590054FF6C /* STPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E7014B21EAE0590054FF6C /* STPromise.swift */; };
+		F5E7014E21EAF9810054FF6C /* AvatarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E7014D21EAF9810054FF6C /* AvatarImage.swift */; };
+		F5E7015021EB80BD0054FF6C /* STJMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E7014F21EB80BD0054FF6C /* STJMessageManager.swift */; };
+		F5E7015321EB81860054FF6C /* STJMessageManager+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E7015221EB81860054FF6C /* STJMessageManager+Request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,7 +125,6 @@
 		669DB74A1FF1E3F5006D76C4 /* AppDelegate+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+UI.swift"; sourceTree = "<group>"; };
 		669DB7501FF1E536006D76C4 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		669DB7531FF1F3CC006D76C4 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		669DB7551FF1F40C006D76C4 /* STUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STUserDefault.swift; sourceTree = "<group>"; };
 		669DB7571FF1FDA8006D76C4 /* AppDelegate+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Data.swift"; sourceTree = "<group>"; };
 		66BDC566202B274100F66F96 /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
 		66BDC568202B28E000F66F96 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -184,6 +193,17 @@
 		F5DBCE0E20235DCC00204592 /* MessageTopicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTopicViewModel.swift; sourceTree = "<group>"; };
 		F5DBCE102023609500204592 /* MessageMediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMediaCell.swift; sourceTree = "<group>"; };
 		F5DBCE12202379BC00204592 /* MessageTextImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTextImageCell.swift; sourceTree = "<group>"; };
+		F5E7013C21EA1B840054FF6C /* STJAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STJAccountManager.swift; sourceTree = "<group>"; };
+		F5E7013F21EA1DF70054FF6C /* STJRequestDefined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STJRequestDefined.swift; sourceTree = "<group>"; };
+		F5E7014121EA1EF70054FF6C /* STJGlobalRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STJGlobalRequestManager.swift; sourceTree = "<group>"; };
+		F5E7014321EA1F780054FF6C /* STJHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STJHeaders.swift; sourceTree = "<group>"; };
+		F5E7014521EA469B0054FF6C /* STJUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STJUserDefault.swift; sourceTree = "<group>"; };
+		F5E7014721EA4AC80054FF6C /* Dictionary+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Data.swift"; sourceTree = "<group>"; };
+		F5E7014921EA51440054FF6C /* Sysctl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sysctl.swift; sourceTree = "<group>"; };
+		F5E7014B21EAE0590054FF6C /* STPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STPromise.swift; sourceTree = "<group>"; };
+		F5E7014D21EAF9810054FF6C /* AvatarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImage.swift; sourceTree = "<group>"; };
+		F5E7014F21EB80BD0054FF6C /* STJMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STJMessageManager.swift; sourceTree = "<group>"; };
+		F5E7015221EB81860054FF6C /* STJMessageManager+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "STJMessageManager+Request.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,7 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				66BDC565202B26B900F66F96 /* Comment */,
-				66CFA6502010384600D66546 /* Base */,
+				66CFA6502010384600D66546 /* MessageList */,
 				66CFA649200F254E00D66546 /* VideoPlayer */,
 				6639FA9F200E0D40007220DF /* ImageDetail */,
 				6639FA9C200E074C007220DF /* OriginDetail */,
@@ -287,6 +307,9 @@
 				F5ABB17C20138BDB00D0CFBD /* UIImage.swift */,
 				F5ABB1872014BD5E00D0CFBD /* DateEx.swift */,
 				666423272018A13E00D9472A /* ImageDownloader.swift */,
+				F5E7014721EA4AC80054FF6C /* Dictionary+Data.swift */,
+				F5E7014921EA51440054FF6C /* Sysctl.swift */,
+				F5E7014B21EAE0590054FF6C /* STPromise.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -295,7 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				669DB7531FF1F3CC006D76C4 /* Cache.swift */,
-				669DB7551FF1F40C006D76C4 /* STUserDefault.swift */,
+				F5E7014521EA469B0054FF6C /* STJUserDefault.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -316,12 +339,13 @@
 			path = VideoPlayer;
 			sourceTree = "<group>";
 		};
-		66CFA6502010384600D66546 /* Base */ = {
+		66CFA6502010384600D66546 /* MessageList */ = {
 			isa = PBXGroup;
 			children = (
+				F5E7015421EB87170054FF6C /* Manager */,
 				66CFA6512010387700D66546 /* MessageController.swift */,
 			);
-			path = Base;
+			path = MessageList;
 			sourceTree = "<group>";
 		};
 		66FA77B4202304DC00DEA2BF /* Comment */ = {
@@ -384,6 +408,8 @@
 		F51807EC1FEE8DB90021D9D3 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				F5E7013E21EA1DBB0054FF6C /* Request */,
+				F5E7013B21EA19F80054FF6C /* Account */,
 				668E70F81FF3AD7700D6AF0B /* App */,
 				F5ABB18D20162CBC00D0CFBD /* ViewModel */,
 				F53DFE281FF297D1009B649D /* View */,
@@ -481,6 +507,7 @@
 		F53DFDFC1FEEC12D009B649D /* Recommend */ = {
 			isa = PBXGroup;
 			children = (
+				F5E7015121EB80D00054FF6C /* manager */,
 				F53DFDFD1FEEC172009B649D /* RecommendController.swift */,
 			);
 			path = Recommend;
@@ -499,6 +526,7 @@
 				F53DFE0A1FF11EC8009B649D /* Topic.swift */,
 				66CFA64C200F291300D66546 /* Media.swift */,
 				F5B4F8A02025B3490085F19A /* Link.swift */,
+				F5E7014D21EAF9810054FF6C /* AvatarImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -629,6 +657,40 @@
 			path = Comment;
 			sourceTree = "<group>";
 		};
+		F5E7013B21EA19F80054FF6C /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				F5E7013C21EA1B840054FF6C /* STJAccountManager.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		F5E7013E21EA1DBB0054FF6C /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				F5E7013F21EA1DF70054FF6C /* STJRequestDefined.swift */,
+				F5E7014321EA1F780054FF6C /* STJHeaders.swift */,
+				F5E7014121EA1EF70054FF6C /* STJGlobalRequestManager.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		F5E7015121EB80D00054FF6C /* manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
+		F5E7015421EB87170054FF6C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				F5E7014F21EB80BD0054FF6C /* STJMessageManager.swift */,
+				F5E7015221EB81860054FF6C /* STJMessageManager+Request.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -641,7 +703,6 @@
 				F51807D41FEE8C290021D9D3 /* Frameworks */,
 				F51807D51FEE8C290021D9D3 /* Resources */,
 				B7ACC9B609CFA34787BCEA00 /* [CP] Embed Pods Frameworks */,
-				2C6B64A3F502E7132A9D47FF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -704,21 +765,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2C6B64A3F502E7132A9D47FF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-helloJike/Pods-helloJike-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B7ACC9B609CFA34787BCEA00 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -787,8 +833,10 @@
 				F53DFE171FF14603009B649D /* Recommendation.swift in Sources */,
 				F51807F11FEE8E4A0021D9D3 /* STViewController.swift in Sources */,
 				F5ABB179200E4D9000D0CFBD /* ImageCollectionCell.swift in Sources */,
+				F5E7015021EB80BD0054FF6C /* STJMessageManager.swift in Sources */,
 				66CFA64D200F291300D66546 /* Media.swift in Sources */,
 				F5ABB174200B459300D0CFBD /* UIScreen.swift in Sources */,
+				F5E7015321EB81860054FF6C /* STJMessageManager+Request.swift in Sources */,
 				F5B4F89B2025627D0085F19A /* Profile.swift in Sources */,
 				F5ABB18F20162CD600D0CFBD /* MessageViewModel.swift in Sources */,
 				6639FAA3200E0D96007220DF /* MessageDetailController.swift in Sources */,
@@ -809,13 +857,16 @@
 				668E70FB1FF3ADAA00D6AF0B /* MeController.swift in Sources */,
 				F5B4F89F202592E80085F19A /* GenderTransform.swift in Sources */,
 				668E70F31FF3977000D6AF0B /* STImageView.swift in Sources */,
+				F5E7014821EA4AC80054FF6C /* Dictionary+Data.swift in Sources */,
 				669DB7541FF1F3CC006D76C4 /* Cache.swift in Sources */,
+				F5E7014C21EAE0590054FF6C /* STPromise.swift in Sources */,
 				F53DFE111FF13FF7009B649D /* MessageListReponse.swift in Sources */,
 				6639FA9A200DA54E007220DF /* MessageVideoNode.swift in Sources */,
 				665DB0B62009F84700042C72 /* LoginController.swift in Sources */,
 				66BDC567202B274100F66F96 /* CommentController.swift in Sources */,
 				F51807F31FEE8F190021D9D3 /* SubscribeController.swift in Sources */,
 				66BF8AF32032B549003A7ADF /* CommentService.swift in Sources */,
+				F5E7014A21EA51450054FF6C /* Sysctl.swift in Sources */,
 				F5ABB1952018BD4900D0CFBD /* LoadingView.swift in Sources */,
 				F53DFE221FF15581009B649D /* BaseCell.swift in Sources */,
 				F5ABB1982018C03A00D0CFBD /* LoadingProgressView.swift in Sources */,
@@ -826,10 +877,12 @@
 				668E70F51FF39E8600D6AF0B /* UIColor.swift in Sources */,
 				F51807FE1FEE9D5E0021D9D3 /* STHJService.swift in Sources */,
 				F51808051FEEA88D0021D9D3 /* Preferences.swift in Sources */,
+				F5E7014021EA1DF70054FF6C /* STJRequestDefined.swift in Sources */,
 				F5ABB19A201BF9AF00D0CFBD /* ImageDetailTransitionProtocol.swift in Sources */,
+				F5E7014621EA469B0054FF6C /* STJUserDefault.swift in Sources */,
 				F51807DB1FEE8C290021D9D3 /* AppDelegate.swift in Sources */,
 				666423262018271B00D9472A /* ImageScrollView.swift in Sources */,
-				669DB7561FF1F40C006D76C4 /* STUserDefault.swift in Sources */,
+				F5E7013D21EA1B840054FF6C /* STJAccountManager.swift in Sources */,
 				F51807FA1FEE99C10021D9D3 /* STTableViewController.swift in Sources */,
 				F53DFE151FF140C3009B649D /* MessageItem.swift in Sources */,
 				F51808031FEEA7C80021D9D3 /* User.swift in Sources */,
@@ -848,11 +901,14 @@
 				F51807F61FEE8F670021D9D3 /* MainTabBarController.swift in Sources */,
 				66CFA64B200F26BB00D66546 /* VideoPlayerController.swift in Sources */,
 				F51F7AF7201D5D0F00ADFAEE /* PlayerView.swift in Sources */,
+				F5E7014421EA1F780054FF6C /* STJHeaders.swift in Sources */,
 				F5ABB1882014BD5E00D0CFBD /* DateEx.swift in Sources */,
 				6639FAA1200E0D61007220DF /* ImageDetailController.swift in Sources */,
 				669DB74B1FF1E3F5006D76C4 /* AppDelegate+UI.swift in Sources */,
 				66BDC569202B28E000F66F96 /* CommentCell.swift in Sources */,
 				66CFA64F200F4F7600D66546 /* MediaService.swift in Sources */,
+				F5E7014221EA1EF70054FF6C /* STJGlobalRequestManager.swift in Sources */,
+				F5E7014E21EAF9810054FF6C /* AvatarImage.swift in Sources */,
 				F5ABB1922017893300D0CFBD /* UserMessage.swift in Sources */,
 				F5B4F8A32025B77B0085F19A /* Audio.swift in Sources */,
 				F5DBCE13202379BC00204592 /* MessageTextImageCell.swift in Sources */,

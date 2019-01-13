@@ -100,7 +100,7 @@ extension PlayerView {
         self.needReplace = true
         self.message = message
         self.controlView.update(0, totalTime: 0)
-        if let urlString = message.video?.thumbnailUrl,
+        if let urlString = message.video?.image?.thumbnailUrl,
             let url = URL(string: urlString) {
             self.placeHolderView.kf.setImage(with: url)
         } else {

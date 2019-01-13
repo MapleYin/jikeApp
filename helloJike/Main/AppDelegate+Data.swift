@@ -24,6 +24,12 @@ extension AppDelegate {
     }
     
     func updateProfile() {
+        STJAccountManager.shared.register { (success) in
+            
+        }
+        
+        
+        return
         registIfNeeded { (isRegist) in
             if isRegist {
                 AccountService.shared.profile()

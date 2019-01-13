@@ -14,26 +14,26 @@ import AVKit
 class Message : Mappable {
     
     // Base
-    var id:String = ""
+    var id: String = ""
     
     // Content
-    var content:String = ""
+    var content: String = ""
 
     
     // Stats
-    var likeCount:Int = 0
-    var repostCount:Int = 0
-    var shareCount:Int = 0
-    var collectCount:Int = 0
-    var commentCount:Int = 0
+    var likeCount: Int = 0
+    var repostCount: Int = 0
+    var shareCount: Int = 0
+    var collectCount: Int = 0
+    var commentCount: Int = 0
     
-    var liked:Bool = false
-    var collected:Bool = false
+    var liked: Bool = false
+    var collected: Bool = false
     
     // Media
-    var audio:Audio?
-    var video:Video?
-    var pictureUrls:[Image]?
+    var audio: Audio?
+    var video: Video?
+    var pictures: [Image]?
     
     var linkInfo:Link?
     
@@ -55,14 +55,14 @@ class Message : Mappable {
         
         audio <- map["media"]
         video <- map["video"]
-        pictureUrls <- map["pictureUrls"]
+        pictures <- map["pictures"]
         
 
     }
     
     
     func deepFetchImages() -> [Image]? {
-        return self.pictureUrls
+        return self.pictures
     }
     
     func videoUrl(_ then: ((_ item:AVPlayerItem?)->Void)?) {

@@ -1,40 +1,40 @@
 PODS:
-  - Alamofire (4.6.0)
-  - AlamofireObjectMapper (5.0.0):
-    - Alamofire (~> 4.1)
-    - ObjectMapper (~> 3.0)
-  - Kingfisher (4.6.1)
-  - KingfisherWebP (0.3.1):
+  - Alamofire (4.7.3)
+  - AlamofireObjectMapper (5.2.0):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - Kingfisher (4.10.1)
+  - KingfisherWebP (0.4.2):
     - Kingfisher (~> 4.0)
-    - libwebp
-  - libwebp (0.6.0):
-    - libwebp/core (= 0.6.0)
-    - libwebp/dec (= 0.6.0)
-    - libwebp/demux (= 0.6.0)
-    - libwebp/dsp (= 0.6.0)
-    - libwebp/enc (= 0.6.0)
-    - libwebp/mux (= 0.6.0)
-    - libwebp/utils (= 0.6.0)
-    - libwebp/webp (= 0.6.0)
-  - libwebp/core (0.6.0):
+    - libwebp (>= 0.5.0)
+  - libwebp (1.0.0):
+    - libwebp/core (= 1.0.0)
+    - libwebp/dec (= 1.0.0)
+    - libwebp/demux (= 1.0.0)
+    - libwebp/dsp (= 1.0.0)
+    - libwebp/enc (= 1.0.0)
+    - libwebp/mux (= 1.0.0)
+    - libwebp/utils (= 1.0.0)
+    - libwebp/webp (= 1.0.0)
+  - libwebp/core (1.0.0):
     - libwebp/webp
-  - libwebp/dec (0.6.0):
+  - libwebp/dec (1.0.0):
     - libwebp/core
-  - libwebp/demux (0.6.0):
+  - libwebp/demux (1.0.0):
     - libwebp/core
-  - libwebp/dsp (0.6.0):
+  - libwebp/dsp (1.0.0):
     - libwebp/core
-  - libwebp/enc (0.6.0):
+  - libwebp/enc (1.0.0):
     - libwebp/core
-  - libwebp/mux (0.6.0):
+  - libwebp/mux (1.0.0):
     - libwebp/core
-  - libwebp/utils (0.6.0):
+  - libwebp/utils (1.0.0):
     - libwebp/core
-  - libwebp/webp (0.6.0)
-  - NVActivityIndicatorView (4.1.1):
-    - NVActivityIndicatorView/Presenter (= 4.1.1)
-  - NVActivityIndicatorView/Presenter (4.1.1)
-  - ObjectMapper (3.1.0)
+  - libwebp/webp (1.0.0)
+  - NVActivityIndicatorView (4.4.0):
+    - NVActivityIndicatorView/Presenter (= 4.4.0)
+  - NVActivityIndicatorView/Presenter (4.4.0)
+  - ObjectMapper (3.4.1)
   - PINCache (3.0.1-beta.6):
     - PINCache/Arc-exception-safe (= 3.0.1-beta.6)
     - PINCache/Core (= 3.0.1-beta.6)
@@ -42,7 +42,7 @@ PODS:
     - PINCache/Core
   - PINCache/Core (3.0.1-beta.6):
     - PINOperation (~> 1.1.0)
-  - PINOperation (1.1)
+  - PINOperation (1.1.1)
   - PINRemoteImage/Core (3.0.0-beta.13):
     - PINOperation
   - PINRemoteImage/iOS (3.0.0-beta.13):
@@ -53,11 +53,11 @@ PODS:
   - PINRemoteImage/WebP (3.0.0-beta.13):
     - libwebp
     - PINRemoteImage/Core
-  - SnapKit (4.0.0)
-  - Texture (2.6):
-    - Texture/PINRemoteImage (= 2.6)
-  - Texture/Core (2.6)
-  - Texture/PINRemoteImage (2.6):
+  - SnapKit (4.2.0)
+  - Texture (2.7):
+    - Texture/PINRemoteImage (= 2.7)
+  - Texture/Core (2.7)
+  - Texture/PINRemoteImage (2.7):
     - PINRemoteImage/iOS (= 3.0.0-beta.13)
     - PINRemoteImage/PINCache
     - Texture/Core
@@ -73,20 +73,35 @@ DEPENDENCIES:
   - SnapKit (~> 4.0)
   - Texture
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
+    - Kingfisher
+    - KingfisherWebP
+    - libwebp
+    - NVActivityIndicatorView
+    - ObjectMapper
+    - PINCache
+    - PINOperation
+    - PINRemoteImage
+    - SnapKit
+    - Texture
+
 SPEC CHECKSUMS:
-  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
-  AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
-  Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
-  KingfisherWebP: 1d80d4f9541e37df02cf050a3c8a7902d3e1b940
-  libwebp: 1d5a07c2eb97f9c31bd5f154bb82efc0ea67c6a2
-  NVActivityIndicatorView: 60109b9bf46efc2e71ab81453196ccdfdfeea870
-  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  KingfisherWebP: 53632f3da248ccabd4999d775903d6ae0aaa7768
+  libwebp: d7e0c95fe97245c97e08101eba10702ebb0f6101
+  NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
+  ObjectMapper: 5311bd50ca732930959e7ca1a2de43ab823a5ced
   PINCache: d195fdba255283f7e9900a55e3cced377f431f9b
-  PINOperation: 7f042fa6df5b606deb4bd5997654cf7033d5be1d
+  PINOperation: a6219e6fc9db9c269eb7a7b871ac193bcf400aac
   PINRemoteImage: d6d51c5d2adda55f1ce30c96e850b6c4ebd2856a
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  Texture: 7249074582daf75e524e59df5428b66b8e8db0e4
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  Texture: 9d7e38965cf22ccd7cd9c249dd78b3f14e70ab6c
 
 PODFILE CHECKSUM: 2828f24eeff9b20156ab34b4d3124a4dd7eff819
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3

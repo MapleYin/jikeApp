@@ -12,7 +12,7 @@ import ObjectMapper
 
 class User : Mappable {
     
-    enum Gender:String {
+    enum Gender: String {
         case unknown
         case male = "MALE"
         case female = "FEMALE"
@@ -31,25 +31,25 @@ class User : Mappable {
         }
     }
     
-    var username:String = ""
-    var screenName:String = ""
-    var isVerified:Bool = false
-    var verifyMessage:String = ""
-    var profileImageUrl:String = ""
-    var bio:String = ""
-    var gender:Gender = .unknown
-    var following:Bool = false
-    var blocking:Bool = false
+    var username: String = ""
+    var screenName: String = ""
+    var isVerified: Bool = false
+    var verifyMessage: String = ""
+    var profileImageUrl: String = ""
+    var bio: String = ""
+    var gender: Gender = .unknown
+    var following: Bool = false
+    var blocking: Bool = false
     
-    var statsCount:StatsCount?
-    var isLoginUser:Bool?
-    var preferences:Preferences?
-    var mobilePhoneNumber:String?
-    var areaCode:String?
-    var birthday:String?
-    var city:String?
-    var country:String?
-    var province:String?
+    var statsCount: StatsCount?
+    var isLoginUser: Bool?
+    var preferences: Preferences?
+    var mobilePhoneNumber: String?
+    var areaCode: String?
+    var birthday: String?
+    var city: String?
+    var country: String?
+    var province: String?
     
     required init?(map: Map){
     }

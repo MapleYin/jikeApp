@@ -11,7 +11,7 @@ import ObjectMapper
 
 class UserMessage : Message {
     
-    enum ActionType:String {
+    enum ActionType: String {
         case post = "CREATE_ORIGINAL_POST"
         case repostMessage = "CREATE_REPOST"
         case repostPost = "PERSONAL_UPDATE_REPOST"
@@ -34,15 +34,15 @@ class UserMessage : Message {
         }
     }
     
-    var action:ActionType = .unknown
-    var actionTime:Date = Date()
-    var topics:[Topic] = []
-    var users:[User] = []
+    var action: ActionType = .unknown
+    var actionTime: Date = Date()
+    var topics: [Topic] = []
+    var users: [User] = []
     
     
-    var syncCommentId:Comment?
-    var message:FeedMessage?
-    var repostPersonalUpdate:UserMessage?
+    var syncCommentId: Comment?
+    var message: FeedMessage?
+    var repostPersonalUpdate: UserMessage?
     
     
     override func mapping(map: Map) {

@@ -12,7 +12,7 @@ import ObjectMapper
 
 class GenderTransform : TransformType {
 
-    typealias Object = User.Gender
+    
     typealias JSON = String
     
     

@@ -11,9 +11,9 @@ import ObjectMapper
 
 
 class MessageListReponse : Mappable {
-    var data:[MessageItem] = []
-    var toastMesage:String?
-    var loadMoreKey:[String:Any]?
+    var data: [MessageItem] = []
+    var toastMesage: String?
+    var loadMoreKey: [String:Any]?
     
     required init?(map: Map){
         

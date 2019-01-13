@@ -47,9 +47,9 @@ class FeedMessage : Message {
     var sourceRawValue = ""
     
     
-    var personalUpdate:UserMessage?
+    var personalUpdate: UserMessage?
     
-    var topic:Topic?
+    var topic: Topic?
 
     override func mapping(map: Map) {
         super.mapping(map: map)

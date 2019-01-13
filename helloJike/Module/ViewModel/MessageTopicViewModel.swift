@@ -10,11 +10,13 @@ import Foundation
 
 class MessageTopicViewModel {
     
-    let topicName:String
-    let avatarUrl:URL?
+    let topicName:  String
+    var avatarUrl: URL?
     
     init(_ topic:Topic) {
         topicName = topic.content
-        avatarUrl = URL(string: topic.thumbnailUrl)
+        if let url = topic.squarePicture?.thumbnailUrl {
+            avatarUrl = URL(string: url)
+        }
     }
 }

@@ -11,7 +11,7 @@ import AsyncDisplayKit
 
 class MessageController: STTableViewController {
     
-    let messageService = MessageService(type: .subscribe)
+    let messageService = STJMessageManager(type: .subscribe)
     var messageViewModelList = [MessageViewModel]()
     var messageModelList = [Message]()
     
@@ -35,8 +35,7 @@ class MessageController: STTableViewController {
                 var indexPathArray:[IndexPath] = []
                 var index = self.messageViewModelList.count
                 data.forEach({ (messageItem) in
-                    if messageItem.type == .message ,
-                        let message = messageItem.item as? FeedMessage {
+                    if let message = messageItem.item as? FeedMessage {
                         indexPathArray.append(IndexPath(row: index, section: 0))
                         self.messageModelList.append(message)
                         self.messageViewModelList.append(MessageViewModel(feedMessage: message))

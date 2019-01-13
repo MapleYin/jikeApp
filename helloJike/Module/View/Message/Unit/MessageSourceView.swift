@@ -89,10 +89,10 @@ class MessageSourceView: ASDisplayNode ,ASNetworkImageNodeDelegate{
     }
     
     
-    func imageNode(_ imageNode: ASNetworkImageNode, didLoad image: UIImage, info: ASNetworkImageNodeDidLoadInfo) {
-        if self.sourceImageNode == imageNode {
-            imageNode.bounds = CGRect(x: 0, y: 0, width: 12*image.size.width/image.size.height, height: 12)
-        }
-    }
+//    func imageNode(_ imageNode: ASNetworkImageNode, didLoad image: UIImage, info: ASNetworkImageNodeDidLoadInfo) {
+//        if self.sourceImageNode == imageNode {
+//            imageNode.bounds = CGRect(x: 0, y: 0, width: 12*image.size.width/image.size.height, height: 12)
+//        }
+//    }
 //    - (void)imageNode:(ASNetworkImageNode *)imageNode didLoadImage:(UIImage *)image info:(ASNetworkImageNodeDidLoadInfo)info
 }
