@@ -99,3 +99,19 @@ func RecommendFeedReqeust(isAuto: Bool = false, loadMoreKey: Any? = nil) -> URLR
     
     return urlRequest
 }
+
+
+
+
+
+// Media Request
+func MediaRequest(messageId: String, type: String) -> URLRequest {
+    let urlPath = "/1.0/mediaMeta/interactive?id=\(messageId)&type=\(type)&trigger=auto"
+    let url = createUrl(path: urlPath)
+    var urlRequest = URLRequest(url: url)
+    urlRequest.httpMethod = "POST"
+    urlRequest.allHTTPHeaderFields = STJHeaders.global.serialize()
+    
+    
+    return urlRequest
+}

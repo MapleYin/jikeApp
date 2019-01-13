@@ -8,6 +8,7 @@
 
 import UIKit
 import AsyncDisplayKit
+import AVKit
 
 class MessageController: STTableViewController {
     
@@ -67,12 +68,13 @@ class MessageController: STTableViewController {
         }
         
         if let feedMessage = model as? FeedMessage {
-            if feedMessage.originalLinkUrl.hasPrefix("http") == true,
-                let url = URL(string: feedMessage.originalLinkUrl) {
-                let safariVC = OriginDetailController(url: url)
-                present(safariVC, animated: true, completion: nil)
-            } else {
-                print(feedMessage.originalLinkUrl)
+            if let video = feedMessage.video {
+                feedMessage.videoUrl { (item) in
+                    let controller = AVPlayerViewController()
+                    let player = AVPlayer(playerItem: item)
+                    controller.player = player
+                    self.present(controller, animated: true, completion: nil)
+                }
             }
         }
     }

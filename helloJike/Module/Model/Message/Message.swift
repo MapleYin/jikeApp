@@ -15,9 +15,11 @@ class Message : Mappable {
     
     // Base
     var id: String = ""
+    var type: String = ""
     
     // Content
     var content: String = ""
+    
 
     
     // Stats
@@ -42,6 +44,7 @@ class Message : Mappable {
     }
     func mapping(map: Map) {
         id <- map["id"]
+        type <- map["type"]
         
         content <- map["content"]
 

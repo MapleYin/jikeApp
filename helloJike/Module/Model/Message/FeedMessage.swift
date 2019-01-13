@@ -30,7 +30,7 @@ class FeedMessage : Message {
     
     // Base
     var messageId:Int = 0
-    var type:msgType = .normal
+    
     
     // Content
     var abstract:String?

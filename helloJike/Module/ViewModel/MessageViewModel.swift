@@ -66,22 +66,22 @@ struct MessageViewModel {
             self.init(message: feedMessage)
         }
         
-        if feedMessage.type == .article {
-            cellType = .imageText
-            if feedMessage.content.count > 0 {
-                let paragraphStyle = NSMutableParagraphStyle()
-                paragraphStyle.lineSpacing = 5
-                paragraphStyle.lineBreakMode = .byTruncatingTail
-                let attributedString = NSAttributedString(string: feedMessage.content, attributes: [
-                    .paragraphStyle : paragraphStyle,
-                    .foregroundColor:UIColor.title,
-                    .font:UIFont.boldSystemFont(ofSize: 16)
-                    ])
-                
-                self.title = attributedString
-            }
-            
-        }
+//        if feedMessage.type == .article {
+//            cellType = .imageText
+//            if feedMessage.content.count > 0 {
+//                let paragraphStyle = NSMutableParagraphStyle()
+//                paragraphStyle.lineSpacing = 5
+//                paragraphStyle.lineBreakMode = .byTruncatingTail
+//                let attributedString = NSAttributedString(string: feedMessage.content, attributes: [
+//                    .paragraphStyle : paragraphStyle,
+//                    .foregroundColor:UIColor.title,
+//                    .font:UIFont.boldSystemFont(ofSize: 16)
+//                    ])
+//                
+//                self.title = attributedString
+//            }
+//            
+//        }
         
         if let abstract = feedMessage.abstract {
             let paragraphStyle = NSMutableParagraphStyle()

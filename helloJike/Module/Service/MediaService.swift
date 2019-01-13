@@ -25,19 +25,14 @@ class MediaService: STHJService {
         startPrefetchIfNeeded()
     }
     
-    func media(_ message:Message, body:[String:Any]? = nil, then: @escaping (Media?,Error?) -> Void ) {
-        let url = host+mediaMetaPath
-        
-        let option = RequestOption(nil, query: [
-            "messageId" : message.id
-            ], body:body)
-        post(url, oprion: option) { (dataResponse:DataResponse<Media>) in
+    func media(_ message: Message, then: @escaping (Media?, Error?) -> Void ) {
+        Alamofire.request(MediaRequest(messageId: message.id, type: message.type)).responseObject { (dataResponse:DataResponse<Media>) in
             dataResponse.result.ifSuccess {
                 if let media = dataResponse.result.value {
                     if media.next != nil {
                         self.thirdPartRequest(media, then: { (body, error) in
                             if error == nil {
-                                self.media(message, body: body, then: then)
+//                                self.media(message, body: body, then: then)
                             } else {
                                 then(nil,error)
                             }
